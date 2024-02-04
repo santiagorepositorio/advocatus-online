@@ -1,0 +1,4 @@
+---
+deployment:
+  - export DEPLOYPATH=/home/sobotred/public_html/advocatus-online.com/
+  - /bin/rsync -a --exclude 'index.php' public/ $DEPLOYPATH
