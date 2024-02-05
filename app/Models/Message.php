@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Message extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+ 
 
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_phone', 'phone');
