@@ -400,6 +400,8 @@ class MessageController extends Controller
 
     private function _saveMessage($message, $messageType, $waId, $wamId, $timestamp = null, $caption = null, $data = '')
     {
+        $user = User::where('phone', $waId)->first();
+
         $wam = new Message();
         $wam->body = $message;
         $wam->outgoing = false;
@@ -409,10 +411,7 @@ class MessageController extends Controller
         $wam->status = 'sent';
         $wam->caption = $caption;
         $wam->data = $data;
-        $user = User::where('phone', $waId)->first();
-        // $wam->user_phone = $user ? $waId : '';
-        $wam->user_phone = $user ? $waId : null;
-
+        $wam->user_phone = $user !== null ? $waId : null;
         if (!is_null($timestamp)) {
             $wam->created_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
             $wam->updated_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
