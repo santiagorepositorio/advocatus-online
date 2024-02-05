@@ -413,10 +413,10 @@ class MessageController extends Controller
         $wam->data = $data;
        
         if (!is_null($user)) {
-            $wam->user_phone = '';
+            $wam->user_phone = $waId;
         }else
         {
-            $wam->user_phone = $waId;
+            $wam->user_phone = '';
         }
         if (!is_null($timestamp)) {
             $wam->created_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
