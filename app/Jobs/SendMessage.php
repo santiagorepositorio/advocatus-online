@@ -57,11 +57,11 @@ class SendMessage implements ShouldQueue
             $wam->status = 'sent';
             $wam->caption = '';
             $wam->data = serialize($this->messageData);
-            if (!is_null($user)) {
-                $wam->user_phone = $request['contacts'][0]['wa_id'];
-            } else {
-                $wam->user_phone = '';
-            }
+            // if (!is_null($user)) {
+            //     $wam->user_phone = $request['contacts'][0]['wa_id'];
+            // } else {
+            //     $wam->user_phone = '';
+            // }
             $wam->save();
         } catch (Exception $e) {
             Log::error('Error sending message: ' . $e->getMessage());
