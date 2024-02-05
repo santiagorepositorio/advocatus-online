@@ -36,6 +36,8 @@
                                     <span class="badge badge-primary">Regular</span>
                                 @elseif ($user->status == 3)
                                     <span class="badge badge-danger">Inactivo</span>
+                                @elseif ($user->status == 5)
+                                    <span class="badge badge-warning">Ex Empleado</span>
                                 @endif
                             </td>
                             <td width="10px"><a class="btn btn-primary" href="{{ route('admin.customer.customers_edit', $user) }}">Edit</a></td>

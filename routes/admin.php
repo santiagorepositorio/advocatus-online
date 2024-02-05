@@ -25,6 +25,7 @@ Route::post('customers/{user}/status', [UserController::class, 'customers_update
 
 Route::get('usersfull', [UserController::class, 'usersfull'])->name('users.usersfull');
 Route::get('usersfull/{user}', [UserController::class, 'agregar_empleado'])->name('users.agregar_empleado');
+Route::get('usersfull-eliminar/{user}', [UserController::class, 'eliminar_empleado'])->name('users.eliminar_empleado');
 
 Route::resource('categories', CategoryController::class)->names('categories');
 
