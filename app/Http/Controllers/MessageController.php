@@ -410,7 +410,8 @@ class MessageController extends Controller
         $wam->caption = $caption;
         $wam->data = $data;
         $user = User::where('phone', $waId)->first();
-        $wam->user_phone = $user ? $waId : '';
+        // $wam->user_phone = $user ? $waId : '';
+        $wam->user_phone = $user ? $waId : null;
 
         if (!is_null($timestamp)) {
             $wam->created_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
