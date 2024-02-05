@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Libraries\Whatsapp;
 use App\Models\Message;
+use App\Models\User;
 use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -45,6 +46,7 @@ class SendMessage implements ShouldQueue
         try {
             $wp = new Whatsapp();
             $request = $wp->genericPayload($this->payload);
+            $user = User::where('phone', $request['contacts'][0]['wa_id'])->first();
 
             $wam = new Message();
             $wam->body = $this->body;
@@ -55,9 +57,14 @@ class SendMessage implements ShouldQueue
             $wam->status = 'sent';
             $wam->caption = '';
             $wam->data = serialize($this->messageData);
+            if (!is_null($user)) {
+                $wam->user_phone = $request['contacts'][0]['wa_id'];
+            } else {
+                $wam->user_phone = '';
+            }
             $wam->save();
         } catch (Exception $e) {
-            Log::error('Error sending message: '.$e->getMessage());
+            Log::error('Error sending message: ' . $e->getMessage());
         }
     }
 }
