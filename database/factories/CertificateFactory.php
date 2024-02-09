@@ -20,8 +20,8 @@ class CertificateFactory extends Factory
         
 
         return [
-            'description' => 'El presente Certifica por haber participado del Taller de Actualizacion en derecho laboral',
             'link' => 'https://chat.whatsapp.com/HF0p7xDqVc64Fsy3jZpKUN',
+            'carga' => '50 Horas',
             'course_id' => Course::all()->random()->id     
         ];
     }

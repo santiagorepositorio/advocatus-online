@@ -35,6 +35,7 @@ class CoursesUsersList extends Component
 
     public function render()
     {
+        $id_course = $this->course;
         $studentLista = DB::table('course_user as cu')
             ->join('users as u', 'cu.user_id', '=', 'u.id')
             ->where('cu.course_id', $this->course->id)
@@ -49,7 +50,7 @@ class CoursesUsersList extends Component
         //$this->studentLista = $result->isNotEmpty() ? $result : null;
 
         //$students = $this->course->students()->where('name', 'LIKE', '%' . $this->search . '%')->paginate(10);
-        return view('livewire.admin.courses-users-list', compact('studentLista', 'course_id'));
+        return view('livewire.admin.courses-users-list', compact('studentLista', 'course_id', 'id_course'));
     }
     public function updatingSearch()
     {

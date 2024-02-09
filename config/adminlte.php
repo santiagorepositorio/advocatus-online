@@ -353,10 +353,25 @@ return [
                 [
                     'text' => 'Cursos Actuales',
                     'route'  => 'admin.courses.courses-users',
+                    'icon'    => 'fas fa-fw fa-share',
+
+                ],               
+                [
+                    'text' => 'Cursos - Certificado',
+                    'route'  => 'admin.certificates.index',
+                    'icon' => 'fas fa-money-check'
                 ],               
              
             ],
-        ],       
+        ],  
+
+        
+        
+
+
+
+
+
         [
             'text'        => 'Chat WhatsApp',
             'url'         => 'admin/whatsapp',

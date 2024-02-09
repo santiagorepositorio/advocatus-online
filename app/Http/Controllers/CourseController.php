@@ -96,24 +96,18 @@ class CourseController extends Controller
     public function generateCertificate(Course $course)
     {
         $user = auth()->user();
-        // $courses = auth()->user()->courses_enrolled()
-        // ->where('courses.id', $course->id)
-        // ->first();
-        // $imagePath = public_path('storage/' . $course->certificate->image->url);
-        // $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+       
         if ($course->certificate->image->url ?? false) {
             $imagePath = public_path('storage/' . $course->certificate->image->url);
             $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
         } else {
-            // La imagen no existe, muestra la imagen por defecto
-            $imagePath = public_path('img/home/4884273.jpg');
+            $imagePath = public_path('img/home/certificado-defecto.png');
             $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
         }
 
         $qrcode = QrCode::generate(env('APP_URL') . 'certificate/' . $course->slug . '/' . $user->id);
 
-
-        $html = View::make('certificate')->with([
+        $html = View::make('certificate3')->with([
             'qrcode' => $qrcode,
             'user' => $user,
             'courses' => $course,

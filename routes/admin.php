@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
@@ -27,6 +28,8 @@ Route::get('usersfull', [UserController::class, 'usersfull'])->name('users.users
 Route::get('usersfull/{user}', [UserController::class, 'agregar_empleado'])->name('users.agregar_empleado');
 Route::get('usersfull-eliminar/{user}', [UserController::class, 'eliminar_empleado'])->name('users.eliminar_empleado');
 
+Route::resource('certificates', CertificateController::class)->names('certificates');
+
 Route::resource('categories', CategoryController::class)->names('categories');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
@@ -50,6 +53,8 @@ Route::get('/whatsapp', WhatsappIndex::class)
 Route::get('/whatsapp-send', WhatsappSend::class)
     ->middleware('auth')
     ->name('whatsapp.send');
+
+Route::get('/contact/{course}', [CourseController::class, 'generateList'])->name('contact.index');
 
 
 
