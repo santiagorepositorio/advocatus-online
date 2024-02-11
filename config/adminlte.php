@@ -353,10 +353,25 @@ return [
                 [
                     'text' => 'Cursos Actuales',
                     'route'  => 'admin.courses.courses-users',
+                    'icon'    => 'fas fa-fw fa-share',
+
+                ],               
+                [
+                    'text' => 'Cursos - Certificado',
+                    'route'  => 'admin.certificates.index',
+                    'icon' => 'fas fa-money-check'
                 ],               
              
             ],
-        ],       
+        ],  
+
+        
+        
+
+
+
+
+
         [
             'text'        => 'Chat WhatsApp',
             'url'         => 'admin/whatsapp',
@@ -500,6 +515,21 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'bootstrap4-toggle' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css',
                 ],
             ],
         ],

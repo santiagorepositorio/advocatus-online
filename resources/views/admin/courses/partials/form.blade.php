@@ -1,15 +1,15 @@
 <div class="mb-4">
     {!! Form::label('link', 'Link de Grupo') !!}
     {!! Form::text('link', null, ['class' => 'form-input block w-full mt-1'.($errors->has('link') ? ' border-red-600' : '')]) !!}
-    @error('title')
+    @error('link')
         <strong class="text-xs text-red-500">{{ $message }}</strong>
     @enderror
 </div>
 
 <div class="mb-4">
-    {!! Form::label('description', 'Descripcion del curso') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-input block w-full mt-1'.($errors->has('description') ? ' border-red-600' : '')]) !!}
-    @error('description')
+    {!! Form::label('carga', 'Carga horaria') !!}
+    {!! Form::textarea('carga', null, ['class' => 'form-input block w-full mt-1'.($errors->has('carga') ? ' border-red-600' : '')]) !!}
+    @error('carga')
         <strong class="text-xs text-red-500">{{ $message }}</strong>
     @enderror
 </div>

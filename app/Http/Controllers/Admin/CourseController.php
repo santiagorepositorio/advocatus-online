@@ -9,7 +9,10 @@ use App\Mail\RejectCourse;
 use App\Models\Certificate;
 use App\Models\Course;
 use App\Models\User;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -151,7 +154,34 @@ class CourseController extends Controller
         
     }
 
-    
+    public function generateList(Course $course)
+    {  
+        $users = DB::table('course_user as cu')
+            ->join('users as u', 'cu.user_id', '=', 'u.id')
+            ->where('cu.course_id', $course->id)           
+            ->select('cu.statusr', 'u.id', 'u.name', 'u.email', 'u.phone')->get();
+        // $users = $course->students()->get();        
+        $html = View::make('contact-list')->with([
+            'users' => $users,
+            'course' => $course,    
+          
+        ])->render();
+        // Instancia Dompdf
+        $dompdf = new Dompdf();
+
+        // Carga el HTML generado con el código QR en Dompdf
+        $dompdf->loadHtml($html);
+
+        // Opcional: Establece el tamaño del papel, la orientación, etc.
+        $dompdf->setPaper('letter', 'landscape');
+
+        // Renderiza el PDF
+        $dompdf->render();
+
+        // Opcional: Guarda el PDF en el servidor
+        $dompdf->stream('Lista.pdf');
+    }
+
 
   
 

@@ -21,10 +21,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>slug</th>
-                        <th>status</th>
-                        <th colspan="2"></th>
+                        <th>Nombre</th>
+                        <th>Slug</th>
+                        <th>Estatus</th>
+                        <th colspan="2">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>

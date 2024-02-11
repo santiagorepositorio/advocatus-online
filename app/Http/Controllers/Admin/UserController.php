@@ -49,7 +49,15 @@ class UserController extends Controller
         $user->status =User::EMPLEADO;
         $user->save();
         
-        return redirect()->route('admin.users.index',  $user)->with('info', 'Se agrego Satisfactoriamente');
+        return redirect()->route('admin.users.index',  $user)->with('info', 'Se AGREGO Satisfactoriamente');
+
+    }
+    public function eliminar_empleado(User $user)
+    {
+        $user->status =User::EX_EMPLEADO;
+        $user->save();
+        
+        return redirect()->route('admin.users.index',  $user)->with('danger', 'Se ELIMINO Satisfactoriamente');
 
     }
 

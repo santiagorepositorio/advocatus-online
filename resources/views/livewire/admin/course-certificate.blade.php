@@ -39,7 +39,13 @@
                             @else
                             <td><span class="badge badge-pill badge-danger">NO TIENE</span></td>
                             @endif
-                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.courses.courses-users-register', $course) }}">Edit</a></td>
+                            @if ($course->certificate->id ?? false)
+                                
+                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.certificates.edit', $course->certificate->id) }}">EDITAR</a></td>
+                            @else
+                            @endif
+                            
+                            <td width="10px"><a class="btn btn-success" href="{{ route('admin.certificates.store', $course) }}">CREAR</a></td>
                             
                         </tr>
                     @empty
