@@ -30,6 +30,7 @@ Route::get('usersfull-eliminar/{user}', [UserController::class, 'eliminar_emplea
 
 Route::resource('certificates', CertificateController::class)->names('certificates');
 
+
 Route::resource('categories', CategoryController::class)->names('categories');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');

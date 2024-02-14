@@ -43,9 +43,13 @@
                                 
                             <td width="10px"><a class="btn btn-primary" href="{{ route('admin.certificates.edit', $course->certificate->id) }}">EDITAR</a></td>
                             @else
+                            <td width="10px">
+                                
+                                <a class="btn btn-success mr-4" wire:click="asigna({{ $course->id  }})">AGREGAR</a>                            
+                            </td>
                             @endif
                             
-                            <td width="10px"><a class="btn btn-success" href="{{ route('admin.certificates.store', $course) }}">CREAR</a></td>
+                            
                             
                         </tr>
                     @empty
