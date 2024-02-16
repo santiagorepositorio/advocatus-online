@@ -59,7 +59,17 @@ class CoursesUsersList extends Component
 
     public function inscribir(User $user)
     {        
-        $this->course->students()->updateExistingPivot($user->id, ['statusr' => '2']);  
+        $this->course->students()->updateExistingPivot($user->id, ['statusr' => '2']);
+
+        $userr = User::find($user->id);
+        if ($userr) {
+            $userr->status = 3;
+            $userr->save();
+        } else {
+            
+        }
+        
+        
       //$this->userid = $user;        
     }
     public function revertir(User $user)

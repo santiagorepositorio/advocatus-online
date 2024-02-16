@@ -91,6 +91,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        
         $this->authorize('dicatated', $course);
         $categories = Category::where('status', 'cursos')->pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
@@ -121,6 +122,7 @@ class CourseController extends Controller
             
         ]);
         $course->update($request->all());
+        
         if($request->file('file')){
             $url = Storage::put('courses', $request->file('file'));
             if($course->image){

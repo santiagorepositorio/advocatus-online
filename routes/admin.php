@@ -56,6 +56,7 @@ Route::get('/whatsapp-send', WhatsappSend::class)
     ->name('whatsapp.send');
 
 Route::get('/contact/{course}', [CourseController::class, 'generateList'])->name('contact.index');
+Route::get('/customers-list/{status}', [UserController::class, 'generateListCustomers'])->name('customers.status');
 
 
 

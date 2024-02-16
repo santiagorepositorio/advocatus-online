@@ -71,31 +71,8 @@
                                     @livewire('admin.courses-users-list', ['course' => $course], key('courses-' . $course->id))
                                 </div>
                             </div>
-                            <div x-show="activeTab===1">
-                                <div class="flex justify-center mt-2">
-                                    <div class="container py-2">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="text-2xl font-bold">Certificado y Link de Grupo</h1>
-                                                <hr class="mt-2 mb-6">
-                                                {!! Form::open(['route' => 'admin.course.certificate.store', 'autocomplete' => 'off', 'files' => true]) !!}
-                                                {!! Form::hidden('course_id', $course->id) !!}
-                                                @include('admin.courses.partials.form')
-                                                <div class="flex justify-end">
-                                                    {!! Form::submit('Registrar Informacion', ['class' => ' btn btn-primary']) !!}
-                                                </div>
-                                                {!! Form::close() !!}
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <x-slot name="js">
-                                        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
-                                        <script src="{{ asset('js/instructor/courses/form.js') }}"></script>
-                                    </x-slot>
-                                </div>
-                            </div>
-                            <div x-show="activeTab===2">
+                            <div x-show="activeTab===1">
                                 <h2 class="text-center text-3xl text-gray-600">Link</h2>
                                 @if ($course->certificate->link ?? false)
                                     <p class="text-center text-gray-500 text-sm mb-6">{{ $course->certificate->link }}
@@ -104,12 +81,12 @@
                                     <p class="text-center text-gray-500 text-sm mb-6">Aun no tiene asignado un Link</p>
                                 @endif
 
-                                <h2 class="text-center text-3xl text-gray-600">Descripcion</h2>
+                                <h2 class="text-center text-3xl text-gray-600">Carga Horaria</h2>
                                 @if ($course->certificate->description ?? false)
                                     <p class="text-center text-gray-500 text-sm mb-6">
                                         {{ $course->certificate->description }}</p>
                                 @else
-                                    <p class="text-center text-gray-500 text-sm mb-6">Aun no tiene una descripcion</p>
+                                    <p class="text-center text-gray-500 text-sm mb-6">Aun no tiene una carga horaria</p>
                                 @endif
 
                                 <h2 class="text-center text-3xl text-gray-600">PLANTILLA de Certificado</h2>
@@ -138,7 +115,7 @@
                             activeTab: 0,
                             tabs: [
                                 "ADMINISTRAR",
-                                "CERTIFICADO",
+    
                                 "GRUPO WHATSAPP",
                             ]
                         };

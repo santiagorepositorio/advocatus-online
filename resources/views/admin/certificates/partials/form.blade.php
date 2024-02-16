@@ -13,6 +13,13 @@
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
+{{-- <div class="form-group mb-4">
+    {!! Form::label('course_id', 'Link de Grupo', ['class' => 'font-weight-bold']) !!}
+    {!! Form::text('course_id', null, ['class' => 'form-control'.($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el link del grupo']) !!}
+    @error('link')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div> --}}
 
 <h2 class="h3 font-weight-bold mt-8 mb-4">Imagen del Certificado</h2>
 <div class="row mb-4">

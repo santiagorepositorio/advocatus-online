@@ -13,6 +13,7 @@
             @include('admin.roles.partials.form')
             
             {!! Form::submit('Editar Permisos', ['class' => 'btn btn-primary mt-2']) !!}
+            <a href="{{ route('admin.roles.index') }}" class="btn btn-danger mt-2">SALIR</a>
         {!! Form::close() !!}
     </div>
 </div>

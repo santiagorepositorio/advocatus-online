@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CertificateController extends Controller
 {
@@ -72,9 +73,24 @@ class CertificateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Certificate $certificate)
+    {        
+        $certificate->update($request->all());
+
+        if($request->file('file')){
+            $url = Storage::put('courses', $request->file('file'));
+            if($certificate->image){
+                Storage::delete($certificate->image->url);
+                $certificate->image->update([
+                    'url' => $url
+                ]);                
+            }else{
+                $certificate->image()->create([
+                    'url' => $url
+                ]);                
+            }
+        }
+        return redirect()->route('admin.certificates.edit', $certificate);        
     }
 
     /**

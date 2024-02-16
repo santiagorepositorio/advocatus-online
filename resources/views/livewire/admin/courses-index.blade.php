@@ -15,7 +15,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Title</th>
+                        <th>Titulo</th>
                         <th>Categoria</th>
                         <th>Estado</th>
                         <th></th>
@@ -27,7 +27,12 @@
                             <td>{{ $course->id }}</td>
                             <td>{{ $course->title }}</td>
                             <td>{{ $course->category->name }}</td>
-                            <td>{{ $course->status }}</td>
+                            @if ($course->status == 3)
+                            <td><span class="badge badge-pill badge-success">APROBADO</span>
+                            </td>
+                            @else
+                            <td><span class="badge badge-pill badge-warning">PARA REVISION</span></td>
+                            @endif
                             <td width="10px"><a class="btn btn-primary" href="{{ route('admin.courses.show', $course) }}">Edit</a></td>
                             
                         </tr>

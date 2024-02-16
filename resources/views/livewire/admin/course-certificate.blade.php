@@ -41,11 +41,12 @@
                             @endif
                             @if ($course->certificate->id ?? false)
                                 
-                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.certificates.edit', $course->certificate->id) }}">EDITAR</a></td>
+                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.certificates.edit', $course->certificate->id) }}">EDITAR
+                            </a></td>
                             @else
                             <td width="10px">
                                 
-                                <a class="btn btn-success mr-4" wire:click="asigna({{ $course->id  }})">AGREGAR</a>                            
+                                <a class="btn btn-success mr-4" wire:click="asigna({{ $course->id  }})">HABILITAR</a>                            
                             </td>
                             @endif
                             

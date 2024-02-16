@@ -18,7 +18,7 @@
                         <th>Titulo</th>
                         <th>Categoria</th>
                         <th>Estado</th>
-                        <th>Link y Certificado</th>
+                        {{-- <th>Link y Certificado</th> --}}
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -34,11 +34,11 @@
                             @else
                             <td><span class="badge badge-pill badge-success">EN REVISION</span></td>
                             @endif
-                            @if ($course->certificate->id ?? false)
+                            {{-- @if ($course->certificate->id ?? false)
                             <td><span class="badge badge-info">OK</span></td>
                             @else
                             <td><span class="badge badge-pill badge-danger">NO TIENE</span></td>
-                            @endif
+                            @endif --}}
                             <td width="10px"><a class="btn btn-primary" href="{{ route('admin.courses.courses-users-register', $course) }}">Edit</a></td>
                             
                         </tr>
