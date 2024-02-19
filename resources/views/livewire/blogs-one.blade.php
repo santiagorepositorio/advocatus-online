@@ -1,5 +1,5 @@
-<section class="container px-4 lg:px-8 mx-auto max-w-screen-xl text-gray-700 overflow-x-hidden">
-    <h1 class="text-center text-3xl text-gray-600">Blogs Destacados</h1>
+<section class="container px-4 lg:px-8 mx-auto max-w-screen-xl text-gray-700 overflow-x-hidden mt-8">
+    <h1 class="text-center text-3xl text-gray-600">Blogs Recientes</h1>
         <p class="text-center text-gray-500 text-sm mb-6"></p>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">        
         @forelse ($posts as $post)

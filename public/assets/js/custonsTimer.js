@@ -2,7 +2,7 @@ const days = document.getElementById("days");
 const hours = document.getElementById("hours");
 const mins = document.getElementById("mins");
  const seconds = document.getElementById("seconds");
-const newYear = '1 December 2023';
+const newYear = '4 march 2024';
 function countTimer(){
      const newYearDate = new Date (newYear);
      const currentDate = new Date();

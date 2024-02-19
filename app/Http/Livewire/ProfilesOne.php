@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Models\Profile;
 use Livewire\Component;
 
 class ProfilesOne extends Component
@@ -17,6 +18,7 @@ class ProfilesOne extends Component
     public function render()
     {
         $courses = Course::where('status', '3')->latest('id')->get()->take(20);   
-        return view('livewire.profiles-one', compact('courses'));
+        $profiles = Profile::where('status', '3')->get()->take(20); 
+        return view('livewire.profiles-one', compact('courses', 'profiles'));
     }
 }

@@ -155,7 +155,7 @@
 
             }
         </style>
-        <script src="{{ asset('assets/js/custonsTimer.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/custonsTimer.js') }}"></script> --}}
         <script src="{{ asset('assets/js/typed.min.js') }}"></script>
         <script type="text/javascript">
             var typed = new Typed('.type', {
@@ -171,6 +171,32 @@
                 backSpeed: 80,
 
             });
+        </script>
+        <script>
+            const days = document.getElementById("days");
+            const hours = document.getElementById("hours");
+            const mins = document.getElementById("mins");
+            const seconds = document.getElementById("seconds");
+            const newYear = '4 march 2024';
+
+            function countTimer() {
+                const newYearDate = new Date(newYear);
+                const currentDate = new Date();
+                const totalSeconds = (newYearDate - currentDate) / 1000;
+
+                const daysCalc = Math.floor(totalSeconds / 3600 / 24);
+                const hoursCalc = Math.floor(totalSeconds / 3600) % 24;
+                const minsCalc = Math.floor(totalSeconds / 60) % 60;
+                const secondsCalc = Math.floor(totalSeconds % 60);
+                days.innerHTML = daysCalc;
+                hours.innerHTML = hoursCalc;
+                mins.innerHTML = minsCalc;
+                seconds.innerHTML = secondsCalc;
+            }
+
+            countTimer();
+
+            setInterval(countTimer, 1000);
         </script>
     @endpush
     <section class="main-banner7">
@@ -212,14 +238,12 @@
 
                     </div>
                 </div>
-                <div class="input-group countdown7 flex">
-                    <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username"
-                        aria-describedby="basic-addon2">
 
-                    <button class="btn btn-primary" type="button">Enviar</button>
-
+                <div class="flex">
+                    <input type="text" class="form-input mr-2 w-full sm:w-auto" placeholder="Email">
+                    <button class="btn btn-primary">Enviar</button>
                 </div>
-                
+
             </div>
             <div class="graphic">
                 <img class="graphic-man" src="{{ asset('assets/imgs/imgbanner/man.png') }}" alt="">
@@ -237,4 +261,5 @@
             </div>
         </div>
     </section>
+
 </section>

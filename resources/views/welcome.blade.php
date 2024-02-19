@@ -137,51 +137,50 @@
         <h1 class="text-center text-3xl text-gray-600">CURSOS MAS VENDIDOS</h1>
         <p class="text-center text-gray-500 text-sm mb-6"></p>
         <div class="container mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
-            @foreach ($courses as $course)
+            @foreach ($topSubscribedCourses as $course)
                 <x-course-card :course="$course" />
             @endforeach
         </div>
+
     </section>
     
     @livewire('profiles-one')
-    <!-- Latest News and Resources -->
-    <section class=" py-10">
-        <div class="swiper mySwiper">
+    <!-- Banner de Publicidad -->
+    {{-- <section class="py-10">
+        <div class="swiper" style="width: 100%;">
             <div class="swiper-wrapper">
                 
                 @forelse ($publicities as $publicity)
                 <div class="swiper-slide">
                     <div class="bg-cover bg-center text-white lg:py-24 lg:px-10 object-fill"
                         style="background-image: url({{  Storage::url($publicity->image->url) }})">
-
+    
                         <div class="mx-auto max-w-7xl"><br>
                             <p class="font-bold text-sm uppercase">Publicidad</p>
                         <p class="lg:text-3xl font-bold">{{ $publicity->title }}</p>
                         <br>
                         <a href="{{ $publicity->link }}" class="bg-purple-800 sm:py-3 sm:px-4 lg:py-4 lg:px-8 text-white font-bold uppercase sm:text-sm lg:text-xs rounded hover:bg-gray-200 hover:text-gray-800">Ver Detalles</a>
                         </div>
-
+    
                     </div>
                     <div class="bg-slate-500 items-center">
-                    <p class="  text-white sm:text-xs lg:text-2xl mb-10 leading-none text-center">{{ $publicity->description }}</p>
+                    <p class="text-white sm:text-xs lg:text-2xl mb-10 leading-none text-center">{{ $publicity->description }}</p>
                 </div>
             </div>
                 @empty
                     
                 @endforelse
-               
-                
-               
                 
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
         </div>
-    </section>
+    </section> --}}
+    
 
     @livewire('blogs-one') 
-    <section class="mt-4 py-12 from-blue-100 via-blue-300 to-blue-500 bg-gradient-to-br hidden">
+    {{-- <section class="mt-4 py-12 from-blue-100 via-blue-300 to-blue-500 bg-gradient-to-br">
         <h1 class="text-center text-3xl text-gray-600">Blogs Destacados</h1>
         <p class="text-center text-gray-500 text-sm mb-6"></p>
         <!-- component -->
@@ -540,7 +539,7 @@
 
         </div>
     </section>
-    <section class="mt-12 hidden">
+    <section class="mt-12 ">
         <h1 class="text-gray-600 text-center text-3xl mb-6">
             CONTENIDO
         </h1>
@@ -588,7 +587,7 @@
 
 
         </div>
-    </section>
+    </section> --}}
     <!-- Banner de APK ANDROID -->
     <section class="bg-white dark:bg-gray-900 mt-8">
         <div class="container flex flex-col items-center px-4 py-12 mx-auto xl:flex-row">

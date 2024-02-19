@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/> --}}
 
 
 
@@ -175,7 +175,7 @@
             });
         }
     </script>
-     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+     {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
      <script>
          var swiper = new Swiper('.mySwiper', {
              spaceBetween: 30,
@@ -193,12 +193,12 @@
                  prevEl: '.swiper-button-prev',
              },
          });
-     </script>
+     </script> --}}
     <script src="{{ asset('assets/js/main.js?v=3.3') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
 
-    {{-- @stack('swipe') --}}
+    @stack('swipe')
     @stack('glider')
 </body>
 
