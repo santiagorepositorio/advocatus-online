@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WhatsappController;
@@ -32,6 +33,7 @@ Route::resource('certificates', CertificateController::class)->names('certificat
 
 
 Route::resource('categories', CategoryController::class)->names('categories');
+
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');

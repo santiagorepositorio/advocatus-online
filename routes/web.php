@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CourseStatus;
 use App\Http\Livewire\ShoppingCart;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PostController;
 use App\Http\Livewire\ShoppingCartPayment;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -38,8 +40,8 @@ use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
 Route::get('/', HomeController::class)->name('home');
 Route::get('/privacy-policy', [CourseController::class, 'privacy_policy'])->name('privacy-policy');
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
-Route::get('blogs', [BlogController::class, 'index'])->name('blogs.index');
-Route::get('blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
+Route::get('posts', [BlogController::class, 'index'])->name('posts.index');
+Route::get('posts/{post}', [BlogController::class, 'show'])->name('posts.show');
 Route::get('profiles', [ProfileController::class, 'index'])->name('profiles.index');
 Route::get('/course.show/{course}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/{profile}', [ProfileController::class, 'show'])->name('profiles.show');
@@ -67,3 +69,8 @@ Route::get('/certificate/{course}', [CourseController::class, 'generateCertifica
 Route::get('/certificate/{course}/{user}', [CourseController::class, 'certificateLink'])->name('certificate.link');
 
 
+Route::get('/posts/{post}/image', [PostController::class, 'image'])
+    ->name('posts.image');
+
+Route::post('images/upload', [ImageController::class, 'upload'])
+    ->name('images.upload');

@@ -44,14 +44,15 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $blog)
+    public function show(Post $post)
     {
-        $similares = Post::where('category_id', $blog->category_id)
-                    ->where('status', 2)
-                    ->latest('id')
+
+
+        $similares = Post::where('category_id', $post->category_id)                    
+                    ->orderBy('published_at', 'desc') 
                     ->take(5)
                     ->get();
-        return view('blogs.show', compact('blog', 'similares'));
+        return view('blogs.show', compact('post', 'similares'));
     }
 
     /**

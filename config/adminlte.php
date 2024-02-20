@@ -341,6 +341,15 @@ return [
             'active'    => ['admin/categories*']
         ],
        
+        ['header' => 'Configuraciones de Post'],
+        [
+            'text'        => 'Post',
+            'route'         => 'admin.posts.index',
+            'icon'        => 'fas fa-fw fa-cogs',
+            'label_color' => 'danger',
+            'can'   => 'Crear cursos',
+            'active'    => ['admin/posts*']
+        ],       
         ['header' => 'Configuraciones de Cursos'],       
         [
             'text'    => 'Opciones de Cursos',

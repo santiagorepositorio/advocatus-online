@@ -14,10 +14,9 @@ class BlogsIndex extends Component
 
     public function render()
     {
-        $posts = Post::where('status', 2)   
-        ->where('category_id', 9)    
-        ->latest('id')
-        ->paginate(8);
+        $posts = Post::where('published', 1)   
+        ->orderBy('published_at', 'desc') 
+        ->paginate(10);
         $categories = Category::where('status', 'Blog')->get();
         return view('livewire.blogs-index', compact('posts', 'categories'));
     }

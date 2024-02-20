@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('courses');
         Storage::deleteDirectory('profiles');
         Storage::makeDirectory('profiles');
-        Storage::deleteDirectory('blogs');
-        Storage::makeDirectory('blogs');
+        Storage::deleteDirectory('posts');
+        Storage::makeDirectory('posts');
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
@@ -30,10 +30,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PlatformSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(CertificateSeeder::class);
-        $this->call(ProfileSeeder::class);
-        $this->call(TagSeeder::class);
-        $this->call(PostSeeder::class);
+        $this->call(ProfileSeeder::class);       
+        // $this->call(PostSeeder::class);
+        \App\Models\Post::factory(100)->create();
         $this->call(PublicitySeeder::class);
+        $this->call(TagSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

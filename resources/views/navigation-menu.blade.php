@@ -17,8 +17,8 @@
         ],
         [
             'name' => 'Blog',
-            'route' => route('blogs.index'),
-            'active' => request()->routeIs('blogs.*'),
+            'route' => route('posts.index'),
+            'active' => request()->routeIs('posts.*'),
         ],
         [
             'name' => 'Shop',
@@ -181,6 +181,11 @@
                                         Instructor
                                     </x-jet-dropdown-link>
                                 @endcan
+                                @can('Listar cursos')
+                                    <x-jet-dropdown-link href="{{ route('post.posts.index') }}">
+                                        Post
+                                    </x-jet-dropdown-link>
+                                @endcan
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                         {{ __('API Tokens') }}
@@ -200,7 +205,8 @@
                             </x-slot>
                         </x-jet-dropdown>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresa</a>
+                        <a href="{{ route('login') }}"
+                            class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresa</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"

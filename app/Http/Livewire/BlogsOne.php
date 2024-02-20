@@ -9,7 +9,7 @@ class BlogsOne extends Component
 {
     public function render()
     {
-        $posts = Post::where('status', '2')->latest('id')->get()->take(5);   
+        $posts = Post::latest('id')->get()->take(5);   
         
         return view('livewire.blogs-one', compact('posts'));
     }

@@ -46,17 +46,16 @@
                 <article class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-8">
 
                     <figure>
-                        <a href="{{ route('blogs.show' ,$post) }}">
-                            <img class="aspect-[16/9] w-full object-cover object-center rounded-md"
-                                src="{{ Storage::url($post->image->url) }}"
-                                alt="{{ $post->name }}">
+                        <a href="{{ route('posts.show' ,$post) }}">
+                            <img class="aspect-[16/9] object-cover object-center w-full rounded-md" src="{{ $post->image }}" alt=""
+                            id="imgPreview">
                         </a>
                     </figure>
-
+                   
                     <div>
 
                         <h1 class="text-xl font-semibold">
-                            <a href="{{ route('blogs.show' ,$post) }}">{{ $post->name }}</a>
+                            <a href="{{ route('posts.show' ,$post) }}">{{ Str::limit($post->title, 40) }}</a>
                         </h1>
                         <hr class="my-1">
 
@@ -64,7 +63,7 @@
                             @foreach ($post->tags as $tag)
                             
                             <a href="https://codersfree.com/posts?tag=diseño web">
-                                <span class="bg-{{ $tag->color }}-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-indigo-200 dark:text-indigo-900">
+                                <span class="bg-{!! $tag->color !!}-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
                                     {{ $tag->name }}
                                 </span>
                             </a>
@@ -95,10 +94,12 @@
                             </p>
                         </div>
 
-                        <p>{{ $post->extract }}</p>
+                        <p>{{ Str::limit($post->excerpt, 200) }}</p>
+                        
 
                         <div class="mt-4 flex justify-between items-center">
-                            <a href="{{ route('blogs.show' ,$post) }}" class="btn btn-blue">Leer
+                         
+                            <a href="{{ route('posts.show' ,$post) }}" class="btn btn-primary">Leer
                                 más</a>
 
                             <span class="flex items-center">

@@ -18,7 +18,7 @@ class CertificateSeeder extends Seeder
     public function run()
     {
         
-        $certificates = Certificate::factory(40)->create();
+        $certificates = Certificate::factory(5)->create();
 
         foreach ($certificates as $certificate) {
            

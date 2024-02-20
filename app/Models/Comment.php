@@ -10,7 +10,7 @@ class Comment extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-
+ //relacion muchos a muchos inversa polimorfica
     public function commentable(){
         return $this->morphTo();
     }
@@ -30,5 +30,9 @@ class Comment extends Model
 
     public function reactions(){
         return $this->morphMany('App\Models\Reaction', 'reactionable');
+    }
+    
+    public function image(){
+        return $this->morphOne('App\Models\Image', 'imageable');
     }
 }
