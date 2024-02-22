@@ -84,6 +84,6 @@ Route::get('/auth/redirect', [AuthController::class, 'redirect'])->name('auth.re
 Route::get('/auth/callback', [AuthController::class, 'callback'])->name('auth.callback');
 
 Route::get('/auth/google-redirect', [AuthController::class, 'google_redirect'])->name('auth.google-redirect');
-Route::get('/auth/google-callback', [AuthController::class, 'google_callback'])->stateless()->name('auth.google-callback');
+Route::get('/auth/google-callback', [AuthController::class, 'google_callback'])->name('auth.google-callback');
 
 Route::post('/eliminar-datos-facebook/{user_id}', [AuthController::class, 'eliminarDatosFacebook']);
