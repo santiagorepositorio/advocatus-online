@@ -186,6 +186,8 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+
    
     
         /*
@@ -223,6 +225,7 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Image' => Intervention\Image\Facades\Image::class
       
         //php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"
     ])->toArray(),

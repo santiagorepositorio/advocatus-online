@@ -10,7 +10,7 @@
         "chillerlan/php-qrcode": "^5.0",
         "guzzlehttp/guzzle": "^7.2",
         "hardevine/shoppingcart": "^3.1",
-        "intervention/image-laravel": "^1.1",
+        "intervention/image": "^2.6.0",
         "jeroennoten/laravel-adminlte": "^3.8",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.16",

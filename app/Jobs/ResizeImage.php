@@ -40,12 +40,12 @@ class ResizeImage implements ShouldQueue
     {
         $image = Storage::get($this->image_path);
 
-        // $img = Image::make($image);
-        // $img->resize(1200, null, function ($constraint) {
-        //     $constraint->aspectRatio();
-        // });
-        // $img->stream('jpg');
+        $img = Image::make($image);
+        $img->resize(1200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->stream('jpg');
 
-        Storage::put($this->image_path, $image);
+        Storage::put($this->image_path, $img);
     }
 }
