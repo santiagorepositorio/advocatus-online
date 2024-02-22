@@ -48,21 +48,22 @@ class AuthController extends Controller
     public function google_callback(){
         try {
             $user = Socialite::driver('google')->user();
-            $findUser = User::where('g_id', $user->id)->first();
-            if ($findUser) {
-                Auth::login($findUser);
-                return redirect()->route('home');
+            dd($user);
+            // $findUser = User::where('g_id', $user->id)->first();
+            // if ($findUser) {
+            //     Auth::login($findUser);
+            //     return redirect()->route('home');
 
-            } else {
-                $newUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'g_id' => $user->id,
-                    'password' => encrypt('1985srid')
-                ]);
-                Auth::login($newUser);
-                return redirect()->route('home');
-            }
+            // } else {
+            //     $newUser = User::create([
+            //         'name' => $user->name,
+            //         'email' => $user->email,
+            //         'g_id' => $user->id,
+            //         'password' => encrypt('1985srid')
+            //     ]);
+            //     Auth::login($newUser);
+            //     return redirect()->route('home');
+            // }
             
         } catch (Exception $e) {
             dd($e->getMessage());
