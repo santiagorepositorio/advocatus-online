@@ -85,4 +85,4 @@ Route::get('/auth/redirect', [AuthController::class, 'redirect'])->name('auth.re
 
 Route::get('/auth/callback', [AuthController::class, 'callback'])->name('auth.callback');
 
-Route::post('/eliminar-datos-facebook', [AuthController::class, 'eliminarDatosFacebook']);
+Route::post('/eliminar-datos-facebook/{user_id}', [AuthController::class, 'eliminarDatosFacebook']);
