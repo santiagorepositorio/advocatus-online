@@ -182,7 +182,7 @@
                     <span class="border-b w-1/4 lg:w-1/4"></span>
                 </div>
                 <div class="mt-2 flex items-center justify-between gap-3">
-                    <a href="#"
+                    <a href="{{ route('auth.google-redirect') }}"
                         class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 326667 333333"
                             shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
