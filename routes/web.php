@@ -11,13 +11,15 @@ use App\Http\Livewire\ShoppingCart;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
 use App\Http\Livewire\ShoppingCartPayment;
+use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Return_;
 use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
 
-
+use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +84,17 @@ Route::get('/auth/redirect', [AuthController::class, 'redirect'])->name('auth.re
 
 
 Route::get('/auth/callback', [AuthController::class, 'callback'])->name('auth.callback');
+
+Route::post('/eliminar-datos', function (Request $request) {
+    $client = new Client();
+    $response = $client->post('https://advocatus-online.com/eliminar-datos', [
+        'json' => ['user_id' => $request->input('user_id')]
+    ]);
+
+    $data = json_decode($response->getBody(), true);
+
+    return response()->json([
+        'url' => $data['url'],
+        'confirmation_code' => $data['confirmation_code']
+    ]);
+});
