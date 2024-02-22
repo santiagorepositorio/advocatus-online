@@ -40,4 +40,26 @@ class AuthController extends Controller
         }
         
     }
+
+    public function eliminarDatosFacebook(Request $request)
+    {
+        // Validar la solicitud y obtener el ID del usuario
+        $request->validate([
+            'user_id' => 'required|integer' // Ajusta las reglas de validación según tus necesidades
+        ]);
+
+        $userId = $request->input('user_id');
+
+        // Buscar al usuario por su ID y actualizar el campo fb_id a null
+        $user = User::find($userId);
+        
+        if ($user) {
+            $user->fb_id = null;
+            $user->save();
+
+            return response()->json(['message' => 'El fb_id del usuario ha sido eliminado correctamente.']);
+        } else {
+            return response()->json(['error' => 'Usuario no encontrado.'], 404);
+        }
+    }
 }
