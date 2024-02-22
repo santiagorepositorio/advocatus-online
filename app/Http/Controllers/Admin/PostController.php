@@ -103,7 +103,7 @@ class PostController extends Controller
             'body' => $request->published ? 'required' : 'nullable',
             'published' => 'required|boolean',
             'tags' => 'nullable|array',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:6144'
         ]);
 
         $old_images = $post->images->pluck('path')->toArray();
