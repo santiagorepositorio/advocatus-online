@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('', [HomeController::class, 'index'])->name('home');
 
 Route::resource('roles', RoleController::class)->names('roles');
+Route::resource('permissions', PermissionController::class)->names('permissions')->except('show');
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('users');
 Route::get('customers', [UserController::class, 'customers_status'])->name('customers.index');
 

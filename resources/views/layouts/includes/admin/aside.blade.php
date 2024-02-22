@@ -1,7 +1,7 @@
 @php
     $links = [
         [
-            'name' => 'Dashboard',
+            'name' => 'Gestion de Post (Blog)',
             'url' => route('post.posts.index'),
             'active' => request()->routeIs('post.posts'),
             'icon' => 'fa-solid fa-gauge-high',

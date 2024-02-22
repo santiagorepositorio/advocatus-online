@@ -130,7 +130,7 @@
                         </svg>
                         <span>Google</span>
                     </a>
-                    <a href="#" class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
+                    <a href="{{ route('auth.redirect') }}" class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 124.8 123.36">
                             <defs>

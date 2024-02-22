@@ -28,7 +28,7 @@
                                                 class="absolute bg-blue-500 shadow-lg  shadow-blue-600 text-white cursor-pointer px-2 text-center py-2 rounded-lg h-8 w-10 flex items-center duration-300">
                                                 <h4 class="text-sm text-center">Ver</h4>
                                             </div></a>
-                                            <a href="https://wa.me/591{{ $profile->phone }}"><img
+                                            <a href="https://api.whatsapp.com/send?phone=591{{ $profile->phone }}"><img
                                                     class="absolute right-0 h-8 w-8 hover:h-12 hover:w-12 flex items-center duration-300"
                                                     src="{{ asset('assets/imgs/theme/icons/icon-whatsapp.svg') }}"></a>
                                         </div>

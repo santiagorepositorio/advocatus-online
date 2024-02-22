@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 class RoleController extends Controller
 {
+    //PROTECCION PARA TODOS LOS METODOS
     public function __construct(){
         $this->middleware('can:Listar roles')->only('index');
         $this->middleware('can:Crear roles')->only('create', 'store');

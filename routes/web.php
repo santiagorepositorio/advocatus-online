@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
@@ -74,3 +75,10 @@ Route::get('/posts/{post}/image', [PostController::class, 'image'])
 
 Route::post('images/upload', [ImageController::class, 'upload'])
     ->name('images.upload');
+
+
+
+Route::get('/auth/redirect', [AuthController::class, 'redirect'])->name('auth.redirect');
+
+
+Route::get('/auth/callback', [AuthController::class, 'callback'])->name('auth.callback');

@@ -42,4 +42,9 @@ return [
         'client_secret' => env('PAYPAL_CLIENT_SECRET'),
         'access_token' => env('PAYPAL_ACCESS_TOKEN'),
     ],
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT_URI'),
+    ],
 ];

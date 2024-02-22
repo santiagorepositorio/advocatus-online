@@ -23,7 +23,7 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-        $courses = Course::factory(40)->create();
+        $courses = Course::factory(300)->create();
 
         foreach ($courses as $course) {
             Review::factory(5)->create([

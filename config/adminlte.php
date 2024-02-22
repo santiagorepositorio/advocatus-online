@@ -316,6 +316,14 @@ return [
             'active'    => ['admin/roles*']
         ],
         [
+            'text'        => 'Permissions',
+            'route'         => 'admin.permissions.index',
+            'icon'        => 'fas fa-fw fa-users-cog',
+            'label_color' => 'success',
+            'can'   => 'Listar roles',
+            'active'    => ['admin/permissions*']
+        ],
+        [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon'        => 'fas fa-fw fa-users',

@@ -27,7 +27,7 @@ class ProfileSeeder extends Seeder
             'date' => '12/12/2023',
             'rpa' => '6028777SBQA',
             'nit' => '6028514015',
-            'phone' => '(+591) 77778837',
+            'phone' => '77778837',
             'iframe' => '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15299.547783535572!2d-68.1491348!3d-16.5318042!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edfd144114483%3A0xeacc8231fee08d6e!2sSobotred%20Systems!5e0!3m2!1ses-419!2sbo!4v1679447210130!5m2!1ses-419!2sbo"
                 width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
 
@@ -53,7 +53,7 @@ class ProfileSeeder extends Seeder
             'date' => '12/12/2023',
             'rpa' => '6028777SBQA',
             'nit' => '6028514015',
-            'phone' => '(+591) 77778837',
+            'phone' => '69992993',
             'iframe' => '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15299.547783535572!2d-68.1491348!3d-16.5318042!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edfd144114483%3A0xeacc8231fee08d6e!2sSobotred%20Systems!5e0!3m2!1ses-419!2sbo!4v1679447210130!5m2!1ses-419!2sbo"
                 width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
 
@@ -79,7 +79,7 @@ class ProfileSeeder extends Seeder
             'date' => '12/12/2023',
             'rpa' => '6028777SBQA',
             'nit' => '6028514015',
-            'phone' => '(+591) 77778837',
+            'phone' => '69800887',
             'iframe' => '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15299.547783535572!2d-68.1491348!3d-16.5318042!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edfd144114483%3A0xeacc8231fee08d6e!2sSobotred%20Systems!5e0!3m2!1ses-419!2sbo!4v1679447210130!5m2!1ses-419!2sbo"
                 width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
 
@@ -105,7 +105,7 @@ class ProfileSeeder extends Seeder
             'date' => '12/12/2023',
             'rpa' => '6028777SBQA',
             'nit' => '6028514015',
-            'phone' => '(+591) 77778837',
+            'phone' => '69930103',
             'iframe' => '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15299.547783535572!2d-68.1491348!3d-16.5318042!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edfd144114483%3A0xeacc8231fee08d6e!2sSobotred%20Systems!5e0!3m2!1ses-419!2sbo!4v1679447210130!5m2!1ses-419!2sbo"
                 width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
 

@@ -51,7 +51,7 @@
                         </div>
                     </a>
 
-                    <a href="#"><img
+                    <a href="https://api.whatsapp.com/send?phone=591{{ $profile->phone }}"><img
                             class="absolute right-0 h-8 w-8 hover:h-12 hover:w-12 flex items-center duration-300"
                             src="{{ asset('assets/imgs/theme/icons/icon-whatsapp.svg') }}"></a>
                 </div>

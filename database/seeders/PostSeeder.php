@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $posts = Post::factory(30)->create();
+        $posts = Post::factory(300)->create();
         foreach ($posts as $post) {
             Image::create([
                 'url' => 'posts/' . $faker->image('public/storage/posts', 640, 480, null, false),

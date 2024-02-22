@@ -14,11 +14,14 @@
                         </path>
                     </svg>
                 </button>
-                <a href="/" class="flex ml-2 md:mr-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="FlowBite Logo" />
-                    <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
-                </a>
+               
+                    <a href="/" class="flex-shrink-0 flex items-center mx-6">
+                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}"
+                            alt="ITSW">
+                        <img class="block lg:hidden h-12 w-auto" src="{{ asset('assets/imgs/theme/icono.png') }}"
+                            alt="ITSW">
+                    </a>
+                    
             </div>
             <div class="flex items-center">
 
