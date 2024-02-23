@@ -76,7 +76,7 @@ class MessageController extends Controller
             $response = $wp->sendText($input['wa_id'], $input['body']);
             
 
-            if ($user !== null) {
+            if ($user->id ?? null) {
                 $message = new Message();
                 $message->wa_id = $input['wa_id'];
                 $message->wam_id = $response['messages'][0]['id'];
@@ -106,7 +106,7 @@ class MessageController extends Controller
 
             return response()->json([
                 'success' => true,
-                'data' => $response,
+                'data' => $message,
             ], 200);
         } catch (Exception $e) {
             return response()->json([
