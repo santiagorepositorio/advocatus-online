@@ -83,8 +83,8 @@ class MessageController extends Controller
             $message->status = 'sent';
             $message->caption = '';
             $message->data = '';
-            $user = User::where('phone', $input['wa_id'])->first();
-            $message->user_phone = $user ? $input['wa_id'] : '';
+            // $user = User::where('phone', $input['wa_id'])->first();
+            // $message->user_phone = $user ? $input['wa_id'] : '';
             $message->save();
 
             return response()->json([
