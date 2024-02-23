@@ -74,19 +74,33 @@ class MessageController extends Controller
             $wp = new Whatsapp();
             $response = $wp->sendText($input['wa_id'], $input['body']);
             $user = User::where('phone', $input['wa_id'])->first();
+            if ($user !== null) {
+                $message = new Message();
+                $message->wa_id = $input['wa_id'];
+                $message->wam_id = $response['messages'][0]['id'];
+                $message->type = 'text';
+                $message->outgoing = true;
+                $message->body = $input['body'];
+                $message->status = 'sent';
+                $message->caption = '';
+                $message->data = '';                
+                $message->user_phone = $input['wa_id'];
+                $message->save();
+            } else {
+                $message = new Message();
+                $message->wa_id = $input['wa_id'];
+                $message->wam_id = $response['messages'][0]['id'];
+                $message->type = 'text';
+                $message->outgoing = true;
+                $message->body = $input['body'];
+                $message->status = 'sent';
+                $message->caption = '';
+                $message->data = '';
+                $message->user_phone = '';
+                $message->save();
+            }
 
-            $message = new Message();
-            $message->wa_id = $input['wa_id'];
-            $message->wam_id = $response['messages'][0]['id'];
-            $message->type = 'text';
-            $message->outgoing = true;
-            $message->body = $input['body'];
-            $message->status = 'sent';
-            $message->caption = '';
-            $message->data = '';            
-            // $message->user_phone = $user ? $input['wa_id'] : '';
-            $message->user_phone = $user && isset($input['wa_id']) ? $input['wa_id'] : '';
-            $message->save();
+
 
             return response()->json([
                 'success' => true,
@@ -401,7 +415,7 @@ class MessageController extends Controller
 
     private function _saveMessage($message, $messageType, $waId, $wamId, $timestamp = null, $caption = null, $data = '')
     {
-        
+
 
         $wam = new Message();
         $wam->body = $message;
@@ -411,9 +425,9 @@ class MessageController extends Controller
         $wam->wam_id = $wamId;
         $wam->status = 'sent';
         $wam->caption = $caption;
-        $wam->data = $data;      
-       
-        
+        $wam->data = $data;
+
+
         if (!is_null($timestamp)) {
             $wam->created_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
             $wam->updated_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
