@@ -106,7 +106,7 @@ class MessageController extends Controller
 
             return response()->json([
                 'success' => true,
-                'data' => $message,
+                'data' => $response,
             ], 200);
         } catch (Exception $e) {
             return response()->json([
