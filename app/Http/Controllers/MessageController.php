@@ -73,6 +73,7 @@ class MessageController extends Controller
             $input = $request->all();
             $wp = new Whatsapp();
             $response = $wp->sendText($input['wa_id'], $input['body']);
+            $user = User::where('phone', $input['wa_id'])->first();
 
             $message = new Message();
             $message->wa_id = $input['wa_id'];
@@ -82,9 +83,9 @@ class MessageController extends Controller
             $message->body = $input['body'];
             $message->status = 'sent';
             $message->caption = '';
-            $message->data = '';
-            // $user = User::where('phone', $input['wa_id'])->first();
+            $message->data = '';            
             // $message->user_phone = $user ? $input['wa_id'] : '';
+            $message->user_phone = $user && isset($input['wa_id']) ? $input['wa_id'] : '';
             $message->save();
 
             return response()->json([
