@@ -425,8 +425,8 @@ return [
             'icon'    => 'fas fa-bullhorn',
             'submenu' => [
                 [
-                    'text' => 'Programar Campaña',
-                    'url'  => '#',
+                    'text' => 'Envio masivo',
+                    'url'  => 'https://advocatus-online.com/envio-masivo/',
                 ],               
                 [
                     'text' => 'Chat WhatsApp',
