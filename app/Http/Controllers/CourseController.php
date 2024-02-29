@@ -79,8 +79,8 @@ class CourseController extends Controller
 
     public function enrolled(Course $course)
     {
-        $course->students()->attach(auth()->user()->id);
-
+        // $course->students()->attach(auth()->user()->id);
+        $course->students()->attach(auth()->user()->id, ['created_at' => now()]);
         return redirect()->route('courses.status', $course);
     }
 

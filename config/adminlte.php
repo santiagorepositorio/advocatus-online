@@ -302,10 +302,44 @@ return [
         ],
 
         // Sidebar items:
-       // [
-       //     'type' => 'sidebar-menu-search',
-       //     'text' => 'Buscar',
-      //  ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'Buscar',
+        //  ],
+        // [
+        //     'text'        => 'Dashboard',
+        //     'route'         => 'admin.home',
+        //     'icon'        => 'fas fa-tachometer-alt',
+        //     'label_color' => 'success',
+        //     'can'   => 'admin.home',
+        //     'active'    => ['admin.home']
+        // ],
+        ['header' => 'Dashboard'],       
+        [
+            'text'    => 'Panel Principal',
+            'icon'    => 'fas fa-tachometer-alt',
+            'submenu' => [
+                [
+                    'text' => 'Gestion :'. date('Y'),
+                    'route'  => 'admin.home',
+                    'icon' => 'fas fa-calendar-alt'
+                ],               
+                [
+                    'text' => 'Gestion :'. date('Y') -1,
+                    'route'  => 'admin.home.1',
+                    'icon'    => 'fas fa-calendar-alt',
+
+                ],               
+                [
+                    'text' => 'Gestion :'. date('Y')-2,
+                    'route'  => 'admin.home.2',
+                    'icon' => 'fas fa-calendar-alt'
+                ],               
+             
+            ],
+            'can'   => 'admin.home',
+        ],  
+        ['header' => 'Administración'],
 
         [
             'text'        => 'Roles',
@@ -348,8 +382,8 @@ return [
             'can'   => 'Crear cursos',
             'active'    => ['admin/categories*']
         ],
-              
-        ['header' => 'Configuraciones de Cursos'],       
+
+        ['header' => 'Configuraciones de Cursos'],
         [
             'text'    => 'Opciones de Cursos',
             'icon'    => 'fas fa-fw fa-share',
@@ -357,24 +391,23 @@ return [
                 [
                     'text' => 'Cursos Pendientes',
                     'route'  => 'admin.courses.index',
-                ],               
+                ],
                 [
-                    'text' => 'Cursos Actuales',
+                    'text' => 'Cursos Publicados',
                     'route'  => 'admin.courses.courses-users',
                     'icon'    => 'fas fa-fw fa-share',
 
-                ],               
+                ],
                 [
                     'text' => 'Cursos - Certificado',
                     'route'  => 'admin.certificates.index',
                     'icon' => 'fas fa-money-check'
-                ],               
-             
-            ],
-        ],  
+                ],
 
-        
-        
+            ],
+        ],
+
+
 
 
 
@@ -388,21 +421,21 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'    => 'Campaña Marketing',
+            'text'    => 'Campa帽as WhatsApp',
             'icon'    => 'fas fa-bullhorn',
             'submenu' => [
                 [
-                    'text' => 'Programar Campaña',
-                    'url'  => '#',
+                    'text' => 'Envio Masivo',
+                    'url'  => 'https://advocatus-online.com/envio-masivo/',
                 ],               
                 [
-                    'text' => 'Plantillas WhatsApp',
-                    'url'  => '#',
+                    'text' => 'Chat WhatsApp',
+                    'url'  => 'https://advocatus-online.com/envio-masivo/',
                 ],
             ],
         ],
-        
-       
+
+
         ['header' => 'Guía Referencial'],
         [
             'text'       => 'Importante',

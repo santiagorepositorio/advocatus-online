@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('', [HomeController::class, 'index'])->middleware('can:ver dashboard')->name('home');
 Route::get('', [HomeController::class, 'index'])->name('home');
+Route::get('gestios-anterior', [HomeController::class, 'index1'])->name('home.1');
+Route::get('gestion-subanterior', [HomeController::class, 'index2'])->name('home.2');
 
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('permissions', PermissionController::class)->names('permissions')->except('show');
