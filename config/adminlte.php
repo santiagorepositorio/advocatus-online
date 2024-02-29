@@ -421,12 +421,12 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'    => 'Campa帽as WhatsApp',
+            'text'    => 'Campaña Marketing',
             'icon'    => 'fas fa-bullhorn',
             'submenu' => [
                 [
-                    'text' => 'Envio Masivo',
-                    'url'  => 'https://advocatus-online.com/envio-masivo/',
+                    'text' => 'Programar Campaña',
+                    'url'  => '#',
                 ],               
                 [
                     'text' => 'Chat WhatsApp',
