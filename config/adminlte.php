@@ -326,13 +326,13 @@ return [
                 ],               
                 [
                     'text' => 'Gestion :'. date('Y') -1,
-                    'route'  => 'admin.home.1',
+                    'route'  => 'admin.home',
                     'icon'    => 'fas fa-calendar-alt',
 
                 ],               
                 [
                     'text' => 'Gestion :'. date('Y')-2,
-                    'route'  => 'admin.home.2',
+                    'route'  => 'admin.home',
                     'icon' => 'fas fa-calendar-alt'
                 ],               
              
