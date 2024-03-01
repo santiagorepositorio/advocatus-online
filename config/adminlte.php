@@ -324,17 +324,17 @@ return [
                     'route'  => 'admin.home',
                     'icon' => 'fas fa-calendar-alt'
                 ],               
-                [
-                    'text' => 'Gestion :'. date('Y') -1,
-                    'route'  => 'admin.home',
-                    'icon'    => 'fas fa-calendar-alt',
+                // [
+                //     'text' => 'Gestion :'. date('Y') -1,
+                //     'route'  => 'admin.home',
+                //     'icon'    => 'fas fa-calendar-alt',
 
-                ],               
-                [
-                    'text' => 'Gestion :'. date('Y')-2,
-                    'route'  => 'admin.home',
-                    'icon' => 'fas fa-calendar-alt'
-                ],               
+                // ],               
+                // [
+                //     'text' => 'Gestion :'. date('Y')-2,
+                //     'route'  => 'admin.home',
+                //     'icon' => 'fas fa-calendar-alt'
+                // ],               
              
             ],
             'can'   => 'admin.home',
@@ -417,12 +417,12 @@ return [
             'text'        => 'Chat WhatsApp',
             'url'         => 'admin/whatsapp',
             'icon'        => 'fab fa-whatsapp',
-            'label'       => 4,
-            'label_color' => 'success',
+            'icon_color' => 'success',
         ],
         [
             'text'    => 'Campaña Marketing',
             'icon'    => 'fas fa-bullhorn',
+            'icon_color' => 'primary',
             'submenu' => [
                 [
                     'text' => 'Envio masivo',
