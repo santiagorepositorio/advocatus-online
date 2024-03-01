@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'name' => 'Santiago Quispe Apaza',
             'email' => 'sobotred.systems@gmail.com',
             'phone' => '59177778837',
-            'status' => '4',
+            'status' => 4,
             'password' => bcrypt('1985srid'),
             // 'slug' => Str::slug('Santiago Quispe Apaza')
         ]);
@@ -28,14 +28,24 @@ class UserSeeder extends Seeder
 
         $user2 = User::create([
             'name' => 'Albert Perez Perez',
-            'email' => 'elvin.listo@gmail.com',
-            'phone' => '59169800887',
+            'email' => 'santiago.boris.q.a@gmail.com',
+            'phone' => '59169930103',
             'status' => 4,
             'password' => bcrypt('1985srid'),
             // 'slug' => Str::slug('Albert Perez Perez')
         ]);
         $user2->assignRole('Instructor');
 
-        User::factory(99)->create();
+        $user2 = User::create([
+            'name' => 'Isaias Albert Lima Paco',
+            'email' => 'elvin.listo@gmail.com',
+            'phone' => '59169902228',
+            'status' => 4,
+            'password' => bcrypt('1985srid'),
+            // 'slug' => Str::slug('Albert Perez Perez')
+        ]);
+        $user2->assignRole('Administrativo');
+
+        User::factory(100)->create();
     }
 }

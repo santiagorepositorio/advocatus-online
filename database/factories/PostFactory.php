@@ -29,7 +29,7 @@ class PostFactory extends Factory
             'body' => $this->faker->text(2000),
             'image_path' => $this->faker->imageUrl(1280, 720),
             'published' => $published,           
-            'category_id' => $this-> faker->randomElement(Category::where('status', 'blog')->pluck('id')),
+            'category_id' => $this-> faker->randomElement(Category::where('status', 'Blog')->pluck('id')),
             'user_id' => $this->faker->randomElement([1, 2]),
             'published_at' => $published_at,
         ];

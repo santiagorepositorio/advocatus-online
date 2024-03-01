@@ -33,7 +33,7 @@
                             @else
                             <td><span class="badge badge-pill badge-warning">PARA REVISION</span></td>
                             @endif
-                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.courses.show', $course) }}">Edit</a></td>
+                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.courses.show', $course) }}">Validar</a></td>
                             
                         </tr>
                     @empty

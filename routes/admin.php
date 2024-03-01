@@ -22,6 +22,7 @@ Route::get('', [HomeController::class, 'index'])->name('home');
 // Route::get('gestion-subanterior', [HomeController::class, 'index2'])->name('home.2');
 
 Route::resource('roles', RoleController::class)->names('roles');
+Route::resource('categories', CategoryController::class)->names('categories');
 Route::resource('permissions', PermissionController::class)->names('permissions')->except('show');
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('users');
 Route::get('customers', [UserController::class, 'customers_status'])->name('customers.index');
@@ -36,7 +37,7 @@ Route::get('usersfull-eliminar/{user}', [UserController::class, 'eliminar_emplea
 Route::resource('certificates', CertificateController::class)->names('certificates');
 
 
-Route::resource('categories', CategoryController::class)->names('categories');
+
 
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');

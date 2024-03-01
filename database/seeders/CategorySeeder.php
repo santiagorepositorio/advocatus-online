@@ -18,22 +18,22 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => 'Abogado',
             'slug' => Str::slug('Abogado', '-'),
-            'status' => 'Abogados'
+            'status' => 'Perfil'
         ]);
         Category::create([
             'name' => 'Estudio Juridico',
             'slug' => Str::slug('Estudio Juridico', '-'),
-            'status' => 'Abogados'
+            'status' => 'Perfil'
         ]);
         Category::create([
             'name' => 'Asociacion',
             'slug' => Str::slug('Asociacion', '-'),
-            'status' => 'Abogados'
+            'status' => 'Perfil'
         ]);
         Category::create([
             'name' => 'Docente',
             'slug' => Str::slug('Docente', '-'),
-            'status' => 'Abogados'
+            'status' => 'Perfil'
         ]);
 
 
@@ -42,37 +42,37 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => 'Diseno Web',
             'slug' => Str::slug('Diseno Web', '-'),
-            'status' => 'cursos'
+            'status' => 'Curso'
         ]);
         Category::create([
             'name' => 'Sistemas Web',
             'slug' => Str::slug('Sistemas Web', '-'),
-            'status' => 'cursos'
+            'status' => 'Curso'
         ]);
         Category::create([
             'name' => 'Proceso Familiar',
             'slug' => Str::slug('Proceso Familiar', '-'),
-            'status' => 'cursos'
+            'status' => 'Curso'
         ]);
         Category::create([
             'name' => 'Derecho Laboral',
             'slug' => Str::slug('Derecho Laboral', '-'),
-            'status' => 'cursos'
+            'status' => 'Curso'
         ]);
         Category::create([
             'name' => 'Temas Juridicos',
             'slug' => Str::slug('Temas Juridicos', '-'),
-            'status' => 'blog'
+            'status' => 'Blog'
         ]);
         Category::create([
             'name' => 'Legal Tech',
             'slug' => Str::slug('Legal Tech', '-'),
-            'status' => 'blog'
+            'status' => 'Blog'
         ]);
         Category::create([
             'name' => 'Argumentacion Juridica',
             'slug' => Str::slug('Argumentacion Juridica', '-'),
-            'status' => 'blog'
+            'status' => 'Blog'
         ]);
     }
 }

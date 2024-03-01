@@ -23,5 +23,7 @@
 @stop
 
 @section('js')
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
+<script src="{{ asset('js/admin/categories/form.js') }}"></script>
     <script> console.log('Hi!'); </script>
 @stop

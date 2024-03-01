@@ -362,7 +362,7 @@ return [
             'route'         => 'admin.users.index',
             'icon'        => 'fas fa-fw fa-users',
             'label_color' => 'danger',
-            'can'   => 'Crear cursos',
+            'can'   => 'Listar users',
             'active'    => ['admin/users*']
         ],
         [
@@ -370,7 +370,7 @@ return [
             'route'         => 'admin.customers.index',
             'icon'        => 'fas fa-fw fa-users',
             'label_color' => 'danger',
-            'can'   => 'Crear cursos',
+            'can'   => 'Listar users',
             'active'    => ['admin/customers*']
         ],
         ['header' => 'Configuraciones'],
@@ -379,7 +379,7 @@ return [
             'route'         => 'admin.categories.index',
             'icon'        => 'fas fa-fw fa-cogs',
             'label_color' => 'danger',
-            'can'   => 'Crear cursos',
+            'can'   => 'Listar categories',
             'active'    => ['admin/categories*']
         ],
 
@@ -391,33 +391,30 @@ return [
                 [
                     'text' => 'Cursos Pendientes',
                     'route'  => 'admin.courses.index',
+                    'can'   => 'Listar pendientes',
                 ],
                 [
                     'text' => 'Cursos Publicados',
                     'route'  => 'admin.courses.courses-users',
                     'icon'    => 'fas fa-fw fa-share',
+                    'can'   => 'Listar publicados',
 
                 ],
                 [
                     'text' => 'Cursos - Certificado',
                     'route'  => 'admin.certificates.index',
-                    'icon' => 'fas fa-money-check'
+                    'icon' => 'fas fa-money-check',
+                    'can'   => 'Listar publicados',
                 ],
 
             ],
         ],
-
-
-
-
-
-
-
         [
             'text'        => 'Chat WhatsApp',
             'url'         => 'admin/whatsapp',
             'icon'        => 'fab fa-whatsapp',
             'icon_color' => 'success',
+            'can'   => 'Chat whatsapp',
         ],
         [
             'text'    => 'Campaña Marketing',
@@ -427,10 +424,12 @@ return [
                 [
                     'text' => 'Envio masivo',
                     'url'  => 'https://advocatus-online.com/envio-masivo/',
+                    'can'   => 'Envio masivo',
                 ],               
                 [
                     'text' => 'Chat WhatsApp',
                     'url'  => 'https://advocatus-online.com/envio-masivo/',
+                    'can'   => 'Chat whatsapp',
                 ],
             ],
         ],

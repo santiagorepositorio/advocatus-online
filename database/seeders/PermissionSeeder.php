@@ -44,6 +44,52 @@ class PermissionSeeder extends Seeder
             'name' => 'Eliminar roles'
         ]);
 
+        Permission::create([
+            'name' => 'Crear categories'
+        ]);
+        Permission::create([
+            'name' => 'Listar categories'
+        ]);
+        Permission::create([
+            'name' => 'Editar categories'
+        ]);
+        Permission::create([
+            'name' => 'Eliminar categories'
+        ]);
+
+        Permission::create([
+            'name' => 'Listar users'
+        ]);
+        Permission::create([
+            'name' => 'Editar users'
+        ]);
+        Permission::create([
+            'name' => 'Eliminar users'
+        ]);
+
+        
+        Permission::create([
+            'name' => 'Listar publicados'
+        ]);
+        Permission::create([
+            'name' => 'Gestionar publicados'
+        ]);
+
+        Permission::create([
+            'name' => 'Listar pendientes'
+        ]);
+        Permission::create([
+            'name' => 'Validar Pendientes'
+        ]);
+
+        Permission::create([
+            'name' => 'Chat whatsapp'
+        ]);
+        Permission::create([
+            'name' => 'Envio masivo'
+        ]);
+        
+
         
         
        

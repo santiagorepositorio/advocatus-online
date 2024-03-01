@@ -3,7 +3,7 @@
     <div class="h-full  p-8 max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <div class="bg-white rounded-lg shadow-xl pb-8">
             <div class="w-full h-[250px]">
-                <img src="{{ Storage::url($profile->image->url) }}" class="gl:w-full gl:h-full object-cover object-center rounded-tl-lg rounded-tr-lg">
+                <img src="{{ Storage::url($profile->image->url) }}" class="w-full h-full object-cover rounded-tl-lg rounded-tr-lg">
             </div>
             <div class="flex flex-col items-center -mt-20">
                 <img src="{{ $profile->user->profile_photo_url }}" class="w-40 border-4 border-white rounded-full">
@@ -85,6 +85,7 @@
                 </div>
             </div>
         </div>
+        
         
 
         <div class="my-4 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">

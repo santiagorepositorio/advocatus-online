@@ -13,6 +13,13 @@ use Dompdf\Dompdf;
 
 class UserController extends Controller
 {
+    //PROTECCION PARA TODOS LOS METODOS
+    public function __construct(){
+        $this->middleware('can:Listar users')->only('index');
+
+        $this->middleware('can:Editar users')->only('edit', 'update');
+        $this->middleware('can:Eliminar users')->only('eliminar_empleado', 'agregar_empleado');
+    }
 
     public function index()
     {

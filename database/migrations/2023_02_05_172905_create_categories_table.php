@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->enum('status', ['Abogados', 'Tienda', 'Cursos', 'Blog']);
+            $table->enum('status', ['Perfil', 'Tienda', 'Curso', 'Blog']);
             $table->timestamps();
         });
     }

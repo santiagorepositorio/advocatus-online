@@ -20,11 +20,11 @@
             'route' => route('posts.index'),
             'active' => request()->routeIs('posts.*'),
         ],
-        [
-            'name' => 'Shop',
-            'route' => '#',
-            'active' => null,
-        ],
+        // [
+        //     'name' => 'Shop',
+        //     'route' => '#',
+        //     'active' => null,
+        // ],
     ];
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
@@ -176,6 +176,11 @@
                                         Administrador
                                     </x-jet-dropdown-link>
                                 @endcan
+                                @can('Listar pendientes')
+                                    <x-jet-dropdown-link href="{{ route('admin.home') }}">
+                                        Administrativo
+                                    </x-jet-dropdown-link>
+                                @endcan
                                 @can('Listar cursos')
                                     <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
                                         Instructor
@@ -273,9 +278,25 @@
                     <x-jet-responsive-nav-link href="{{ route('courses.my-courses') }}" :active="request()->routeIs('courses.my-courses')">
                         Mis Cursos
                     </x-jet-responsive-nav-link>
+                    @can('Listar roles')
+                        <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home.index')">
+                            Administrador
+                        </x-jet-responsive-nav-link>
+                    @endcan
+                    @can('Listar pendientes')
+                        <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home.index')">
+                            Administrativo
+                        </x-jet-responsive-nav-link>
+                    @endcan
+                 
                     @can('Listar cursos')
                         <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
                             Instructor
+                        </x-jet-responsive-nav-link>
+                    @endcan
+                    @can('Listar cursos')
+                        <x-jet-responsive-nav-link href="{{ route('post.posts.index') }}" :active="request()->routeIs('post.posts.index')">
+                            Post
                         </x-jet-responsive-nav-link>
                     @endcan
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -289,7 +310,7 @@
                         @csrf
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Cerrar Sesión') }}
                         </x-jet-responsive-nav-link>
                     </form>
 
@@ -329,10 +350,10 @@
         @else
             <div class="py-1 border-t border-gray-200">
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                    {{ __('Login') }}
+                    {{ __('Ingresa') }}
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                    {{ __('Register') }}
+                    {{ __('Registrate') }}
                 </x-jet-responsive-nav-link>
             </div>
         @endauth

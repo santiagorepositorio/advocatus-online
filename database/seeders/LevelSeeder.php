@@ -16,15 +16,15 @@ class LevelSeeder extends Seeder
     public function run()
     {
         Level::create([
-            'name' => 'Nivel básico'
+            'name' => 'Nivel Básico'
         ]);
 
         Level::create([
-            'name' => 'Nivel intermedio'
+            'name' => 'Nivel Intermedio'
         ]);
 
         Level::create([
-            'name' => 'Nivel avanzado'
+            'name' => 'Nivel Avanzado'
         ]);
     }
 }

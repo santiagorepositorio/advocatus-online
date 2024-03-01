@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Listar pendientes')->only('index');
+        $this->middleware('can:Validar Pendientes')->only('observation', 'approved');
+        $this->middleware('can:Listar publicados')->only('courses_users');
+        $this->middleware('can:Gestionar publicados')->only('store', 'courses_users_register');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,20 +55,20 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'link' => 'required',            
+            'link' => 'required',
             'description' => 'required',
-            'course_id' => 'required',           
+            'course_id' => 'required',
             'file' => 'image',
-            
+
         ]);
         //return $request->all();
-       $certificate = Certificate::create($request->all());
-       
-       if($request->file('file')){
-           $url = Storage::put('courses', $request->file('file'));
-           $certificate->image()->create([
+        $certificate = Certificate::create($request->all());
+
+        if ($request->file('file')) {
+            $url = Storage::put('courses', $request->file('file'));
+            $certificate->image()->create([
                 'url' => $url
-           ]);
+            ]);
         }
         return redirect()->route('admin.courses.courses-users');
     }
@@ -114,30 +122,32 @@ class CourseController extends Controller
     {
         $this->authorize('revision', $course);
 
-        if(!$course->lessons || !$course->goals || !$course->requirements || !$course->image){
+        if (!$course->lessons || !$course->goals || !$course->requirements || !$course->image) {
             return back()->with('info', 'No se puede aprobar sin estar completo');
         }
-        
-        $course->status =3;
+
+        $course->status = 3;
         $course->save();
         //Mail::to($course->teacher->email)->send(new ApprovedCourses($course));
         //$mail = new ApprovedCourse($course);
-       // Mail::to($course->teacher->email)->queue($mail);
+        // Mail::to($course->teacher->email)->queue($mail);
         return redirect()->route('admin.courses.index')->with('info', 'El curso se publico con exito');
     }
-     //Relacion uno a muchos
+    //Relacion uno a muchos
 
-     public function observation(Course $course){
+    public function observation(Course $course)
+    {
         return view('admin.courses.observation', compact('course'));
     }
-     public function reject(Request $request, Course $course){
+    public function reject(Request $request, Course $course)
+    {
         $request->validate([
             'body' => 'required'
         ]);
         $course->observation()->create($request->all());
         $course->status = 1;
         $course->save();
-       // Mail::to($course->teacher->email)->send(new RejectCourse($course));
+        // Mail::to($course->teacher->email)->send(new RejectCourse($course));
         return redirect()->route('admin.courses.index')->with('Curso Rechazado');
     }
 
@@ -151,20 +161,19 @@ class CourseController extends Controller
         $students = $course->users()->paginate(10);
         $certificates = $course->certificate();
         return view('admin.courses.courses-user-register', compact('course', 'students', 'certificates'));
-        
     }
 
     public function generateList(Course $course)
-    {  
+    {
         $users = DB::table('course_user as cu')
             ->join('users as u', 'cu.user_id', '=', 'u.id')
-            ->where('cu.course_id', $course->id)           
+            ->where('cu.course_id', $course->id)
             ->select('cu.statusr', 'u.id', 'u.name', 'u.email', 'u.phone')->get();
         // $users = $course->students()->get();        
         $html = View::make('contact-list')->with([
             'users' => $users,
-            'course' => $course,    
-          
+            'course' => $course,
+
         ])->render();
         // Instancia Dompdf
         $dompdf = new Dompdf();
@@ -181,8 +190,4 @@ class CourseController extends Controller
         // Opcional: Guarda el PDF en el servidor
         $dompdf->stream('Lista.pdf');
     }
-
-
-  
-
 }

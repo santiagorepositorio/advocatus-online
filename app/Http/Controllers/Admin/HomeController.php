@@ -11,6 +11,13 @@ use PhpParser\Node\Stmt\Return_;
 
 class HomeController extends Controller
 {
+    //PROTECCION PARA TODOS LOS METODOS
+    // public function __construct()
+    // {
+    //     $this->middleware('can:admin.home')->only('index');
+    // }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +59,7 @@ class HomeController extends Controller
         $cantidadUsuariosRegistrados = User::count();
         $cantidadUsuariosNuevos = User::where('status', 1)->count();
         $cantidadUsuariosInactivos = User::where('status', 3)->count();
-        
+
         return view('admin.index', compact('cantCourses', 'cantidadUsuariosRegistrados', 'cantidadUsuariosNuevos', 'cantidadUsuariosInactivos', 'userCountsPre', 'userCounts', 'year'));
     }
     // public function index1()
@@ -71,7 +78,7 @@ class HomeController extends Controller
     //                 ->whereYear('course_user.created_at', $year)
     //                 ->where('course_user.statusr', 2); // Cambio aquí
     //         })->count();
-            
+
     //         // Almacena la cantidad en el arreglo
     //         $userCounts[] = $count;
     //     }
@@ -86,7 +93,7 @@ class HomeController extends Controller
     //                 ->whereYear('course_user.created_at', $year)
     //                 ->where('course_user.statusr', 1); // Cambio aquí
     //         })->count();
-            
+
     //         // Almacena la cantidad en el arreglo
     //         $userCountsPre[] = $count;
     //     }
@@ -113,7 +120,7 @@ class HomeController extends Controller
     //                 ->whereYear('course_user.created_at', $year)
     //                 ->where('course_user.statusr', 2); // Cambio aquí
     //         })->count();
-            
+
     //         // Almacena la cantidad en el arreglo
     //         $userCounts[] = $count;
     //     }
@@ -128,7 +135,7 @@ class HomeController extends Controller
     //                 ->whereYear('course_user.created_at', $year)
     //                 ->where('course_user.statusr', 1); // Cambio aquí
     //         })->count();
-            
+
     //         // Almacena la cantidad en el arreglo
     //         $userCountsPre[] = $count;
     //     }

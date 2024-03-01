@@ -39,7 +39,7 @@
                             @else
                             <td><span class="badge badge-pill badge-danger">NO TIENE</span></td>
                             @endif --}}
-                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.courses.courses-users-register', $course) }}">Edit</a></td>
+                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.courses.courses-users-register', $course) }}">Gestionar</a></td>
                             
                         </tr>
                     @empty
