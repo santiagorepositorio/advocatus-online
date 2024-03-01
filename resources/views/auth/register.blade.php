@@ -84,12 +84,14 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
                         <input id="name"
                             class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                            placeholder="Escriba su Nombre 'Perico de los Palotes'"
                             type="text" name="name">
                     </div>
                     <div class="mt-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                         <input id="email"
                             class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                            placeholder="Escriba su Email 'xyz@gmail.com'"
                             type="email" name="email">
                     </div>
                     <div class="mt-4">
@@ -103,7 +105,7 @@
                             class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                             type="tel" 
                             name="phone" 
-                            placeholder="Escriba su numero +591-XXXXXXXX"
+                            placeholder="Escriba su numero '+591-XXXXXXXX'"
                             oninput="this.value = '591' + this.value.replace(/[^0-9]/g, '').slice(3, 11)">
                     </div>
 
@@ -114,6 +116,7 @@
                         <div x-data="{ show: false }" class="relative flex items-center mt-2">
                             <input :type="show ? 'text' : 'password'" id="password"
                                 class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                                placeholder="Escriba su clave 'usando 8 carcteres minimo'"
                                 type="password" name="password">
                             <button @click="show = !show" type="button"
                                 class="absolute right-2 bg-transparent flex items-center justify-center text-gray-700">
@@ -143,6 +146,7 @@
                             <input :type="show ? 'text' : 'password'" name="password_confirmation"
                                 id="password_confirmation"
                                 class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                                placeholder="Escriba su clave 'usando 8 carcteres minimo'"
                                 type="password">
                             <button @click="show = !show" type="button"
                                 class="absolute right-2 bg-transparent flex items-center justify-center text-gray-700">

@@ -68,7 +68,8 @@
                     <div class="mt-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                         <input id="email" class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                            type="email" name="email">
+                        placeholder="Escriba su Email"
+                        type="email" name="email">
                     </div>
                     <div class="mt-4">
                         <div class="flex justify-between">
@@ -76,6 +77,7 @@
                         </div>
                         <input id="password"
                             class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                            placeholder="Escriba su Clave"
                             type="password" name="password">
                     </div>
                     <div class="block mt-4">

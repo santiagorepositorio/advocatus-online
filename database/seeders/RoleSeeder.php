@@ -15,6 +15,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+        $role = Role::create(['name' => 'SuperAdmin']);
         $role = Role::create(['name' => 'Admin']);
         $role->syncPermissions(['Crear cursos', 'Listar cursos', 'Editar cursos', 'Eliminar cursos', 'Eliminar users', 'Crear roles', 'Listar roles', 'Editar roles', 'Eliminar roles', 'Crear categories', 'Listar categories', 'Editar categories', 'Eliminar categories', 'Listar users', 'Editar users', 'Listar publicados', 'Gestionar publicados', 'Listar pendientes', 'Validar Pendientes', 'Chat whatsapp', 'Envio masivo']);
         $role2 = Role::create(['name' => 'Instructor']);
