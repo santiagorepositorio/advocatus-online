@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -76,48 +77,71 @@ class User extends Authenticatable
     }
     //Relacion uno a uno
 
-public function profile(){
-    return $this->hasOne('App\Models\Profile');
-}
+    public function profile()
+    {
+        return $this->hasOne('App\Models\Profile');
+    }
 
-//Relacion uno a muchos
+    //Relacion uno a muchos
 
-public function courses_dictated(){
-    return $this->hasMany('App\Models\Course');
-}
-//MESSAGES
-public function messages(){
-    return $this->hasMany('App\Models\Message', 'phone', 'user_phone');
-}
+    public function courses_dictated()
+    {
+        return $this->hasMany('App\Models\Course');
+    }
+    //MESSAGES
+    public function messages()
+    {
+        return $this->hasMany('App\Models\Message', 'phone', 'user_phone');
+    }
 
-public function reviews(){
-    return $this->hasMany('App\Models\Review');
-}
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
 
-public function comments(){
-    return $this->hasMany('App\Models\Comment');
-}
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 
-public function reactions(){
-    return $this->hasMany('App\Models\Reaction');
-}
-public function posts(){
-    return $this->hasMany('App\Models\Post');
-}
+    public function reactions()
+    {
+        return $this->hasMany('App\Models\Reaction');
+    }
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
 
-//Relacion muchos a muchos
+    //Relacion muchos a muchos
 
-public function courses_enrolled(){
-    return $this->belongsToMany('App\Models\Course');
-}
+    public function courses_enrolled()
+    {
+        return $this->belongsToMany('App\Models\Course');
+    }
 
-public function lessons(){
-    return $this->belongsToMany('App\Models\Lesson');
-}
+    public function lessons()
+    {
+        return $this->belongsToMany('App\Models\Lesson');
+    }
 
-public function courses()
+    public function courses()
     {
         return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id');
-       
+    }
+
+
+
+
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }
