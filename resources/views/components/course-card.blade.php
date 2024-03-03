@@ -2,9 +2,9 @@
 
 <article class="card flex flex-col p-1 transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl rounded-lg">
     @isset($course->image)
-    <img class="h-36 w-full object-cover rounded-lg" src="{{ Storage::url($course->image->url) }}" alt="">
+    <img class="h-72 w-full object-cover rounded-lg" src="{{ Storage::url($course->image->url) }}" alt="">
     @else
-    <img class="h-36 w-full object-cover" src="{{asset('img/home/imagen-no-disponible.png') }}" alt="">       
+    <img class="h-72 w-full object-cover" src="{{asset('img/home/imagen-no-disponible.png') }}" alt="">       
     @endisset
     
 

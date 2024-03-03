@@ -21,7 +21,7 @@ class PostSeeder extends Seeder
         $posts = Post::factory(300)->create();
         foreach ($posts as $post) {
             Image::create([
-                'url' => 'posts/' . $faker->image('public/storage/posts', 640, 480, null, false),
+                'url' => 'posts/' . $faker->image('public/storage/posts', 1920, 1080, null, false),
                 'imageable_id' => $post->id,
                 'imageable_type' => 'App\Models\Post'
             ]);
