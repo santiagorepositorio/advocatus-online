@@ -122,7 +122,7 @@
 @stop
 
 @section('js')
-    <script src="{{ asset('assets/js/Chart.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/Chart.js') }}"></script> --}}
     <script>
         $(document).ready(function() {
             // Area Chart Example
