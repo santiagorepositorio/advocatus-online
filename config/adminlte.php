@@ -529,7 +529,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => 'assets/js/Chart.js',
+                    'location' => 'assets/js/chart.js',
                 ],
             ],
         ],
