@@ -528,7 +528,7 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => 'assets/js/Chart.js',
                 ],
             ],
