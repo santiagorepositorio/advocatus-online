@@ -29,11 +29,11 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        if ($user->id != 1) {
+        if ($user->id === 1 && $user->hasRole('SuperAdmin')) {
+            return redirect()->route('admin.users.index',  $user)->with('danger', 'No puedes EDITAR: Super Administrador');
+        } else {
             $roles = Role::all();
             return view('admin.users.edit', compact('user', 'roles'));
-        } else {
-            return redirect()->route('admin.users.index',  $user)->with('danger', 'No puedes EDITAR: Super Administrador');
         }
     }
 
@@ -44,8 +44,15 @@ class UserController extends Controller
         //     'name' => 'required',
         //     'permissions' => 'required'
         // ]);
-        $user->roles()->sync($request->roles);
-        return redirect()->route('admin.users.edit', $user);
+
+        if ($user->id === 1 && $user->hasRole('SuperAdmin')) {
+            return redirect()->route('admin.users.edit', $user);
+        } else {
+            
+            $user->roles()->sync($request->roles);
+            return redirect()->route('admin.users.edit', $user);
+        }
+        
     }
 
     public function customers_status()
@@ -66,13 +73,14 @@ class UserController extends Controller
     }
     public function eliminar_empleado(User $user)
     {
-        if ($user->id != 1) {
+        
+        if ($user->id === 1 && $user->hasRole('SuperAdmin')) {
+            return redirect()->route('admin.users.index',  $user)->with('danger', 'No puedes ELIMINAR: Super Administrador');
+        } else {
             $user->status = User::EX_EMPLEADO;
             $user->save();
             $user->roles()->sync([]);
             return redirect()->route('admin.users.index',  $user)->with('danger', 'Se ELIMINO Satisfactoriamente');
-        } else {
-            return redirect()->route('admin.users.index',  $user)->with('danger', 'No puedes ELIMINAR: Super Administrador');
         }
     }
 
