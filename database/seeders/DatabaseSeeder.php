@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfileSeeder::class);
         $this->call(TagSeeder::class);
         // $this->call(PostSeeder::class);
-        \App\Models\Post::factory(10)->create();
+        \App\Models\Post::factory(200)->create();
         // $this->call(PublicitySeeder::class);
         // $this->call(TagSeeder::class);
 

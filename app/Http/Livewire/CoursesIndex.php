@@ -11,6 +11,7 @@ class CoursesIndex extends Component
 {
     public $category_id;
     public $level_id;
+    public $selectedLevelName;
     use WithPagination;
 
     public function render()
@@ -28,4 +29,5 @@ class CoursesIndex extends Component
     public function resetFilters(){
         $this->reset(['category_id', 'level_id']);
     }
+    
 }

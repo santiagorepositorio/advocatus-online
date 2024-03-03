@@ -18,7 +18,13 @@ class BlogsIndex extends Component
         ->orderBy('published_at', 'desc') 
         ->paginate(10);
         $categories = Category::where('status', 'Blog')->get();
-        return view('livewire.blogs-index', compact('posts', 'categories'));
+        $popuylares = Post::withCount('comments')
+            ->where('published', 1) // 'students' es el nombre de la relación que conecta los cursos con los estudiantes a través de la tabla pivot course_user
+            ->orderByDesc('published_at', 'desc') // Ordena los cursos por el recuento de estudiantes en orden descendente
+            ->limit(8) // Limita los resultados a los 10 cursos más suscritos
+            ->get();
+
+        return view('livewire.blogs-index', compact('posts', 'categories', 'popuylares'));
     }
     public function resetFilters(){
         $this->reset(['category_id']);

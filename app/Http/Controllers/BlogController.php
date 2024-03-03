@@ -48,10 +48,14 @@ class BlogController extends Controller
     {
 
 
-        $similares = Post::where('category_id', $post->category_id)                    
+        $similares = Post::where('category_id', $post->category_id)   
+                    ->where('id', '!=', $post->id)                 
                     ->orderBy('published_at', 'desc') 
+                    ->where('published', 1)
                     ->take(5)
                     ->get();
+
+
         return view('blogs.show', compact('post', 'similares'));
     }
 
