@@ -22,6 +22,10 @@
                 font-family: Orbitron, sans-serif;
                 font-size: 1.5rem;
             }
+            .titlep {
+                font-family: Orbitron, sans-serif;
+                font-size: 1rem;
+            }
 
             .description {
                 font-size: 0.8rem;
@@ -139,6 +143,42 @@
                 animation: turn2 20s linear infinite;
             }
 
+            .whatsapp-container {
+                display: flex;
+                align-items: center;
+                /* Alinea verticalmente los elementos */
+            }
+
+            .whatsapp-link {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #04b344;
+                /* Color verde de WhatsApp */
+                color: #fff;
+                /* Texto blanco */
+                text-decoration: none;
+                /* Sin subrayado */
+                border-radius: 5px;
+                /* Bordes redondeados */
+                height: 40px;
+                /* Altura del botón */
+                line-height: 20px;
+                /* Alineación vertical del texto */
+            }
+
+            .whatsapp-link:hover {
+                background-color: #128C7E;
+                /* Cambia el color de fondo al pasar el mouse */
+            }
+
+            .whatsapp-link i {
+                font-size: 20px;
+                /* Tamaño del icono de WhatsApp */
+                margin-right: 5px;
+                /* Espacio entre el icono y el texto */
+            }
+
+
             @keyframes turn1 {
                 to {
                     transform: rotate(1turn);
@@ -164,7 +204,7 @@
                     'Curso de | Robotica',
                     'Taller de | App',
                     'Diplomado | DDRR',
-                    'Curso de | PHP MySql'
+                    'Curso de | Laravel'
                 ],
                 loop: true,
                 typeSpeed: 80,
@@ -177,7 +217,7 @@
             const hours = document.getElementById("hours");
             const mins = document.getElementById("mins");
             const seconds = document.getElementById("seconds");
-            const newYear = '4 march 2024';
+            const newYear = '24 march 2024';
 
             function countTimer() {
                 const newYearDate = new Date(newYear);
@@ -208,11 +248,14 @@
                     <span class="line-2 type"></span>
                 </h1>
                 <!-- DESCRIPCION-->
-                <p class="countdown7 flex">La nueva Plataforma Virtual para Abogados, domina LegalTech
-                    creando tu propio Sitio Web con las herramientas mas usadas para tu negocio. No pierdas esta
-                    oportunidad con una cobertura totalmente libre para
-                    Abogados!</p>
+                <p class="countdown7 flex">Bienvenidos a la Nueva Plataforma enfocado en un Market Place Jur&iacute;co
+                    donde podrás revisar los contenidos de los diferentes Cursos de Actualización para Abogados.
+                    Muy Pronto se tendrá un espacio para que puedas crear tu perfil Profesional para poder publicar un
+                    Articulo de tu Autoría!</p>
+                <p><span class="countdown7-number1">Taller de Presentacion de la Nueva Plataforma Advocatus Online, 24 de
+                        Marzo </span></p>
                 <div class="countdown7 flex">
+
                     <p><span class="countdown7-number1">Empieza en:</span></p>
                     <div class="flex">
                         <p class="countdown7-item flex">
@@ -239,9 +282,11 @@
                     </div>
                 </div>
 
-                <div class="flex">
-                    <input type="text" class="form-input mr-2 w-full sm:w-auto" placeholder="Email">
-                    <button class="btn btn-primary">Enviar</button>
+                <div class="whatsapp-container">
+                    <h2 class="titlep text-center mr-4">Participa</h2>
+                    <a href="https://chat.whatsapp.com/Bd24VdFAvBR0ubQJ05lZ7B" class="whatsapp-link">
+                        <i class="fab fa-whatsapp fa-lg"></i> Únete al Grupo
+                    </a>
                 </div>
 
             </div>

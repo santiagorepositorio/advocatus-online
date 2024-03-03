@@ -14,3 +14,5 @@ Route::get('courses/{course}/goals', [CourseController::class, 'goals'])->name('
 Route::get('courses/{course}/students', CoursesStudents::class)->middleware('can:Editar cursos')->name('courses.students');
 Route::post('courses/{course}/status', [CourseController::class, 'status'])->name('courses.status');
 Route::get('courses/{course}/observation', [CourseController::class, 'observation'])->name('courses.observation');
+
+

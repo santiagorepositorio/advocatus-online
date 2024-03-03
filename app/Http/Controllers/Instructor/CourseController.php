@@ -35,7 +35,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('status', 'cursos')->pluck('name', 'id');
+        $categories = Category::where('status', 'curso')->pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
         return view('instructor.courses.create', compact('categories', 'levels', 'prices'));
@@ -61,6 +61,7 @@ class CourseController extends Controller
             
         ]);
         //return $request->all();
+        
        $course = Course::create($request->all());
        
        if($request->file('file')){
@@ -69,6 +70,11 @@ class CourseController extends Controller
                 'url' => $url
            ]);
         }
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien hecho!',
+            'text' => 'El Curso se creó correctamente.',
+        ]);
         return redirect()->route('instructor.courses.edit', $course);
     }
 
@@ -93,7 +99,7 @@ class CourseController extends Controller
     {
         
         $this->authorize('dicatated', $course);
-        $categories = Category::where('status', 'cursos')->pluck('name', 'id');
+        $categories = Category::where('status', 'Curso')->pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
       

@@ -55,7 +55,7 @@
 
 
     @livewireScripts
-
+    <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
     @method('scripts')
     @isset($js)
         {{ $js }}
