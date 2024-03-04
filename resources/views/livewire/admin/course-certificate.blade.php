@@ -56,7 +56,7 @@
                     @empty
                         <tr>
                             <td colspan="4">
-                                No hay ningun Course Pendiente
+                                No hay ningun Course
                             </td>
                         </tr>
                     @endforelse

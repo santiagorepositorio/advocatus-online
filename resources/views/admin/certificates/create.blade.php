@@ -39,7 +39,7 @@
                         @isset($course->certificate->image)
                             <img name="picture" id="picture" class="img-fluid" src="{{ Storage::url($course->certificate->image->url) }}" alt="Certificado">
                         @else           
-                            <img name="picture" id="picture" class="img-fluid" src="https://media.istockphoto.com/id/1146532466/es/foto/fondo-digital-azul-abstracto.jpg?s=2048x2048&w=is&k=20&c=Fa-z_DwZb-gz2FSD63efzRFlW3wxfUwpjFXR-gq2jzc=" alt="Certificado">
+                            <img name="picture" id="picture" class="img-fluid" src="{{ asset('img/home/imagen-no-disponible.png') }}" alt="Certificado">
                         @endisset
                     </figure>
                 </div>

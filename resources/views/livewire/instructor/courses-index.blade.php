@@ -27,7 +27,7 @@
                                             src="{{ Storage::url($course->image->url) }}" alt="" />
                                     @else
                                         <img class="h-full w-full rounded-full object-cover object-center"
-                                            src="https://media.istockphoto.com/id/1146532466/es/foto/fondo-digital-azul-abstracto.jpg?s=2048x2048&w=is&k=20&c=Fa-z_DwZb-gz2FSD63efzRFlW3wxfUwpjFXR-gq2jzc="
+                                            src="{{ asset('img/home/imagen-no-disponible.png') }}"
                                             alt="" />
                                     @endisset
                                     <span

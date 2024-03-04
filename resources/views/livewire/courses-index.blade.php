@@ -1,7 +1,7 @@
 <div>
     <div class="bg-gray-200 py-4 mb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap lg:justify-center">
-            <button class="focus:outline-none bg-white shadow h-12 px-4 rounded-lg text-gray-700 mr-4 mb-3 sm:mb-0">
+            <button class="focus:outline-none bg-white shadow h-12 px-4 rounded-lg text-gray-700 mr-4 mb-3 sm:mb-0" wire:click="resetFilters">
                 <i class="fas fa-window-maximize text-xs mr-2"></i>
                 <span class="hidden sm:inline">Todos los cursos</span>
                 <span class="sm:hidden">Todos</span>

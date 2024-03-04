@@ -399,10 +399,10 @@
             var myChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ["Registrados", "Nuevos", "Inactivos"],
+                    labels: ["Registrados", "Nuevos", "Inactivos", "Regulares"],
                     datasets: [{
                         data: porcentajes,
-                        backgroundColor: ['#f39c12', '#00a65a', '#f56954'],
+                        backgroundColor: ['#36a2eb', '#9966ff','#ff6384' , '#ffce56', ],
                     }]
                 },
                 options: {

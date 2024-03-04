@@ -13,21 +13,23 @@
     </div>
         
     @endif
-    <div class="card">
+    <div class="card"> 
         <div class="card-header">
             <a class="btn btn-primary" href="{{ route('admin.permissions.create') }}">Crear Permiso</a>
         </div>
+
         <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th colspan="2"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($permissions as $permission)
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th colspan="2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($permissions as $permission)
                         <tr>
                             <td>{{ $permission->id }}</td>
                             <td>{{ $permission->name }}</td>
@@ -37,7 +39,6 @@
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger" type="submit">Eliminar</button>
-                                    
                                 </form>
                             </td>
                         </tr>
@@ -48,10 +49,18 @@
                             </td>
                         </tr>
                     @endforelse
-                </tbody>
-            </table>
-        </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>       
+
+        {{-- <div class="card-footer">
+            {{ $permissions->links() }}
+        </div> --}}
     </div>
+
+
+
 @stop
 
 @section('css')

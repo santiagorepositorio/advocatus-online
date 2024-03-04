@@ -11,7 +11,7 @@
                 <div class="p-4 absolute bottom-0 left-0 z-20">
                     @foreach ($post->tags as $tag)
                             
-                    <a href="https://codersfree.com/posts?tag=diseño web">
+                    <a href="#">
                         <span class="bg-{{ $tag->color }}-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-indigo-200 dark:text-indigo-900">
                             {{ $tag->name }}
                         </span>

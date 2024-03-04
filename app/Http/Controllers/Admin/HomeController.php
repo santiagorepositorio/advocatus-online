@@ -85,17 +85,20 @@ class HomeController extends Controller
 
         $cantidadUsuariosRegistrados = User::count();
         $cantidadUsuariosNuevos = User::where('status', 1)->count();
+        $cantidadUsuariosRegulares = User::where('status', 3)->count();
         $cantidadUsuariosInactivos = User::where('status', 3)->count();
-        $totalUsuarios = $cantidadUsuariosRegistrados + $cantidadUsuariosNuevos + $cantidadUsuariosInactivos;
+        $totalUsuarios = $cantidadUsuariosRegistrados + $cantidadUsuariosNuevos + $cantidadUsuariosRegulares + $cantidadUsuariosInactivos;
 
         $porcentajeRegistrados = ($cantidadUsuariosRegistrados / $totalUsuarios) * 100;
         $porcentajeNuevos = ($cantidadUsuariosNuevos / $totalUsuarios) * 100;
         $porcentajeInactivos = ($cantidadUsuariosInactivos / $totalUsuarios) * 100;
+        $porcentajeRegulares = ($cantidadUsuariosRegulares / $totalUsuarios) * 100;
 
         $porcentajes = [
             round($porcentajeRegistrados, 2),
             round($porcentajeNuevos, 2),
             round($porcentajeInactivos, 2),
+            round($porcentajeRegulares, 2),
         ];
 
         return view('admin.index', compact('cantCourses', 'cantidadUsuariosRegistrados', 'cantidadUsuariosNuevos', 'cantidadUsuariosInactivos', 'userCountsPre', 'userCounts', 'userCountsCulminado', 'year', 'porcentajes','topSubscribedCourses', 'bottomSubscribedCourses'));

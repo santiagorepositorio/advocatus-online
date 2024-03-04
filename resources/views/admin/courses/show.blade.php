@@ -3,10 +3,9 @@
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
                 @isset($course->image)
-                    <img class="h-60 w-full object-cover" src="{{ Storage::url($course->image->url) }}" alt="">
+                    <img class="h-72 w-full object-cover" src="{{ Storage::url($course->image->url) }}" alt="">
                 @else
-                    <img class="h-60 w-full object-cover"
-                        src="{{asset('img/home/imagen-no-disponible.png') }}"
+                    <img class="h-72 w-full object-cover" src="{{ asset('img/home/imagen-no-disponible.png') }}"
                         alt="">
                 @endisset
             </figure>
