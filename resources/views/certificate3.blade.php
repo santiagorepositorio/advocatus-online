@@ -76,8 +76,8 @@
             <p style="font-size: 18px; display: block; text-align: center; margin-top: 4px;">Por haber participado del Evento: <strong>{{ $courses->title }}
             </strong>, con una carga de <strong>
                 @if ($courses->certificate)
-                @if ($courses->certificate->description)
-                    {{ $courses->certificate->description }}
+                @if ($courses->certificate->carga)
+                    {{ $courses->certificate->carga }}
                 @else
                     NO TIENE ASIGNADO LA CARGA HORARIA
                 @endif
