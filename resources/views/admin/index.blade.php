@@ -100,7 +100,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="fas fa-chart-pie mr-1"></i>
-                                Gráfico de Donut
+                                Porcentaje de Clientes
                             </h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -113,6 +113,219 @@
 
             </div>
             <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <!-- /.mas requeridos -->
+
+                    <div class="card">
+                        <div class="card-header" style="background-color: #007018; color: white; font-weight: bold;">
+                            <h3 class="card-title">Los 4 Cursos más Requeridos</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%;">#</th>
+                                        <th style="width: 65%;">Título</th>
+                                        <th style="width: 20%;">Estrellas</th>
+                                        <th style="width: 10%;">Inscritos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($topSubscribedCourses as $course)
+                                        <tr class="align-items-center reduced-height">
+                                            <td>{{ $course->id }}</td>
+                                            <td class="text-truncate"><a
+                                                    href="{{ route('courses.show', $course) }}">{{ $course->title }}</a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex text-truncate">
+                                                    <ul class="d-flex list-unstyled text-sm">
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 1 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 2 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 3 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 4 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 5 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><span
+                                                                class="bg-primary text-white text-xs font-semibold mr-2 px-2 py-0.5 rounded"
+                                                                style="width: 1.5rem; color: #999;">{{ $course->rating }}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm text-muted text-truncate"><i
+                                                        class="fas fa-users"></i>({{ $course->students_count }})</p>
+                                            </td>
+                                        </tr>
+
+
+                                    @empty
+                                        <tr>
+                                            <td colspan="4">
+                                                No hay ningun Course Requerido
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                    {{-- <tr>
+                                        <td>2.</td>
+                                        <td>Clean database</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">70%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Cron job running</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-primary">30%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Fix and squish bugs</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">90%</span></td>
+                                    </tr> --}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header" style="background-color: #FF6666; color: white; font-weight: bold;">
+                            <h3 class="card-title">Los 4 Cursos menos Requeridos</h3>
+                        </div>
+                        
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%;">#</th>
+                                        <th style="width: 65%;">Título</th>
+                                        <th style="width: 20%;">Estrellas</th>
+                                        <th style="width: 10%;">Inscritos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($bottomSubscribedCourses as $course)
+                                        <tr class="align-items-center reduced-height">
+                                            <td>{{ $course->id }}</td>
+                                            <td class="text-truncate"><a
+                                                    href="{{ route('courses.show', $course) }}">{{ $course->title }}</a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex text-truncate">
+                                                    <ul class="d-flex list-unstyled text-sm">
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 1 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 2 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 3 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 4 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><i
+                                                                class="fas fa-star text-{{ $course->rating >= 5 ? 'yellow' : 'gray' }}"></i>
+                                                        </li>
+                                                        <li class="mr-1"><span
+                                                                class="bg-primary text-white text-xs font-semibold mr-2 px-2 py-0.5 rounded"
+                                                                style="width: 1.5rem; color: #999;">{{ $course->rating }}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm text-muted text-truncate"><i
+                                                        class="fas fa-users"></i>({{ $course->students_count }})</p>
+                                            </td>
+                                        </tr>
+
+
+                                    @empty
+                                        <tr>
+                                            <td colspan="4">
+                                                No hay ningun Course Requerido
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                    {{-- <tr>
+                                        <td>2.</td>
+                                        <td>Clean database</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">70%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Cron job running</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-primary">30%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Fix and squish bugs</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">90%</span></td>
+                                    </tr> --}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
 @stop
@@ -129,6 +342,7 @@
             var userCounts = @json($userCounts);
             var userCountsPre = @json($userCountsPre);
             var userCountsCulminado = @json($userCountsCulminado);
+            var porcentajes = @json($porcentajes);
 
             var añoActual = new Date().getFullYear();
             var ctx = document.getElementById("revenue-chart-canvas").getContext('2d');
@@ -139,23 +353,23 @@
                         "Septiembre", "Octubre", "Noviembre", "Diciembre"
                     ],
                     datasets: [{
-                        label: 'Inscritos',
-                        data: userCounts,
-                        backgroundColor: 'rgba(60,141,188,0.9)',
-                        borderColor: 'rgba(60,141,188,0.8)',
-                        borderWidth: 1
-                    }, {
                         label: 'Pre Inscritos',
                         data: userCountsPre,
                         backgroundColor: 'rgba(255,99,132,0.9)',
                         borderColor: 'rgba(255,99,132,0.8)',
                         borderWidth: 1
                     }, {
+                        label: 'Inscritos',
+                        data: userCounts,
+                        backgroundColor: 'rgba(60,141,188,0.9)',
+                        borderColor: 'rgba(60,141,188,0.8)',
+                        borderWidth: 2
+                    }, {
                         label: 'Culminados',
                         data: userCountsCulminado,
                         backgroundColor: 'rgba(75, 192, 192, 0.9)',
                         borderColor: 'rgba(75, 192, 192, 0.8)',
-                        borderWidth: 1
+                        borderWidth: 3
                     }]
                 },
                 options: {
@@ -185,12 +399,10 @@
             var myChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ["Chrome", "IE", "FireFox", "Safari", "Opera", "Navigator"],
+                    labels: ["Registrados", "Nuevos", "Inactivos"],
                     datasets: [{
-                        data: [700, 500, 400, 600, 300, 100],
-                        backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc',
-                            '#d2d6de'
-                        ],
+                        data: porcentajes,
+                        backgroundColor: ['#f39c12', '#00a65a', '#f56954'],
                     }]
                 },
                 options: {

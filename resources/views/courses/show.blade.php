@@ -42,7 +42,7 @@
                     <article class="mb-4 shadow-lg rounded-lg" @if ($loop->first) x-data="{ open: true}" @else x-data="{ open: false}" @endif>
                         <div class="border-2 border-blue-500 rounded-lg dark:border-white-700">
                             <button class="flex items-center justify-between w-full p-4" x-on:click="open = !open">
-                                <h1 class="font-semibold text-gray-700 dark:text-white">{{ $section->name }}</h1>
+                                <h1 class="font-semibold text-gray-700">{{ $section->name }}</h1>
         
                                 <span class="text-white bg-blue-500 rounded-full">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

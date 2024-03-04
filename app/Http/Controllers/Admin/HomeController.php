@@ -31,9 +31,21 @@ class HomeController extends Controller
 
         $year = Carbon::now()->year;
 
+
+        $topSubscribedCourses = Course::withCount('students')
+            ->where('status', 3) // 'students' es el nombre de la relación que conecta los cursos con los estudiantes a través de la tabla pivot course_user
+            ->orderByDesc('students_count') // Ordena los cursos por el recuento de estudiantes en orden descendente
+            ->limit(4) // Limita los resultados a los 10 cursos más suscritos
+            ->get();
+        $bottomSubscribedCourses = Course::withCount('students')
+            ->where('status', 3) // 'students' es el nombre de la relación que conecta los cursos con los estudiantes a través de la tabla pivot course_user
+            ->orderBy('students_count') // Ordena los cursos por el recuento de estudiantes en orden descendente
+            ->limit(4) // Limita los resultados a los 10 cursos más suscritos
+            ->get();
+
         for ($month = 1; $month <= 12; $month++) {
             // Consulta la cantidad de usuarios inscritos para el mes actual en todos los cursos
-            $count = User::whereHas('courses', function ($query) use ($month, $year) {
+            $count = Course::whereHas('users', function ($query) use ($month, $year) {
                 $query->whereMonth('course_user.created_at', $month)
                     ->whereYear('course_user.created_at', $year)
                     ->where('course_user.statusr', 3); // Cambio aquí
@@ -45,11 +57,12 @@ class HomeController extends Controller
 
         for ($month = 1; $month <= 12; $month++) {
             // Consulta la cantidad de usuarios inscritos para el mes actual en todos los cursos
-            $count = User::whereHas('courses', function ($query) use ($month, $year) {
+            $count = Course::whereHas('users', function ($query) use ($month, $year) {
                 $query->whereMonth('course_user.created_at', $month)
                     ->whereYear('course_user.created_at', $year)
-                    ->where('course_user.statusr', 2); // Cambio aquí
-            })->count();
+                    ->where('course_user.statusr', 2);
+            })
+                ->count();
 
             // Almacena la cantidad en el arreglo
             $userCounts[] = $count;
@@ -57,7 +70,7 @@ class HomeController extends Controller
 
         for ($month = 1; $month <= 12; $month++) {
             // Consulta la cantidad de usuarios inscritos para el mes actual en todos los cursos
-            $count = User::whereHas('courses', function ($query) use ($month, $year) {
+            $count = Course::whereHas('users', function ($query) use ($month, $year) {
                 $query->whereMonth('course_user.created_at', $month)
                     ->whereYear('course_user.created_at', $year)
                     ->where('course_user.statusr', 1); // Cambio aquí
@@ -67,13 +80,25 @@ class HomeController extends Controller
             $userCountsPre[] = $count;
         }
 
-
+        // return $userCounts;
         $cantCourses = Course::where('status', 3)->count();
+
         $cantidadUsuariosRegistrados = User::count();
         $cantidadUsuariosNuevos = User::where('status', 1)->count();
         $cantidadUsuariosInactivos = User::where('status', 3)->count();
+        $totalUsuarios = $cantidadUsuariosRegistrados + $cantidadUsuariosNuevos + $cantidadUsuariosInactivos;
 
-        return view('admin.index', compact('cantCourses', 'cantidadUsuariosRegistrados', 'cantidadUsuariosNuevos', 'cantidadUsuariosInactivos', 'userCountsPre', 'userCounts', 'userCountsCulminado', 'year'));
+        $porcentajeRegistrados = ($cantidadUsuariosRegistrados / $totalUsuarios) * 100;
+        $porcentajeNuevos = ($cantidadUsuariosNuevos / $totalUsuarios) * 100;
+        $porcentajeInactivos = ($cantidadUsuariosInactivos / $totalUsuarios) * 100;
+
+        $porcentajes = [
+            round($porcentajeRegistrados, 2),
+            round($porcentajeNuevos, 2),
+            round($porcentajeInactivos, 2),
+        ];
+
+        return view('admin.index', compact('cantCourses', 'cantidadUsuariosRegistrados', 'cantidadUsuariosNuevos', 'cantidadUsuariosInactivos', 'userCountsPre', 'userCounts', 'userCountsCulminado', 'year', 'porcentajes','topSubscribedCourses', 'bottomSubscribedCourses'));
     }
     // public function index1()
     // {
