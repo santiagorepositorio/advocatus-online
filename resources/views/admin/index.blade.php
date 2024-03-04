@@ -128,6 +128,7 @@
             // Area Chart Example
             var userCounts = @json($userCounts);
             var userCountsPre = @json($userCountsPre);
+            var userCountsCulminado = @json($userCountsCulminado);
 
             var añoActual = new Date().getFullYear();
             var ctx = document.getElementById("revenue-chart-canvas").getContext('2d');
@@ -148,6 +149,12 @@
                         data: userCountsPre,
                         backgroundColor: 'rgba(255,99,132,0.9)',
                         borderColor: 'rgba(255,99,132,0.8)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Culminados',
+                        data: userCountsCulminado,
+                        backgroundColor: 'rgba(75, 192, 192, 0.9)',
+                        borderColor: 'rgba(75, 192, 192, 0.8)',
                         borderWidth: 1
                     }]
                 },

@@ -27,8 +27,21 @@ class HomeController extends Controller
     {
         $userCounts = [];
         $userCountsPre = [];
+        $userCountsCulminado = [];
 
         $year = Carbon::now()->year;
+
+        for ($month = 1; $month <= 12; $month++) {
+            // Consulta la cantidad de usuarios inscritos para el mes actual en todos los cursos
+            $count = User::whereHas('courses', function ($query) use ($month, $year) {
+                $query->whereMonth('course_user.created_at', $month)
+                    ->whereYear('course_user.created_at', $year)
+                    ->where('course_user.statusr', 3); // Cambio aquí
+            })->count();
+
+            // Almacena la cantidad en el arreglo
+            $userCountsCulminado[] = $count;
+        }
 
         for ($month = 1; $month <= 12; $month++) {
             // Consulta la cantidad de usuarios inscritos para el mes actual en todos los cursos
@@ -60,7 +73,7 @@ class HomeController extends Controller
         $cantidadUsuariosNuevos = User::where('status', 1)->count();
         $cantidadUsuariosInactivos = User::where('status', 3)->count();
 
-        return view('admin.index', compact('cantCourses', 'cantidadUsuariosRegistrados', 'cantidadUsuariosNuevos', 'cantidadUsuariosInactivos', 'userCountsPre', 'userCounts', 'year'));
+        return view('admin.index', compact('cantCourses', 'cantidadUsuariosRegistrados', 'cantidadUsuariosNuevos', 'cantidadUsuariosInactivos', 'userCountsPre', 'userCounts', 'userCountsCulminado', 'year'));
     }
     // public function index1()
     // {
