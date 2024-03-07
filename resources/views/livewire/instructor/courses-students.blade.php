@@ -8,7 +8,8 @@
         <div class="px-6 py-4 flex">
             <input wire:model="search" type="text" class="form-input flex-1 w-full rounded-lg shadow-sm"
                 placeholder="Ingrese un dato">
-            <a class="btn btn-danger ml-2" href="{{ route('instructor.courses.create') }}">Crear Curso</a>
+            {{-- <a class="btn btn-danger ml-2" href="{{ route('instructor.courses.create') }}">Crear Curso</a> --}}
+            <a class="btn btn-primary ml-2" href="{{ route('admin.contact.index', $id_course) }}">Descargar Lista  </a>
         </div>
         @if ($students->count())
             <table class="min-w-full divide-y divide-y-200">
@@ -16,19 +17,20 @@
                     <tr>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Acciones</th>                        
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Estatus</th>                        
+                        {{-- <th scope="col" class="px-6 py-4 font-medium text-gray-900">Acciones</th>                         --}}
+                        
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($students as $student)
+                    @foreach ($studentLista as $student)
                         <tr class="hover:bg-gray-50">
                             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                 <div class="relative h-10 w-10">                                    
-                                        <img class="h-full w-full rounded-full object-cover object-center"
-                                            src="{{ $student->profile_photo_url }}" alt="" />                                   
-                                    <span
-                                        class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
+                                        {{-- <img class="h-full w-full rounded-full object-cover object-center"
+                                            src="{{ $student->profile_photo_url }}" alt="" />                                    --}}
+                                    {{-- <span
+                                        class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span> --}}
                                 </div>
                                 <div class="text-sm">
                                     <div class="font-medium text-gray-700">{{ $student->name }}</div>
@@ -41,21 +43,23 @@
                                     <div class="flex">
 
                                         <p class="text-sm text-gray-500 mr-auto">
-                                            <i class="fas fa-users"></i>
-                                            ({{ $student->email }})
+                                            <i class="fab fa-whatsapp mr-2"></i>
+                                            {{ $student->phone }}
                                         </p>
                                     </div>
-                                    <div class="text-gray-400">Alumnos Matriculados</div>
+                                    <div class="text-gray-400">
+                                        <i class="fas fa-at mr-2"></i>
+                                        {{ $student->email }}
+                                    </div>
                                 </div>
                             </td>
-                            
                             <td class="px-6 py-4">
-                                @switch($student->name)
+                                @switch($student->statusr)
                                     @case(1)
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
-                                            Borrador
+                                            PreInscrito
                                         </span>
                                     @break
 
@@ -63,7 +67,7 @@
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
-                                            Revision
+                                            Inscrito
                                         </span>
                                     @break
 
@@ -71,14 +75,16 @@
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
-                                            Publicado
+                                            Certificado
                                         </span>
                                     @break
 
                                     @default
                                 @endswitch
-                            </td>
-                            <td class="px-6 py-4">
+
+                            </td>                            
+                         
+                            {{-- <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
                                     <a x-data="{ tooltip: 'Delete' }" href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -97,7 +103,7 @@
                                         </svg>
                                     </a>
                                 </div>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
 
