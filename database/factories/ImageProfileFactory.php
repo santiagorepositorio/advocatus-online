@@ -17,7 +17,7 @@ class ImageProfileFactory extends Factory
     public function definition()
     {
         return [
-            'url' => 'profiles/' . $this->faker->image('public/storage/profiles', 1920, 1080, null, false),
+            'url' => 'profiles/' . $this->faker->image('public/storage/profiles', 1640, 624, null, false),
         ];
     }
 }

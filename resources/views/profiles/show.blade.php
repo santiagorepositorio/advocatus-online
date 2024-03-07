@@ -1,12 +1,13 @@
 <x-app-layout>
 <section class="bg-gray-200">
-    <div class="h-full  p-8 max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="h-full  p-8 max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
         <div class="bg-white rounded-lg shadow-xl pb-8">
-            <div class="w-full h-[250px]">
+            <div class="w-full h-[624px]">
                 <img src="{{ Storage::url($profile->image->url) }}" class="w-full h-full object-cover rounded-tl-lg rounded-tr-lg">
             </div>
             <div class="flex flex-col items-center -mt-20">
-                <img src="{{ $profile->user->profile_photo_url }}" class="w-40 border-4 border-white rounded-full">
+                <img src="{{ $profile->user->profile_photo_url }}" class="border-4 border-white rounded-full w-20 h-auto sm:w-40 md:w-60 lg:w-80 xl:w-96">
+
                 <div class="flex items-center space-x-2 mt-2">
                     <p class="text-2xl">{{ $profile->name }}</p>
                     <div x-data="{ openSettings: false }" class="hover:bg-slate-600 rounded">

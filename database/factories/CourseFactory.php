@@ -30,7 +30,7 @@ class CourseFactory extends Factory
             'description' => $this->faker->paragraph(),
             'status' => $this->faker->randomElement([Course::BORRADOR, Course::REVISION, Course::PUBLICADO]),
             'slug' => Str::slug($title),
-            'user_id' => $this->faker->randomElement([1, 2, 5,10, 15, 20, 25, 30]),
+            'user_id' => $this->faker->randomElement([1, 2]),
             'level_id' => Level::all()->random()->id,
             'category_id' => $this-> faker->randomElement(Category::where('status', 'Curso')->pluck('id')),
             'price_id' => Price::all()->random()->id,

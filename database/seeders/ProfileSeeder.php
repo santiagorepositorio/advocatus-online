@@ -40,7 +40,7 @@ class ProfileSeeder extends Seeder
 
         $faker = Faker::create();
         Image::create([
-            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1920, 1080,  null, false),
+            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1640, 624,  null, false),
             'imageable_id' => 1,
             'imageable_type' => 'App\Models\Profile'
         ]);
@@ -66,7 +66,7 @@ class ProfileSeeder extends Seeder
 
         $faker = Faker::create();
         Image::create([
-            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1920, 1080,  null, false),
+            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1640, 624,  null, false),
             'imageable_id' => 2,
             'imageable_type' => 'App\Models\Profile'
         ]);
@@ -92,7 +92,7 @@ class ProfileSeeder extends Seeder
 
         $faker = Faker::create();
         Image::create([
-            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1920, 1080, null, false),
+            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1640, 624, null, false),
             'imageable_id' => 7,
             'imageable_type' => 'App\Models\Profile'
         ]);
@@ -118,7 +118,7 @@ class ProfileSeeder extends Seeder
 
         $faker = Faker::create();
         Image::create([
-            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1920, 1080,  null, false),
+            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1640, 624,  null, false),
             'imageable_id' => 3,
             'imageable_type' => 'App\Models\Profile'
         ]);
@@ -144,7 +144,7 @@ class ProfileSeeder extends Seeder
 
         $faker = Faker::create();
         Image::create([
-            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1920, 1080, null, false),
+            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1640, 624, null, false),
             'imageable_id' => 4,
             'imageable_type' => 'App\Models\Profile'
         ]);
@@ -170,7 +170,7 @@ class ProfileSeeder extends Seeder
 
         $faker = Faker::create();
         Image::create([
-            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1920, 1080,  null, false),
+            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1640, 624,  null, false),
             'imageable_id' => 5,
             'imageable_type' => 'App\Models\Profile'
         ]);
@@ -196,7 +196,7 @@ class ProfileSeeder extends Seeder
 
         $faker = Faker::create();
         Image::create([
-            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1920, 1080,  null, false),
+            'url' => 'profiles/' . $faker->image('public/storage/profiles', 1640, 624,  null, false),
             'imageable_id' => 6,
             'imageable_type' => 'App\Models\Profile'
         ]);

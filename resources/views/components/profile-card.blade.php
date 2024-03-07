@@ -9,7 +9,7 @@
             <img src="{{ asset('assets/imgs/shop/product-16-3.jpg') }}" alt=" random imgee"
                 class="w-full object-cover object-center rounded-lg shadow-lg">
         @endisset
-        <div class="relative p-2 -mt-12 ">
+        <div class="relative p-2 -mt-16 ">
             <div class="bg-white p-4 rounded-lg shadow-lg">
                 <h4
                     class="sm:text-sm lg:text-lg text-blue-900 font-semibold uppercase leading-tight truncate justify-center">

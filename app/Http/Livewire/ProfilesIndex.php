@@ -19,7 +19,7 @@ class ProfilesIndex extends Component
                                 ->category($this->category_id)                                
                                 ->latest('id')
                                 ->paginate(8);
-        $categories = Category::where('status', 'Abogados')->get();
+        $categories = Category::where('status', 'Perfil')->get();
         //return $profiles;
         return view('livewire.profiles-index', compact('profiles', 'categories'));
     }
