@@ -1,5 +1,5 @@
 <section>
-    <h1 class="text-2xl font-bold"> METAS DEL CURSO</h1>
+    <h1 class="text-2xl font-bold">LO QUE OBTENDRA</h1>
     <hr class="mt-2 mb-6">
     @foreach ($course->goals as $item)
         <article class="card mb-4">
