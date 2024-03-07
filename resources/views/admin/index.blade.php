@@ -141,11 +141,11 @@
                                     @forelse ($topSubscribedCourses as $course)
                                         <tr class="align-items-center reduced-height">
                                             <td>{{ $course->id }}</td>
-                                            <td class="text-truncate"><a
+                                            <td class=""><a
                                                     href="{{ route('courses.show', $course) }}">{{ $course->title }}</a>
                                             </td>
                                             <td>
-                                                <div class="d-flex text-truncate">
+                                                <div class="d-flex ">
                                                     <ul class="d-flex list-unstyled text-sm">
                                                         <li class="mr-1"><i
                                                                 class="fas fa-star text-{{ $course->rating >= 1 ? 'yellow' : 'gray' }}"></i>
@@ -170,7 +170,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-sm text-muted text-truncate"><i
+                                                <p class="text-sm text-muted "><i
                                                         class="fas fa-users"></i>({{ $course->students_count }})</p>
                                             </td>
                                         </tr>
@@ -242,11 +242,11 @@
                                     @forelse ($bottomSubscribedCourses as $course)
                                         <tr class="align-items-center reduced-height">
                                             <td>{{ $course->id }}</td>
-                                            <td class="text-truncate"><a
+                                            <td class=""><a
                                                     href="{{ route('courses.show', $course) }}">{{ $course->title }}</a>
                                             </td>
                                             <td>
-                                                <div class="d-flex text-truncate">
+                                                <div class="d-flex ">
                                                     <ul class="d-flex list-unstyled text-sm">
                                                         <li class="mr-1"><i
                                                                 class="fas fa-star text-{{ $course->rating >= 1 ? 'yellow' : 'gray' }}"></i>
@@ -271,7 +271,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-sm text-muted text-truncate"><i
+                                                <p class="text-sm text-muted "><i
                                                         class="fas fa-users"></i>({{ $course->students_count }})</p>
                                             </td>
                                         </tr>
