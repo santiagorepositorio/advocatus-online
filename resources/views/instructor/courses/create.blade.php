@@ -30,18 +30,18 @@
                     event.preventDefault(); // Evita el envío automático del formulario
 
                     Swal.fire({
-                        title: "Do you want to save the changes?",
+                        title: "Desea crear el Curso?",
                         showDenyButton: true,
                         showCancelButton: true,
-                        confirmButtonText: "Save",
-                        denyButtonText: "Don't save"
+                        confirmButtonText: "Crear",
+                        denyButtonText: "Descartar"
                     }).then((result) => {
                         if (result.isConfirmed) {
                             // Si el usuario confirma, envía el formulario
                             this.submit();
                         } else if (result.isDenied) {
                             // Si el usuario niega, no hace nada
-                            Swal.fire("Changes are not saved", "", "info");
+                            Swal.fire("No se pudo Crear el Curso", "", "info");
                         }
                     });
                 });
