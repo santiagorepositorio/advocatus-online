@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Instructor;
 
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -38,5 +39,32 @@ class CoursesStudents extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+
+    public function inscribir(User $user)
+    {        
+        $this->course->students()->updateExistingPivot($user->id, ['statusr' => '2']);
+
+        $userr = User::find($user->id);
+        if ($userr) {
+            $userr->status = 3;
+            $userr->save();
+        } else {
+            
+        }
+        
+        
+      //$this->userid = $user;        
+    }
+    public function revertir(User $user)
+    {        
+        $this->course->students()->updateExistingPivot($user->id, ['statusr' => '1']);  
+      //$this->userid = $user;        
+    }
+    public function certificar(User $user)
+    {        
+        $this->course->students()->updateExistingPivot($user->id, ['statusr' => '3']);  
+      //$this->userid = $user;        
     }
 }
