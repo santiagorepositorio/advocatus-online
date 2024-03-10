@@ -19,10 +19,15 @@ class Whatsapp
 
     public function __construct()
     {
-        $this->accessToken = env('WHATSAPP_API_TOKEN');
-        $this->phoneId = env('WHATSAPPI_API_PHONE_ID');
-        $this->wabaId = env('WHATSAPP_BUSINESS_ID');
-        $this->version = env('WHATSAPP_VERSION');
+        $this->accessToken = auth()->user()->companies->accessToken;
+        $this->phoneId = auth()->user()->companies->phoneId;
+        $this->wabaId = auth()->user()->companies->wabaId;
+        $this->version = auth()->user()->companies->version;
+ 
+        // $this->accessToken = env('WHATSAPP_API_TOKEN');
+        // $this->phoneId = env('WHATSAPPI_API_PHONE_ID');
+        // $this->wabaId = env('WHATSAPP_BUSINESS_ID');
+        // $this->version = env('WHATSAPP_VERSION');
     }
 
     public function sendText($to, $text)

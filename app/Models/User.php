@@ -81,6 +81,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Profile');
     }
+    public function companies()
+    {
+        return $this->hasOne('App\Models\Company');
+    }
 
     //Relacion uno a muchos
 

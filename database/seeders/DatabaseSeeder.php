@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TagSeeder::class);
         // $this->call(PostSeeder::class);
         \App\Models\Post::factory(200)->create();
+        $this->call(CompanySeeder::class);
         // $this->call(PublicitySeeder::class);
         // $this->call(TagSeeder::class);
 
