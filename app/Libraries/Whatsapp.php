@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Storage;
 
 class Whatsapp
 {
-    public $baseUrl = 'https://graph.facebook.com/v17.0';
+    public $baseUrl = 'https://graph.facebook.com';
+
+    public $version = '';
 
     public $accessToken = '';
 
@@ -20,6 +22,7 @@ class Whatsapp
         $this->accessToken = env('WHATSAPP_API_TOKEN');
         $this->phoneId = env('WHATSAPPI_API_PHONE_ID');
         $this->wabaId = env('WHATSAPP_BUSINESS_ID');
+        $this->version = env('WHATSAPP_VERSION');
     }
 
     public function sendText($to, $text)
@@ -35,12 +38,12 @@ class Whatsapp
             ],
         ];
 
-        return Http::withToken($this->accessToken)->post($this->baseUrl.'/'.$this->phoneId.'/messages', $payload)->throw()->json();
+        return Http::withToken($this->accessToken)->post($this->baseUrl.'/'.$this->version.'/'.$this->phoneId.'/messages', $payload)->throw()->json();
     }
 
     public function downloadMedia($mediaId)
     {
-        $media = Http::withToken($this->accessToken)->get($this->baseUrl.'/'.$mediaId)->throw()->json();
+        $media = Http::withToken($this->accessToken)->get($this->baseUrl.'/'.$this->version.'/'.$mediaId)->throw()->json();
         if (! empty($media['url'])) {
             $req = Http::withToken($this->accessToken)->get($media['url'])->throw();
             $content = $req->body();
@@ -68,12 +71,12 @@ class Whatsapp
 
     public function loadTemplates()
     {
-        return Http::withToken($this->accessToken)->get($this->baseUrl.'/'.$this->wabaId.'/message_templates?limit=250')->throw()->json();
+        return Http::withToken($this->accessToken)->get($this->baseUrl.'/'.$this->version.'/'.$this->wabaId.'/message_templates?limit=250')->throw()->json();
     }
 
     public function genericPayload($payload)
     {
-        return Http::withToken($this->accessToken)->post($this->baseUrl.'/'.$this->phoneId.'/messages', $payload)->throw()->json();
+        return Http::withToken($this->accessToken)->post($this->baseUrl.'/'.$this->version.'/'.$this->phoneId.'/messages', $payload)->throw()->json();
     }
 
     /**

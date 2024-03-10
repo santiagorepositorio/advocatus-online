@@ -400,7 +400,7 @@ class MessageController extends Controller
 
     private function _saveMessage($message, $messageType, $waId, $wamId, $timestamp = null, $caption = null, $data = '')
     {
-        
+
 
         $wam = new Message();
         $wam->body = $message;
@@ -410,9 +410,9 @@ class MessageController extends Controller
         $wam->wam_id = $wamId;
         $wam->status = 'sent';
         $wam->caption = $caption;
-        $wam->data = $data;      
-       
-        
+        $wam->data = $data;
+
+
         if (!is_null($timestamp)) {
             $wam->created_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
             $wam->updated_at = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
