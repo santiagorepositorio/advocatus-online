@@ -19,10 +19,10 @@ class Whatsapp
 
     public function __construct()
     {
-        $this->accessToken = auth()->user()->companies->accessToken;
-        $this->phoneId = auth()->user()->companies->phoneId;
-        $this->wabaId = auth()->user()->companies->wabaId;
-        $this->version = auth()->user()->companies->version;
+        // $this->accessToken = auth()->user()->companies->accessToken;
+        // $this->phoneId = auth()->user()->companies->phoneId;
+        // $this->wabaId = auth()->user()->companies->wabaId;
+        // $this->version = auth()->user()->companies->version;
  
         // $this->accessToken = env('WHATSAPP_API_TOKEN');
         // $this->phoneId = env('WHATSAPPI_API_PHONE_ID');

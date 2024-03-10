@@ -15,9 +15,9 @@
     <div class="wrapper">
 
         {{-- Preloader Animation --}}
-        @if($layoutHelper->isPreloaderEnabled())
+        {{-- @if($layoutHelper->isPreloaderEnabled())
             @include('adminlte::partials.common.preloader')
-        @endif
+        @endif --}}
 
         {{-- Top Navbar --}}
         @if($layoutHelper->isLayoutTopnavEnabled())

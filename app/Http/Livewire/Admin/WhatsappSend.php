@@ -21,8 +21,12 @@ class WhatsappSend extends Component
 
     public function mount()
     {
-        $response = Http::withToken(env('WHATSAPP_API_TOKEN'))
-            ->get('https://graph.facebook.com/v17.0/' . env('WHATSAPP_BUSINESS_ID') . '/message_templates?limit=250')
+        // $this->accessToken = auth()->user()->companies->accessToken;
+        // $this->phoneId = auth()->user()->companies->phoneId;
+        // $this->wabaId = auth()->user()->companies->wabaId;
+        // $this->version = auth()->user()->companies->version;
+        $response = Http::withToken(auth()->user()->companies->accessToken)
+            ->get('https://graph.facebook.com/v17.0/' . auth()->user()->companies->wabaId . '/message_templates?limit=250')
             ->throw();
         $this->templates = collect($response->json()['data']);
     }
