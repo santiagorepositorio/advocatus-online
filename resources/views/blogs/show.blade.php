@@ -34,7 +34,7 @@
         
               <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">                
         
-                <p class="pb-6">{{ $post->body }}</p>
+                <p class="pb-6">{!! $post->body !!}</p>
         
               </div>
         </section>
