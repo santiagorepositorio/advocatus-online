@@ -18,7 +18,7 @@ class TagSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $tags = ['laravel', 'vue', 'react', 'divorcio', 'laboral'];       
+        $tags = $tags = ['divorcio', 'laboral', 'penal', 'civil', 'mercantil', 'fiscal', 'constitucional', 'administrativo', 'internacional', 'familia', 'derechos_humanos', 'propiedad_intelectual', 'contratos', 'responsabilidad_civil', 'derecho_ambiental', 'derecho_bancario', 'seguridad_social', 'derecho_de_la_competencia', 'derecho_procesal', 'derecho_laboral', 'autismo', 'legaltech'];       
 
         foreach ($tags as $tag) {
             \App\Models\Tag::create([
