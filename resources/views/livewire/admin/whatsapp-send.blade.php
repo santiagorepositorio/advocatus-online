@@ -128,6 +128,7 @@
                             @if (array_key_exists('text', $component))
                                 <p>Texto: {{ $component['text'] }}</p>
                             @endif
+                            
 
                             {{-- Mostrar detalles adicionales según la estructura de tus datos --}}
                             @if ($component['type'] == 'BUTTONS' && isset($component['buttons']))
