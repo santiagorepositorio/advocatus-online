@@ -62,7 +62,7 @@
 
     @endif
 
-    <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('assets/ckeditor5/ckeditor.js')}}"></script>
 
     @stack('js')
 
