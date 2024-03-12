@@ -106,7 +106,7 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:6144'
         ]);
 
-        $old_images = $post->images->pluck('path')->toArray();
+        $old_images = $post->images->pluck('url')->toArray();
 
         $re_extractImages = '/src=["\']([^ ^"^\']*)["\']/ims';
         preg_match_all($re_extractImages, $request->body, $matches);
@@ -121,13 +121,15 @@ class PostController extends Controller
 
         foreach ($new_images as $image) {
             $post->images()->create([
-                'path' => $image,
+                'url' => $image,
             ]);
         }
 
+        
+
         foreach ($deleted_images as $image) {
             Storage::delete($image);
-            Image::where('path', $image)->delete();
+            Image::where('url', $image)->delete();
         }
 
         $data = $request->all();

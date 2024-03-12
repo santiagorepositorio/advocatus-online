@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(PriceSeeder::class);
         $this->call(PlatformSeeder::class);
-        //$this->call(CourseSeeder::class);
-        //$this->call(CertificateSeeder::class);
+        $this->call(CourseSeeder::class);
+        $this->call(CertificateSeeder::class);
         $this->call(ProfileSeeder::class);
         $this->call(TagSeeder::class);
-        // $this->call(PostSeeder::class);
+        $this->call(PostSeeder::class);
         //\App\Models\Post::factory(200)->create();
         $this->call(CompanySeeder::class);
         // $this->call(PublicitySeeder::class);

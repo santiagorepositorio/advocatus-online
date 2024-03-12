@@ -19,13 +19,13 @@ class PostSeeder extends Seeder
     {
         $faker = Faker::create();
         $posts = Post::factory(300)->create();
-        foreach ($posts as $post) {
-            Image::create([
-                'url' => 'posts/' . $faker->image('public/storage/posts', 1920, 1080, null, false),
-                'imageable_id' => $post->id,
-                'imageable_type' => 'App\Models\Post'
-            ]);
+        // foreach ($posts as $post) {
+        //     Image::create([
+        //         'url' => 'posts/' . $faker->image('public/storage/posts', 1920, 1080, null, false),
+        //         'imageable_id' => $post->id,
+        //         'imageable_type' => 'App\Models\Post'
+        //     ]);
            
-        }
+        // }
     }
 }
