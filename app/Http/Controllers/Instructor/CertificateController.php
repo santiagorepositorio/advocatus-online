@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Instructor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
-use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,7 +16,7 @@ class CertificateController extends Controller
      */
     public function index()
     {
-        return view('admin.certificates.index');
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ class CertificateController extends Controller
      */
     public function create()
     {
-        return view('admin.certificates.create', compact('course'));
+        //
     }
 
     /**
@@ -36,11 +35,9 @@ class CertificateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Course $course)
+    public function store(Request $request)
     {
-        $course->validate([
-            'id' => 'id'      
-        ]);
+        //
     }
 
     /**
@@ -60,10 +57,9 @@ class CertificateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Certificate $certificate)
+    public function edit($id)
     {
-        $course = $certificate->course;
-        return view('admin.certificates.edit', compact('course', 'certificate'));
+        //
     }
 
     /**
@@ -74,7 +70,7 @@ class CertificateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Certificate $certificate)
-    {        
+    {
         $certificate->update($request->all());
 
         if($request->file('file')){
@@ -90,9 +86,9 @@ class CertificateController extends Controller
                 ]);                
             }
         }
-        return redirect()->route('admin.certificates.edit', $certificate);        
+        return redirect()->route('instructor.courses.observation', $certificate->course); 
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -104,6 +100,4 @@ class CertificateController extends Controller
     {
         //
     }
-
-
 }

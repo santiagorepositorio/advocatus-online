@@ -104,7 +104,7 @@
 
                 </form>
 
-                <div class="mt-4 flex items-center justify-between">
+                {{-- <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 lg:w-1/4"></span>
                     <a href="#" class="text-xs text-center text-gray-500 uppercase">O inicia sesión con Redes
                         Sociales</a>
@@ -181,7 +181,7 @@
                         </svg>
                         <span>Facebook</span>
                     </a>
-                </div>
+                </div> --}}
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 md:w-1/8"></span>
                     <p class="text-center text-sm text-gray-600 mt-2">NO tienes una Cuenta? </p>

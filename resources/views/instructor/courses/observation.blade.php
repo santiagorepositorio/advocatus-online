@@ -11,4 +11,8 @@
         <p>No tiene observaciones</p>
         @endif
 
+        <div class="my-8">
+            @livewire('instructor.courses-certificate', ['course' => $course], key('courses-certificate-'.$course->id))
+        </div>
+
 </x-instructor-layout>

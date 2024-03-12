@@ -38,28 +38,51 @@
                         class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400
 @else
 border-transparent @endif pl-2">
-                        <a href="{{ route('instructor.courses.edit', $course) }}"> Informacion del Curso</a></li>
-                    <li
-                        class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400
+                        <a href="{{ route('instructor.courses.edit', $course) }}"> Informacion del Curso</a>
+                    </li>
+                    <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400
 @else
 border-transparent @endif pl-2">
-                        <a href="{{ route('instructor.courses.curriculum', $course) }}"> Lecciones del Curso</a></li>
+                        <a href="{{ route('instructor.courses.curriculum', $course) }}"> Lecciones del Curso</a>
+                    </li>
+
+
                     <li
                         class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400
 @else
 border-transparent @endif t pl-2">
-                        <a href="{{ route('instructor.courses.goals', $course) }}">Metas del Curso</a></li>
+                        <a href="{{ route('instructor.courses.goals', $course) }}">Metas del Curso</a>
+                    </li>
+
+
+                    {{-- <li
+                        class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.certificate', $course) border-indigo-400
+@else
+border-transparent @endif t pl-2">
+                        <a href="{{ route('instructor.courses.certificate', $course) }}">Link WhatsApp y Certificado</a>
+                    </li> --}}
+
+
+
                     <li
                         class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400
 @else
 border-transparent @endif pl-2">
-                        <a href="{{ route('instructor.courses.students', $course) }}"> Estudiantes</a></li>
+                        <a href="{{ route('instructor.courses.students', $course) }}"> Estudiantes</a>
+                    </li>
 
                     <li
                         class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.observation', $course) border-red-400
 @else
 border-transparent @endif pl-2">
-                        <a href="{{ route('instructor.courses.observation', $course) }}"> Observaciones</a></li>
+                        <a href="{{ route('instructor.courses.observation', $course) }}"> Observaciones / Link  / Certificado</a>
+                    </li>
+                    <li>
+                        <hr class="mt-2 mb-6">
+                    </li>
+                    <li>
+                        <a class="btn btn-danger ml-2 mt-2" href="{{ route('instructor.courses.index') }}">SALIR</a>
+                    </li>
 
 
                 </ul>
