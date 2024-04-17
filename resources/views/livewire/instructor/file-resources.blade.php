@@ -1,17 +1,15 @@
-<div class="card" x-data="{open: false}">
-    <div class="card-body bg-gray-100">
-        <header>
-            <h1 x-on:click="open = !open" class="cursor-pointer">Recursos de la leccion</h1>
-        </header>
-        <div x-show="open">
-            <hr class="my-2">
-            @if ($lesson->resource)
-                <div class="flex justify-between items-center">
+<div>
+    <div class="card-body bg-gray-100">        
+      
+            @if ($archivo->resource)
+                <div class="">
                     <p class="cursor-pointer" wire:click="download"><i wire:click="download" class="fas fa-download text-gray-600 mr-2"></i>
-                        {{ $lesson->resource->url }}
-                    </p>
-                    <iframe src="{{ Storage::url($lesson->resource->url) }}" frameborder="0"></iframe>
-                    <i class="fas fa-trash text-red-500 cursor-pointer" wire:click="destroy"></i>
+                        {{ $archivo->resource->url }}
+                    </p>                    
+                    <div class=" gap-3">
+                        <i class="fas fa-trash text-red-500 cursor-pointer" wire:click="destroy">Eliminar</i>
+                    <i class="fa fa-eye text-blue-500 cursor-pointer" wire:click="destroy">Ver</i>
+                    </div>
                 </div>
             @else
             <form wire:submit.prevent="save">
@@ -25,7 +23,7 @@
                         @enderror
             </form>
             @endif
-        </div>
+       
 
     </div>
 </div>

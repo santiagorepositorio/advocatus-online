@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('socials', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
+            $table->string('link');
+            $table->foreignId('profile_id')
+                ->constrained();
             $table->timestamps();
         });
     }

@@ -35,6 +35,20 @@ class Profile extends Model
         
         return "slug";
     }
+    //Relacion uno a muchos
+
+    public function socials()
+    {
+        return $this->hasMany('App\Models\Social');
+    }
+    public function educationS()
+    {
+        return $this->hasMany('App\Models\Educaction');
+    }
+    public function experiences()
+    {
+        return $this->hasMany('App\Models\Experience');
+    }
     //Relacion uno a uno inversa
 
     public function user(){

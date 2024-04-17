@@ -40,5 +40,6 @@ class LessonResources extends Component
         Storage::delete($this->lesson->resource->url);
         $this->lesson->resource->delete();
         $this->lesson = Lesson::find($this->lesson->id);
+        
     }
 }

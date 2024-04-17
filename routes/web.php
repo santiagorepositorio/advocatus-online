@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\FolderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CourseStatus;
@@ -44,6 +45,9 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/privacy-policy', [CourseController::class, 'privacy_policy'])->name('privacy-policy');
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('posts', [BlogController::class, 'index'])->name('posts.index');
+Route::get('folders', [FolderController::class, 'index'])->name('folders.index');
+
+Route::get('folders/{folder}', [FolderController::class, 'show'])->name('folders.show');
 Route::get('posts/{post}', [BlogController::class, 'show'])->name('posts.show');
 Route::get('profiles', [ProfileController::class, 'index'])->name('profiles.index');
 Route::get('/course.show/{course}', [CourseController::class, 'show'])->name('courses.show');
@@ -87,3 +91,4 @@ Route::get('/auth/google-redirect', [AuthController::class, 'google_redirect'])-
 Route::get('/auth/google-callback', [AuthController::class, 'google_callback'])->name('auth.google-callback');
 
 Route::post('/eliminar-datos-facebook/{user_id}', [AuthController::class, 'eliminarDatosFacebook']);
+

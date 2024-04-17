@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Folder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +14,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('folders', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('institution');
-            $table->string('gestion');
-            $table->foreignId('profile_id')
+            $table->string('name');            
+            $table->enum('status', [Folder::BORRADOR, Folder::PRIVADO, Folder::PUBLICO])->default(Folder::BORRADOR);
+            $table->foreignId('user_id')
                 ->constrained();
+            $table->foreignId('category_id')
+                ->constrained();
+
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('folders');
     }
 };

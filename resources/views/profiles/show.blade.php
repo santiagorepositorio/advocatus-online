@@ -1,21 +1,22 @@
 <x-app-layout>
 <section class="bg-gray-200">
     <div class="h-full  p-8 max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-lg shadow-xl pb-8">
+        <div class="bg-white rounded-lg shadow-xl pb-4">
             <div class="w-full h-[624px]">
                 <img src="{{ Storage::url($profile->image->url) }}" class="w-full h-full object-cover rounded-tl-lg rounded-tr-lg">
             </div>
-            <div class="flex flex-col items-center -mt-20">
-                <img src="{{ $profile->user->profile_photo_url }}" class="border-4 border-white rounded-full w-20 h-auto sm:w-40 md:w-60 lg:w-80 xl:w-96">
-
-                <div class="flex items-center space-x-2 mt-2">
-                    <p class="text-2xl">{{ $profile->name }}</p>
+            <div class="flex flex-col items-center ">
+                <img src="{{ $profile->user->profile_photo_url }}" class=" mt-2 border-4 border-white rounded-full w-20 h-auto sm:w-40 md:w-60 lg:w-80 xl:w-96">
+                <div class="flex items-center space-x-2 mt-2 mb-4">
+                    
                     <div x-data="{ openSettings: false }" class="hover:bg-slate-600 rounded">
-                        <button @click="openSettings = !openSettings" class="border border-gray-400 p-2 rounded text-gray-300 hover:text-gray-300 bg-gray-100 bg-opacity-10 hover:bg-opacity-20" title="Settings">
+
+                        <button @click="openSettings = !openSettings" class="border border-gray-400 p-2 rounded text-gray-300 hover:text-gray-300 bg-gray-100 bg-opacity-10 hover:bg-opacity-20" title="Opciones">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
                             </svg>
                         </button>
+
                         <div x-show="openSettings" @click.away="openSettings = false" class="bg-white absolute w-40 py-2 mt-1 border border-gray-200 shadow-2xl" style="display: none;">
                             <div class="xpy-2 border-b">
                                 <p class="text-gray-400 text-xs px-6 uppercase mb-1">Opciones</p>
@@ -43,6 +44,8 @@
                             </div>
                         </div>
                     </div>
+                    <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl">{{ $profile->name }}</p>
+
                 </div>
                 <div class="flex justify-between gap-4">
                     <p class="text-gray-700">{{  $profile->category->name }}</p>
@@ -64,24 +67,36 @@
                     <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                        </svg>                       
+                    </a>
+                    <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                        </svg>                        
+                    </a>
+                    <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
                         </svg>
-                        <span class="sr-only">Facebook page</span>
+                      
+                    </a>
+                    <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                        </svg>
+                       
                     </a>
                     <!-- Agrega aquí otros enlaces sociales -->
                 </div>
-                <div class="flex items-center justify-center gap-4 mt-2">
-                    <button class="flex items-center bg-blue-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <!-- Agrega aquí el icono para agregar -->
-                        </svg>
-                        <span>Agregar</span>
-                    </button>
-                    <button class="flex items-center bg-blue-600 hover:bg-rose-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <!-- Agrega aquí el icono para recomendar -->
-                        </svg>
+                <div class="flex items-center justify-center gap-4 mt-2">                    
+                    <a class="flex items-center cursor-pointer bg-blue-600 hover:bg-rose-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+                        <i class="fas fa-star text-yellow-400 h-4 w-4"></i>
                         <span>Recomendar</span>
-                    </button>
+                    </a>
+                    <a class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+                        <i class="fab fa-whatsapp text-gray-100 h-4 w-4"></i>
+                        <span>Contactar</span>
+                    </a>
                     <!-- Agrega aquí otros botones de acción -->
                 </div>
             </div>

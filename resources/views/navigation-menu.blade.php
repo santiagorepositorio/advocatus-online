@@ -20,6 +20,11 @@
             'route' => route('posts.index'),
             'active' => request()->routeIs('posts.*'),
         ],
+        [
+            'name' => 'Memoriales',
+            'route' => route('folders.index'),
+            'active' => request()->routeIs('folders.*'),
+        ],
         // [
         //     'name' => 'Shop',
         //     'route' => '#',
@@ -187,6 +192,11 @@
                                     </x-jet-dropdown-link>
                                 @endcan
                                 @can('Listar cursos')
+                                    <x-jet-dropdown-link href="{{ route('instructor.folders.upload', auth()->user()->id) }}">
+                                        Subir Documentos
+                                    </x-jet-dropdown-link>
+                                @endcan
+                                @can('Listar cursos')
                                     <x-jet-dropdown-link href="{{ route('post.posts.index') }}">
                                         Post
                                     </x-jet-dropdown-link>
@@ -292,6 +302,11 @@
                     @can('Listar cursos')
                         <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
                             Instructor
+                        </x-jet-responsive-nav-link>
+                    @endcan
+                    @can('Listar cursos')
+                        <x-jet-responsive-nav-link href="{{ route('instructor.folders.upload', auth()->user()->id) }}" :active="request()->routeIs('instructor.folders.upload')">
+                            Subir Documentos
                         </x-jet-responsive-nav-link>
                     @endcan
                     @can('Listar cursos')

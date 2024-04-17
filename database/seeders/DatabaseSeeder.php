@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
         //\App\Models\Post::factory(200)->create();
         $this->call(CompanySeeder::class);
+        $this->call(FolderSeeder::class);
         // $this->call(PublicitySeeder::class);
         // $this->call(TagSeeder::class);
 

@@ -19,18 +19,14 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->text('about');
-            $table->string('name');
-            $table->string('email');           
-            $table->string('date');
-            $table->string('rpa');
-            $table->string('nit');
-
-            $table->string('phone');
-            $table->text('iframe');
-            $table->enum('status', [Profile::BORRADOR, Profile::REVISION, Profile::PUBLICADO])->default(Profile::BORRADOR);
+            $table->string('name');           
             $table->string('slug');
-            
-
+            $table->string('rpa')->nullable();
+            $table->string('nit')->nullable();            
+            $table->string('phone');
+            $table->string('email');           
+            $table->text('iframe')->nullable();
+            $table->enum('status', [Profile::BORRADOR, Profile::REVISION, Profile::PUBLICADO])->default(Profile::BORRADOR);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

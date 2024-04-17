@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-
             $table->unsignedBigInteger('resourceable_id');
             $table->string('resourceable_type');
             

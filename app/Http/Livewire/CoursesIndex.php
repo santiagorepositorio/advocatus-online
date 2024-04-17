@@ -22,6 +22,7 @@ class CoursesIndex extends Component
                                 ->level($this->level_id)
                                 ->latest('id')
                                 ->paginate(8);
+                                
         $categories = Category::where('status', 'Curso')->get();
         $levels = Level::all();
         return view('livewire.courses-index', compact('courses', 'categories', 'levels'));

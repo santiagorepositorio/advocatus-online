@@ -14,6 +14,9 @@ class Category extends Model
     public function courses(){
         return $this->hasMany('App\Models\Course');
     }
+    public function folders(){
+        return $this->hasMany('App\Models\Folder');
+    }
 
     //Relacion uno a muchos
     public function profiles(){

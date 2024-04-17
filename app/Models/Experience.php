@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Experience extends Model
 {
     use HasFactory;
+    //Relacion uno a muchos inversa
+    public function profile()
+    {
+        return $this->belongsTo('App\Models\Profile');
+    }
 }
