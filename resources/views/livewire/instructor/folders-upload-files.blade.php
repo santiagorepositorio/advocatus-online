@@ -1,7 +1,7 @@
 <div>
     <section class="container px-4 lg:px-8 mx-auto max-w-screen-xl text-gray-700 overflow-x-hidden mt-8">
         <h1 class="text-center text-3xl text-gray-600">CARPETAS DE : {{ auth()->user()->name }} </h1><hr class="mt-2 mb-6">
-        <p class="text-center text-gray-500 text-sm mb-6">{{ $categories }}</p>
+        <p class="text-center text-gray-500 text-sm mb-6"></p>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($folders as $folder1)
                 <article class="card mb-6 border-black" x-data="{ open: true }">

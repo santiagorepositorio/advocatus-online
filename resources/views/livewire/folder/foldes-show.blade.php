@@ -107,7 +107,6 @@
 
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
-            VER DOCUMENTO
             <x-jet-input wire:model="documento" type="text" class="w-full" />
             {{-- <p class="text-sm">Plataforma: {{ strval($documento) }}</p> --}}
         </x-slot>
@@ -120,7 +119,6 @@
         </x-slot>
         <x-slot name="footer">
             VER DOCUMENTO
-            sdsv
         </x-slot>
     </x-jet-dialog-modal>
 </div>
