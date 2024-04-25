@@ -40,6 +40,7 @@ class Outlet extends Model
             return $this->latitude.', '.$this->longitude;
         }
     }
+    
     public function getMapPopupContentAttribute()
     {
         $mapPopupContent = '';

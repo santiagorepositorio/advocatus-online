@@ -1,8 +1,8 @@
 @extends('layouts.outlet')
 
 @section('content')
-    <div class="card">
-        <div class="card-body" id="mapid"></div>
+    <div>
+        <div id="mapid"></div>
     </div>
 @endsection
 
@@ -15,7 +15,10 @@
 
     <style>
         #mapid {
-            min-height: 600px;
+            height: 80vh;
+            border: 1px solid #CBD5E0;
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
     </style>
 @endsection
@@ -27,6 +30,11 @@
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
     <script>
+        @if (auth()->check())
+            window.userRoles = {!! json_encode(auth()->user()->roles->pluck('name')) !!};
+        @else
+            window.userRoles = [];
+        @endif
         // if (navigator.geolocation) {
         //     navigator.geolocation.getCurrentPosition(
         //         (position) => {
@@ -84,55 +92,55 @@
         //         }
         //     );
         // } else {
-            // var map = L.map('mapid').setView([{{ config('leaflet.map_center_latitude') }},
-            //     {{ config('leaflet.map_center_longitude') }}
-            // ], {{ config('leaflet.zoom_level') }});
-            // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            // }).addTo(map);
-            // var markers = L.markerClusterGroup();
+        // var map = L.map('mapid').setView([{{ config('leaflet.map_center_latitude') }},
+        //     {{ config('leaflet.map_center_longitude') }}
+        // ], {{ config('leaflet.zoom_level') }});
+        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        // }).addTo(map);
+        // var markers = L.markerClusterGroup();
 
-            // axios.get('{{ route('api.outlets.index') }}')
-            //     .then(function(response) {
-            //         var marker = L.geoJSON(response.data, {
-            //             pointToLayer: function(geoJsonPoint, latlng) {
-            //                 return L.marker(latlng).bindPopup(function(layer) {
-            //                     return layer.feature.properties.map_popup_content;
-            //                 });
-            //             }
-            //         });
-            //         markers.addLayer(marker);
-            //     })
-            //     .catch(function(error) {
-            //         console.log(error);
-            //     });
-            // map.addLayer(markers);
+        // axios.get('{{ route('api.outlets.index') }}')
+        //     .then(function(response) {
+        //         var marker = L.geoJSON(response.data, {
+        //             pointToLayer: function(geoJsonPoint, latlng) {
+        //                 return L.marker(latlng).bindPopup(function(layer) {
+        //                     return layer.feature.properties.map_popup_content;
+        //                 });
+        //             }
+        //         });
+        //         markers.addLayer(marker);
+        //     })
+        //     .catch(function(error) {
+        //         console.log(error);
+        //     });
+        // map.addLayer(markers);
 
-            // @can('user', App\Models\Outlet::class)
+        // @can('user', App\Models\Outlet::class)
 
-            //     var theMarker;
+        //     var theMarker;
 
-            //     map.on('click', function(e) {
-            //         let latitude = e.latlng.lat.toString().substring(0, 15);
-            //         let longitude = e.latlng.lng.toString().substring(0, 15);
+        //     map.on('click', function(e) {
+        //         let latitude = e.latlng.lat.toString().substring(0, 15);
+        //         let longitude = e.latlng.lng.toString().substring(0, 15);
 
-            //         if (theMarker != undefined) {
-            //             map.removeLayer(theMarker);
-            //         };
+        //         if (theMarker != undefined) {
+        //             map.removeLayer(theMarker);
+        //         };
 
-            //         var popupContent = "Ubicación : " + latitude + ", " + longitude + ".";
-            //         popupContent += '<br><a href="{{ route('outlets.create') }}?latitude=' + latitude +
-            //             '&longitude=' + longitude + '">Agregar nueva ubicación</a>';
+        //         var popupContent = "Ubicación : " + latitude + ", " + longitude + ".";
+        //         popupContent += '<br><a href="{{ route('outlets.create') }}?latitude=' + latitude +
+        //             '&longitude=' + longitude + '">Agregar nueva ubicación</a>';
 
-            //         theMarker = L.marker([latitude, longitude]).addTo(map);
-            //         theMarker.bindPopup(popupContent)
-            //             .openPopup();
-            //     });
-            // @endcan
+        //         theMarker = L.marker([latitude, longitude]).addTo(map);
+        //         theMarker.bindPopup(popupContent)
+        //             .openPopup();
+        //     });
+        // @endcan
         // }
         var map = L.map('mapid').setView([{{ config('leaflet.map_center_latitude') }},
-                {{ config('leaflet.map_center_longitude') }}
-            ], {{ config('leaflet.zoom_level') }});
+            {{ config('leaflet.map_center_longitude') }}
+        ], {{ config('leaflet.zoom_level') }});
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
@@ -154,8 +162,9 @@
             });
         map.addLayer(markers);
 
-        @can('user', App\Models\Outlet::class)
-
+        // Verificar si el usuario tiene el rol "mapeador"
+        if (window.userRoles.includes('Colaborador')) {
+            // El usuario tiene el rol "mapeador"
             var theMarker;
 
             map.on('click', function(e) {
@@ -174,6 +183,6 @@
                 theMarker.bindPopup(popupContent)
                     .openPopup();
             });
-        @endcan
+        }
     </script>
 @endpush

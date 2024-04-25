@@ -40,7 +40,7 @@
         <!-- Page Content -->
         {{-- @livewire('navigator-advocatus') --}}
         <main>
-            <section class="bg-gray-700 py-12 mb-8">
+            <section class="bg-gray-700 py-4 mb-4">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                     @yield('content')
                 </div>
