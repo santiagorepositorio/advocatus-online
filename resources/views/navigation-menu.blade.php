@@ -25,6 +25,11 @@
             'route' => route('folders.index'),
             'active' => request()->routeIs('folders.*'),
         ],
+        [
+            'name' => 'Centros',
+            'route' => route('outlet_map.index'),
+            'active' => request()->routeIs('outlet_map.*'),
+        ],
         // [
         //     'name' => 'Shop',
         //     'route' => '#',

@@ -16,7 +16,7 @@
 </div>
 <div class="mb-4">
     {!! Form::label('status', 'Tipo :') !!}
-    {!! Form::select('status', ['Curso'=>'Curso','Perfil'=>'Perfil', 'Blog'=>'Blog'], null, ['class' => 'form-input block w-full mt-1']) !!}
+    {!! Form::select('status', ['Curso'=>'Curso','Perfil'=>'Perfil', 'Blog'=>'Blog', 'Material'=>'Material', 'Centro'=>'Centro'], null, ['class' => 'form-input block w-full mt-1']) !!}
 </div>
 
 

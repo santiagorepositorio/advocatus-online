@@ -17,6 +17,9 @@ class Category extends Model
     public function folders(){
         return $this->hasMany('App\Models\Folder');
     }
+    public function outlets(){
+        return $this->hasMany('App\Models\Outlet');
+    }
 
     //Relacion uno a muchos
     public function profiles(){

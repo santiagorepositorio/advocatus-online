@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "barryvdh/laravel-dompdf": "^2.0",
         "chillerlan/php-qrcode": "^5.0",
+        "doctrine/dbal": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
         "hardevine/shoppingcart": "^3.1",
         "intervention/image": "^2.6.0",

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\OutletController;
 use App\Http\Controllers\MessageController;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -50,3 +51,10 @@ Route::get('/tags', function(Request $request){
 
 })->name('api.tags.index');
 
+
+Route::group(['as' => 'api.', 'namespace' => 'Api'], function () {
+    /*
+     * Outlets Endpoints
+     */
+    Route::get('outlets', [OutletController::class, 'index'])->name('outlets.index');
+});

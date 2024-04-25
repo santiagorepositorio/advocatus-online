@@ -96,6 +96,10 @@ class User extends Authenticatable
     public function folders(){
         return $this->hasMany('App\Models\Folder');
     }
+
+    public function outlets(){
+        return $this->hasMany('App\Models\Outlet');
+    }
     //MESSAGES
     public function messages()
     {

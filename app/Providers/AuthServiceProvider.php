@@ -29,5 +29,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::after(function ($user, $ability) {
             return $user->hasRole('SuperAdmin');
         });
+        Gate::define('manage_outlet', function () {
+            return auth()->check();
+        });
     }
 }

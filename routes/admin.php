@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WhatsappController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\OutletController;
 use App\Http\Livewire\Admin\CoursesUsersList;
 use App\Http\Livewire\Admin\WhatsappIndex;
 use App\Http\Livewire\Admin\WhatsappSend;
@@ -35,6 +36,7 @@ Route::get('usersfull/{user}', [UserController::class, 'agregar_empleado'])->nam
 Route::get('usersfull-eliminar/{user}', [UserController::class, 'eliminar_empleado'])->name('users.eliminar_empleado');
 
 Route::resource('certificates', CertificateController::class)->names('certificates');
+
 
 
 

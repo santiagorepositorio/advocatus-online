@@ -10,6 +10,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CourseStatus;
 use App\Http\Livewire\ShoppingCart;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OutletController;
+use App\Http\Controllers\OutletMapController;
 use App\Http\Controllers\PostController;
 use App\Http\Livewire\ShoppingCartPayment;
 use App\Models\User;
@@ -43,10 +45,12 @@ use GuzzleHttp\Client;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/privacy-policy', [CourseController::class, 'privacy_policy'])->name('privacy-policy');
+Route::get('/our_outlets', [OutletMapController::class, 'index'])->name('outlet_map.index');
+Route::resource('outlets', OutletController::class);
+
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('posts', [BlogController::class, 'index'])->name('posts.index');
 Route::get('folders', [FolderController::class, 'index'])->name('folders.index');
-
 Route::get('folders/{folder}', [FolderController::class, 'show'])->name('folders.show');
 Route::get('posts/{post}', [BlogController::class, 'show'])->name('posts.show');
 Route::get('profiles', [ProfileController::class, 'index'])->name('profiles.index');

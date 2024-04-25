@@ -24,8 +24,9 @@
                         <tr class="hover:bg-gray-50">
                             <td class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                 <div class="relative h-10 w-10">
-                                    {{-- <img class="h-full w-full  object-cover object-center" src="{{ asset('assets/imgs/pdf_icono.png') }}" alt="PDF Icon"> --}}
-                                    @switch(pathinfo($item->resource->url, PATHINFO_EXTENSION))
+                                    <img class="h-full w-full object-cover object-center" src="{{ asset('assets/imgs/' . pathinfo($item->resource->url, PATHINFO_EXTENSION) . '_icon.png') }}" alt="PDF Icon">
+
+                                    {{-- @switch(pathinfo($item->resource->url, PATHINFO_EXTENSION))
                                         @case('png')
                                             <img class="h-full w-full  object-cover object-center" src="{{ asset('assets/imgs/png_icon.png') }}" alt="PDF Icon">
                                         @break
@@ -62,7 +63,7 @@
                                         @break
                                         @default
                                         <img class="h-full w-full  object-cover object-center" src="{{ asset('assets/imgs/no_icon.png') }}" alt="PDF Icon">
-                                    @endswitch
+                                    @endswitch --}}
                                     {{-- <span
                                         class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span> --}}
                                 </div>
@@ -114,7 +115,6 @@
             <div class="mb-4">
                 <iframe id="documentoFrame" src="{{ Storage::url($documento) }}" frameborder="0"
                     style="width: 100%; height: 600px;" onload="ajustarTamaño(this);"></iframe>
-
             </div>
         </x-slot>
         <x-slot name="footer">
