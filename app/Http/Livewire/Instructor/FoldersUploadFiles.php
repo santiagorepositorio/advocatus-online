@@ -27,7 +27,7 @@ class FoldersUploadFiles extends Component
     }
     public function render()
     {
-        $categories = Category::where('status', 'curso')->pluck('name', 'id');
+        $categories = Category::where('status', 'Material')->pluck('name', 'id');
         $folders = Folder::where('user_id', auth()->user()->id)->get();
         return view('livewire.instructor.folders-upload-files', compact('folders', 'categories'));
     }

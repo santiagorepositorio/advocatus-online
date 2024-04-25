@@ -31,7 +31,7 @@ class OutletController extends Controller
     public function create()
     {
         $this->authorize('create', new Outlet);
-        $categories = Category::where('status', 'Curso')->get();
+        $categories = Category::where('status', 'Centro')->get();
 
         return view('outlets.create', compact('categories'));
     }

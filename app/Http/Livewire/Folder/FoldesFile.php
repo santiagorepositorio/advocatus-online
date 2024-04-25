@@ -31,7 +31,7 @@ class FoldesFile extends Component
             ->latest('id')
             ->paginate(8);
 
-        $categories = Category::where('status', 'Curso')->get();
+        $categories = Category::where('status', 'Material')->get();
 
         return view('livewire.folder.foldes-file', compact('folders', 'categories'));
     }

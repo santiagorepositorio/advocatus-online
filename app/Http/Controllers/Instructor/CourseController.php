@@ -35,7 +35,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('status', 'curso')->pluck('name', 'id');
+        $categories = Category::where('status', 'Curso')->pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
         return view('instructor.courses.create', compact('categories', 'levels', 'prices'));
