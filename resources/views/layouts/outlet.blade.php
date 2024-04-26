@@ -23,7 +23,7 @@
     <!-- Styles -->
     @livewireStyles
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     @yield('styles')
 
 </head>

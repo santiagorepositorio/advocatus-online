@@ -21,12 +21,12 @@
             'active' => request()->routeIs('posts.*'),
         ],
         [
-            'name' => 'Memoriales',
+            'name' => 'Materiales',
             'route' => route('folders.index'),
             'active' => request()->routeIs('folders.*'),
         ],
         [
-            'name' => 'Centros',
+            'name' => 'Centros Inclusivos',
             'route' => route('outlet_map.index'),
             'active' => request()->routeIs('outlet_map.*'),
         ],

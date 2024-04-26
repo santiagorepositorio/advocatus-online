@@ -26,8 +26,8 @@
                 @forelse ($folders as $folder)
                 <a href="{{ route('folders.show', $folder) }}" class="flex flex-col p-0 cursor-pointer">
                     <img class="object-cover w-32 h-32 transition-all hover:-translate-y-2 duration-300 " src="{{ asset('assets/imgs/icons8-carpeta-144.png') }}" alt="">
-                    <p class="mt-0 text-gray-500 capitalize dark:text-gray-300">{{ $folder->name }}</p>
-                    <h1 class="mt-0 text-xl font-semibold text-gray-700 capitalize dark:text-gray-300">{{ $folder->category->name }}</h1>
+                    <p class="mt-0 text-gray-500 capitalize dark:text-gray-300">{{ $folder->category->name }}</p>
+                    <h1 class="mt-0 text-xl font-semibold text-gray-700 capitalize dark:text-gray-300">{{ $folder->name }}</h1>
                 </a>                
                 @empty
                 @endforelse
