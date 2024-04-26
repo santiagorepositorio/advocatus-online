@@ -24,15 +24,16 @@
 
                 <select id="city" name="city" required>
                     <option value="" selected disabled>Selecciona un Departamento</option>
-                    <option value="La Paz" {{ old('department_id') == 1 ? 'selected' : '' }}>La Paz</option>
-                    <option value="Oruro" {{ old('department_id') == 2 ? 'selected' : '' }}>Oruro</option>
-                    <option value="Potosí" {{ old('department_id') == 3 ? 'selected' : '' }}>Potosí</option>
-                    <option value="Tarija" {{ old('department_id') == 4 ? 'selected' : '' }}>Tarija</option>
-                    <option value="Santa Cruz" {{ old('department_id') == 5 ? 'selected' : '' }}>Santa Cruz</option>
-                    <option value="Beni" {{ old('department_id') == 6 ? 'selected' : '' }}>Beni</option>
-                    <option value="Pando" {{ old('department_id') == 7 ? 'selected' : '' }}>Pando</option>
-                    <option value="Cochabamba" {{ old('department_id') == 8 ? 'selected' : '' }}>Cochabamba</option>
-                    <option value="Sucre" {{ old('department_id') == 9 ? 'selected' : '' }}>Sucre</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="El Alto">El Alto</option>
+                    <option value="Oruro">Oruro</option>
+                    <option value="Potosí">Potosí</option>
+                    <option value="Tarija">Tarija</option>
+                    <option value="Santa Cruz">Santa Cruz</option>
+                    <option value="Beni">Beni</option>
+                    <option value="Pando">Pando</option>
+                    <option value="Cochabamba">Cochabamba</option>
+                    <option value="Sucre">Sucre</option>
                 </select>
             </div>
 

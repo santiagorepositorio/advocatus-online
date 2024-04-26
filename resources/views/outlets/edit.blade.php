@@ -45,18 +45,17 @@
              
                 <div class="flex">
                     <div class="w-1/2 mr-2">
-                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email de Web o
-                            Email</label>
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email de Web</label>
                         <input id="email" type="text"
                             class="form-input{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email"
-                            value="{{ old('email') }}" required>
+                             value="{{ old('name', $outlet->email) }}" required>
                         {!! $errors->first('email', '<p class="text-red-500 text-xs italic">:message</p>') !!}
                     </div>
                     <div class="w-1/2">
                         <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Contacto</label>
                         <input id="phone" type="text"
                             class="form-input{{ $errors->has('phone') ? ' border-red-500' : '' }}" name="phone"
-                            value="{{ old('phone') }}" required>
+                            value="{{ old('name', $outlet->phone) }}" required>
                         {!! $errors->first('phone', '<p class="text-red-500 text-xs italic">:message</p>') !!}
                     </div>
                 </div>
@@ -64,34 +63,36 @@
                     <div class="w-1/2 mr-2 gap-4">
                         <label for="category_id" class="block text-gray-700 text-sm font-bold mb-2">Categoría</label>
                         <select id="category_id" name="category_id" class="form-select{{ $errors->has('category_id') ? ' border-red-500' : '' }}" required>
-                            <option value="" selected disabled>Selecciona una categoría</option>
+                            <option value="" disabled>Selecciona una categoría</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->id }}" {{ $category->id == $outlet->category_id ? 'selected' : '' }}>
                                     {{ $category->name }}
                                 </option>
                             @endforeach
                         </select>
+                        
                         {!! $errors->first('category_id', '<p class="text-red-500 text-xs italic">:message</p>') !!}
                         <select id="city" name="city" required>
-                            <option value="" selected disabled>Selecciona un Departamento</option>
-                            <option value="La Paz" {{ old('department_id') == 1 ? 'selected' : '' }}>El Alto</option>
-                            <option value="El Alto" {{ old('department_id') == 1 ? 'selected' : '' }}>La Paz</option>
-                            <option value="Oruro" {{ old('department_id') == 2 ? 'selected' : '' }}>Oruro</option>
-                            <option value="Potosí" {{ old('department_id') == 3 ? 'selected' : '' }}>Potosí</option>
-                            <option value="Tarija" {{ old('department_id') == 4 ? 'selected' : '' }}>Tarija</option>
-                            <option value="Santa Cruz" {{ old('department_id') == 5 ? 'selected' : '' }}>Santa Cruz</option>
-                            <option value="Beni" {{ old('department_id') == 6 ? 'selected' : '' }}>Beni</option>
-                            <option value="Pando" {{ old('department_id') == 7 ? 'selected' : '' }}>Pando</option>
-                            <option value="Cochabamba" {{ old('department_id') == 8 ? 'selected' : '' }}>Cochabamba</option>
-                            <option value="Sucre" {{ old('department_id') == 9 ? 'selected' : '' }}>Sucre</option>
+                            <option value="" disabled>Selecciona un Departamento</option>
+                            <option value="La Paz" {{ old('city', $outlet->city) == 'La Paz' ? 'selected' : '' }}>La Paz</option>
+                            <option value="El Alto" {{ old('city', $outlet->city) == 'El Alto' ? 'selected' : '' }}>El Alto</option>
+                            <option value="Oruro" {{ old('city', $outlet->city) == 'Oruro' ? 'selected' : '' }}>Oruro</option>
+                            <option value="Potosí" {{ old('city', $outlet->city) == 'Potosí' ? 'selected' : '' }}>Potosí</option>
+                            <option value="Tarija" {{ old('city', $outlet->city) == 'Tarija' ? 'selected' : '' }}>Tarija</option>
+                            <option value="Santa Cruz" {{ old('city', $outlet->city) == 'Santa Cruz' ? 'selected' : '' }}>Santa Cruz</option>
+                            <option value="Beni" {{ old('city', $outlet->city) == 'Beni' ? 'selected' : '' }}>Beni</option>
+                            <option value="Pando" {{ old('city', $outlet->city) == 'Pando' ? 'selected' : '' }}>Pando</option>
+                            <option value="Cochabamba" {{ old('city', $outlet->city) == 'Cochabamba' ? 'selected' : '' }}>Cochabamba</option>
+                            <option value="Sucre" {{ old('city', $outlet->city) == 'Sucre' ? 'selected' : '' }}>Sucre</option>
                         </select>
+                        
                     </div>
                     
                     <div class="w-1/2 mr-2">
                         <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Dirección</label>
                         <input id="address" type="text"
                             class="form-input{{ $errors->has('address') ? ' border-red-500' : '' }}" name="address"
-                            value="{{ old('address') }}" required>
+                            value="{{ old('name', $outlet->address) }}" required>
                         {!! $errors->first('address', '<p class="text-red-500 text-xs italic">:message</p>') !!}
                     </div>
                 </div>

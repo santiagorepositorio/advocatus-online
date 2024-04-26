@@ -79,8 +79,15 @@ class CourseController extends Controller
 
     public function enrolled(Course $course)
     {
+
+        if ($course->price->value == 0) {
+            $course->students()->attach(auth()->user()->id, ['created_at' => now()]);
+            $course->students()->updateExistingPivot(auth()->user()->id, ['statusr' => '3']);
+        } else {
+            $course->students()->attach(auth()->user()->id, ['created_at' => now()]);
+        }
         // $course->students()->attach(auth()->user()->id);
-        $course->students()->attach(auth()->user()->id, ['created_at' => now()]);
+
         return redirect()->route('courses.status', $course);
     }
 
@@ -96,7 +103,7 @@ class CourseController extends Controller
     public function generateCertificate(Course $course)
     {
         $user = auth()->user();
-       
+
         if ($course->certificate->image->url ?? false) {
             $imagePath = public_path('storage/' . $course->certificate->image->url);
             $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';

@@ -10,9 +10,9 @@
             <table class="w-full table-fixed">
                 <tbody>
                     <tr><td class="w-1/3">Nombre del Centro</td><td class="w-2/3">{{ $outlet->name }}</td></tr>
-                    <tr><td>Dirección</td><td>{{ $outlet->email }}</td></tr>
-                    <tr><td>Dirección</td><td>{{ $outlet->phone }}</td></tr>
-                    <tr><td>Dirección</td><td>{{ $outlet->city }}</td></tr>
+                    <tr><td>Email o Web</td><td>{{ $outlet->email }}</td></tr>
+                    <tr><td>Contacto</td><td>{{ $outlet->phone }}</td></tr>
+                    <tr><td>Ciudad</td><td>{{ $outlet->city }}</td></tr>
                     <tr><td>Dirección</td><td>{{ $outlet->address }}</td></tr>
                     <tr><td>Latitude</td><td>{{ $outlet->latitude }}</td></tr>
                     <tr><td>Longitude</td><td>{{ $outlet->longitude }}</td></tr>

@@ -39,6 +39,12 @@
                                     class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Dirección
                                 </th>
                                 <th scope="col"
+                                    class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Ciudad
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Contacto
+                                </th>
+                                <th scope="col"
                                     class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">LATITUDE
                                 </th>
                                 <th scope="col"
@@ -57,6 +63,10 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{!! $outlet->name_link !!}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $outlet->address }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $outlet->city }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $outlet->phone }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $outlet->latitude }}
                                     </td>

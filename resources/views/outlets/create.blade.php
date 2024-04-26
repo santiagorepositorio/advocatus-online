@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="flex">
-                        <div class="w-1/2 mr-2 gap-4">
+                        <div class="w-1/2 mr-2 gap-2">
                             <label for="category_id" class="block text-gray-700 text-sm font-bold mb-2">Categoría</label>
                             <select id="category_id" name="category_id" class="form-select{{ $errors->has('category_id') ? ' border-red-500' : '' }}" required>
                                 <option value="" selected disabled>Selecciona una categoría</option>
@@ -45,6 +45,7 @@
                                 @endforeach
                             </select>
                             {!! $errors->first('category_id', '<p class="text-red-500 text-xs italic">:message</p>') !!}
+                            <label for="city" class="text-gray-700 text-sm font-bold">Ciudad</label>
                             <select id="city" name="city" required>
                                 <option value="" selected disabled>Selecciona un Departamento</option>
                                 <option value="La Paz" {{ old('department_id') == 1 ? 'selected' : '' }}>El Alto</option>
