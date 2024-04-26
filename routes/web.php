@@ -45,7 +45,7 @@ use GuzzleHttp\Client;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/privacy-policy', [CourseController::class, 'privacy_policy'])->name('privacy-policy');
-Route::get('/our_outlets', [OutletMapController::class, 'index'])->name('outlet_map.index');
+Route::get('/centros_inclusivos', [OutletMapController::class, 'index'])->name('outlet_map.index');
 Route::resource('outlets', OutletController::class);
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
