@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Outlet;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class OutletMapController extends Controller
      */
     public function index()
     {
-        return view('outlets.map');
+        $categories = Category::where('status', 'Centro')->get();
+        return view('outlets.map', compact('categories'));
     }
 
     

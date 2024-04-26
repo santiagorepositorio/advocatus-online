@@ -5,11 +5,14 @@
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bg-white shadow-md rounded-md">
-        <div class="bg-gray-200 px-4 py-2 rounded-t-md">Detalle del registro</div>
+        <div class="bg-gray-200 px-4 py-2 rounded-t-md">Detalle del registro - <b>{{ $outlet->category->name }}</b></div>
         <div class="p-4">
             <table class="w-full table-fixed">
                 <tbody>
                     <tr><td class="w-1/3">Nombre del Centro</td><td class="w-2/3">{{ $outlet->name }}</td></tr>
+                    <tr><td>Dirección</td><td>{{ $outlet->email }}</td></tr>
+                    <tr><td>Dirección</td><td>{{ $outlet->phone }}</td></tr>
+                    <tr><td>Dirección</td><td>{{ $outlet->city }}</td></tr>
                     <tr><td>Dirección</td><td>{{ $outlet->address }}</td></tr>
                     <tr><td>Latitude</td><td>{{ $outlet->latitude }}</td></tr>
                     <tr><td>Longitude</td><td>{{ $outlet->longitude }}</td></tr>

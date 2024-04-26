@@ -44,14 +44,16 @@ class OutletController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $this->authorize('user', new Outlet);
 
         $newOutlet = $request->validate([
             'name'      => 'required|max:60',
             'email'   => 'nullable|max:255',
             'phone'   => 'nullable|max:255',
-            'address'   => 'nullable|max:255',
+            'category_id' => 'nullable|max:255',
             'city'   => 'nullable|max:255',
+            'address'   => 'nullable|max:255',
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
            
@@ -60,11 +62,17 @@ class OutletController extends Controller
 
         $outlet = Outlet::create([
             'name'      => $request->name,
+            'email'   => $request->email,
+            'phone'   => $request->phone,
+            'category_id' => $request->category_id,
+            'city'   => $request->city,
             'address'   => $request->address,
             'latitude'  => $request->latitude,
             'longitude' => $request->longitude,
             'user_id' =>  auth()->user()->id,
-            'category_id' =>  1
+            // 'category_id' =>  1
+            // 'user_id' =>  auth()->user()->id,
+            // 'category_id' =>  1
         ]);
        
 
@@ -91,8 +99,9 @@ class OutletController extends Controller
     public function edit(Outlet $outlet)
     {
         $this->authorize('update', $outlet);
+        $categories = Category::where('status', 'Centro')->get();
 
-        return view('outlets.edit', compact('outlet'));
+        return view('outlets.edit', compact('outlet', 'categories'));
     }
 
     /**
@@ -106,13 +115,18 @@ class OutletController extends Controller
     {
         $this->authorize('update', $outlet);
 
-        $outletData = $request->validate([
+        $newOutlet = $request->validate([
             'name'      => 'required|max:60',
+            'email'   => 'nullable|max:255',
+            'phone'   => 'nullable|max:255',
+            'category_id' => 'nullable|max:255',
+            'city'   => 'nullable|max:255',
             'address'   => 'nullable|max:255',
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
+           
         ]);
-        $outlet->update($outletData);
+        $outlet->update($newOutlet);
 
         return redirect()->route('outlets.show', $outlet);
     }

@@ -14,14 +14,29 @@ class OutletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $outlets = Outlet::all();
+        $query = Outlet::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'like', '%' . $request->input('search') . '%');
+        }
+        if ($request->has('city')) {
+            // Aplica filtro por ciudad
+            $query->where('city', $request->input('city'));
+        }
+    
+        if ($request->has('category_id') && $request->input('category_id') !== 'all') {
+            // Aplica filtro por categoría
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        $outlets = $query->get();
 
         $geoJSONdata = $outlets->map(function ($outlet) {
             return [
                 'type'       => 'Feature',
-                'properties' => new OutletResource ($outlet),
+                'properties' => new OutletResource($outlet),
                 'geometry'   => [
                     'type'        => 'Point',
                     'coordinates' => [
@@ -37,6 +52,4 @@ class OutletController extends Controller
             'features' => $geoJSONdata,
         ]);
     }
-
-   
 }

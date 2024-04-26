@@ -42,11 +42,64 @@
                     <input id="name" type="text" class="form-input w-full{{ $errors->has('name') ? ' border-red-500' : '' }}" name="name" value="{{ old('name', $outlet->name) }}" required>
                     {!! $errors->first('name', '<span class="text-red-600" role="alert">:message</span>') !!}
                 </div>
-                <div class="mb-4">
-                    <label for="address" class="text-gray-600">{{ __('Dirección') }}</label>
-                    <textarea id="address" class="form-textarea w-full{{ $errors->has('address') ? ' border-red-500' : '' }}" name="address" rows="4" required>{{ old('address', $outlet->address) }}</textarea>
-                    {!! $errors->first('address', '<span class="text-red-600" role="alert">:message</span>') !!}
+             
+                <div class="flex">
+                    <div class="w-1/2 mr-2">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email de Web o
+                            Email</label>
+                        <input id="email" type="text"
+                            class="form-input{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email"
+                            value="{{ old('email') }}" required>
+                        {!! $errors->first('email', '<p class="text-red-500 text-xs italic">:message</p>') !!}
+                    </div>
+                    <div class="w-1/2">
+                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Contacto</label>
+                        <input id="phone" type="text"
+                            class="form-input{{ $errors->has('phone') ? ' border-red-500' : '' }}" name="phone"
+                            value="{{ old('phone') }}" required>
+                        {!! $errors->first('phone', '<p class="text-red-500 text-xs italic">:message</p>') !!}
+                    </div>
                 </div>
+                <div class="flex">
+                    <div class="w-1/2 mr-2 gap-4">
+                        <label for="category_id" class="block text-gray-700 text-sm font-bold mb-2">Categoría</label>
+                        <select id="category_id" name="category_id" class="form-select{{ $errors->has('category_id') ? ' border-red-500' : '' }}" required>
+                            <option value="" selected disabled>Selecciona una categoría</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        {!! $errors->first('category_id', '<p class="text-red-500 text-xs italic">:message</p>') !!}
+                        <select id="city" name="city" required>
+                            <option value="" selected disabled>Selecciona un Departamento</option>
+                            <option value="La Paz" {{ old('department_id') == 1 ? 'selected' : '' }}>El Alto</option>
+                            <option value="El Alto" {{ old('department_id') == 1 ? 'selected' : '' }}>La Paz</option>
+                            <option value="Oruro" {{ old('department_id') == 2 ? 'selected' : '' }}>Oruro</option>
+                            <option value="Potosí" {{ old('department_id') == 3 ? 'selected' : '' }}>Potosí</option>
+                            <option value="Tarija" {{ old('department_id') == 4 ? 'selected' : '' }}>Tarija</option>
+                            <option value="Santa Cruz" {{ old('department_id') == 5 ? 'selected' : '' }}>Santa Cruz</option>
+                            <option value="Beni" {{ old('department_id') == 6 ? 'selected' : '' }}>Beni</option>
+                            <option value="Pando" {{ old('department_id') == 7 ? 'selected' : '' }}>Pando</option>
+                            <option value="Cochabamba" {{ old('department_id') == 8 ? 'selected' : '' }}>Cochabamba</option>
+                            <option value="Sucre" {{ old('department_id') == 9 ? 'selected' : '' }}>Sucre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="w-1/2 mr-2">
+                        <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Dirección</label>
+                        <input id="address" type="text"
+                            class="form-input{{ $errors->has('address') ? ' border-red-500' : '' }}" name="address"
+                            value="{{ old('address') }}" required>
+                        {!! $errors->first('address', '<p class="text-red-500 text-xs italic">:message</p>') !!}
+                    </div>
+                </div>
+
+
+
+
+
                 <div class="flex mb-4">
                     <div class="w-1/2 mr-4">
                         <label for="latitude" class="text-gray-600">{{ __('latitude') }}</label>

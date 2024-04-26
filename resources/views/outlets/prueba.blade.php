@@ -14,7 +14,7 @@
                     todo</button>
 
                 <select id="category_id" name="category_id" required>
-                    {{-- <option value="" selected disabled>Selecciona una categoría</option> --}}
+                    <option value="" selected disabled>Selecciona una categoría</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
@@ -24,15 +24,15 @@
 
                 <select id="city" name="city" required>
                     <option value="" selected disabled>Selecciona un Departamento</option>
-                    <option value="La Paz" {{ old('department_id') == 1 ? 'selected' : '' }}>La Paz</option>
-                    <option value="Oruro" {{ old('department_id') == 2 ? 'selected' : '' }}>Oruro</option>
-                    <option value="Potosí" {{ old('department_id') == 3 ? 'selected' : '' }}>Potosí</option>
-                    <option value="Tarija" {{ old('department_id') == 4 ? 'selected' : '' }}>Tarija</option>
-                    <option value="Santa Cruz" {{ old('department_id') == 5 ? 'selected' : '' }}>Santa Cruz</option>
-                    <option value="Beni" {{ old('department_id') == 6 ? 'selected' : '' }}>Beni</option>
-                    <option value="Pando" {{ old('department_id') == 7 ? 'selected' : '' }}>Pando</option>
-                    <option value="Cochabamba" {{ old('department_id') == 8 ? 'selected' : '' }}>Cochabamba</option>
-                    <option value="Sucre" {{ old('department_id') == 9 ? 'selected' : '' }}>Sucre</option>
+                    <option value="1" {{ old('department_id') == 1 ? 'selected' : '' }}>La Paz</option>
+                    <option value="2" {{ old('department_id') == 2 ? 'selected' : '' }}>Oruro</option>
+                    <option value="3" {{ old('department_id') == 3 ? 'selected' : '' }}>Potosí</option>
+                    <option value="4" {{ old('department_id') == 4 ? 'selected' : '' }}>Tarija</option>
+                    <option value="5" {{ old('department_id') == 5 ? 'selected' : '' }}>Santa Cruz</option>
+                    <option value="6" {{ old('department_id') == 6 ? 'selected' : '' }}>Beni</option>
+                    <option value="7" {{ old('department_id') == 7 ? 'selected' : '' }}>Pando</option>
+                    <option value="8" {{ old('department_id') == 8 ? 'selected' : '' }}>Cochabamba</option>
+                    <option value="9" {{ old('department_id') == 9 ? 'selected' : '' }}>Chuquisaca</option>
                 </select>
             </div>
 
@@ -107,7 +107,7 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
+        
         var markers = L.markerClusterGroup();
 
         function loadAllLocations() {
@@ -133,12 +133,10 @@
         // Cargar todos los marcadores al iniciar
         loadAllLocations();
 
-        function searchLocations(query, city, category_id) {
+        function searchLocations(query) {
             axios.get('{{ route('api.outlets.index') }}', {
                     params: {
-                        search: query,
-                        city: city,
-                        category_id: category_id
+                        search: query
                     }
                 })
                 .then(function(response) {
@@ -162,18 +160,11 @@
         // Evento click para el botón de búsqueda
         document.getElementById('search-btn').addEventListener('click', function() {
             var searchQuery = document.getElementById('search-input').value;
-            var city = document.getElementById('city').value;
-            var category_id = document.getElementById('category_id').value;
-            console.log(searchQuery, city, category_id);
-            searchLocations(searchQuery, city, category_id);
+            searchLocations(searchQuery);
         });
 
         document.getElementById('show-all-btn').addEventListener('click', function() {
-            // Limpiar los campos de búsqueda y cargar todos los marcadores
-            document.getElementById('search-input').value = '';
-            document.getElementById('city').selectedIndex = 0;
-            document.getElementById('category_id').selectedIndex = 0;
-            loadAllLocations();
+            loadAllLocations(); // Cargar todos los marcadores
         });
 
         // Verificar si el usuario tiene el rol "Colaborador"
@@ -206,5 +197,5 @@
                 title: "Mostrar mi ubicación"
             }
         }).addTo(map);
-    </script>
+        </script>
 @endpush

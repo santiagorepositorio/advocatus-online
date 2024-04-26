@@ -9,7 +9,7 @@ class Outlet extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'address', 'latitude', 'longitude', 'user_id', 'category_id',
+        'name', 'email', 'phone','address', 'city',  'latitude', 'longitude', 'user_id', 'category_id',
     ];
     public $appends = [
         'coordinate', 'map_popup_content',
@@ -45,8 +45,8 @@ class Outlet extends Model
     {
         $mapPopupContent = '';
         $mapPopupContent .= '<div class="my-2"><strong>'.__('Centro').':</strong><br>'.$this->name_link.'</div>';
-        // $mapPopupContent .= '<div class="my-2"><strong>'.__('Direccion').':</strong><br>'.$this->address.'</div>';
-        $mapPopupContent .= '<div class="my-2"><strong>'.__('Ubicación').':</strong><br>'.$this->coordinate.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('Contacto').':</strong><br>'.$this->phone.'</div>';
+        // $mapPopupContent .= '<div class="my-2"><strong>'.__('Ubicación').':</strong><br>'.$this->coordinate.'</div>';
 
         return $mapPopupContent;
     }

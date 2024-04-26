@@ -18,12 +18,12 @@
                     </div>
                     <div class="flex">
                         <div class="w-1/2 mr-2">
-                            <label for="link" class="block text-gray-700 text-sm font-bold mb-2">Link de Web o
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email de Web o
                                 Email</label>
-                            <input id="link" type="text"
-                                class="form-input{{ $errors->has('link') ? ' border-red-500' : '' }}" name="link"
-                                value="{{ old('link') }}" required>
-                            {!! $errors->first('link', '<p class="text-red-500 text-xs italic">:message</p>') !!}
+                            <input id="email" type="text"
+                                class="form-input{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email"
+                                value="{{ old('email') }}" required>
+                            {!! $errors->first('email', '<p class="text-red-500 text-xs italic">:message</p>') !!}
                         </div>
                         <div class="w-1/2">
                             <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Contacto</label>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="flex">
-                        <div class="w-1/2 mr-2">
+                        <div class="w-1/2 mr-2 gap-4">
                             <label for="category_id" class="block text-gray-700 text-sm font-bold mb-2">Categoría</label>
                             <select id="category_id" name="category_id" class="form-select{{ $errors->has('category_id') ? ' border-red-500' : '' }}" required>
                                 <option value="" selected disabled>Selecciona una categoría</option>
@@ -45,6 +45,19 @@
                                 @endforeach
                             </select>
                             {!! $errors->first('category_id', '<p class="text-red-500 text-xs italic">:message</p>') !!}
+                            <select id="city" name="city" required>
+                                <option value="" selected disabled>Selecciona un Departamento</option>
+                                <option value="La Paz" {{ old('department_id') == 1 ? 'selected' : '' }}>El Alto</option>
+                                <option value="El Alto" {{ old('department_id') == 1 ? 'selected' : '' }}>La Paz</option>
+                                <option value="Oruro" {{ old('department_id') == 2 ? 'selected' : '' }}>Oruro</option>
+                                <option value="Potosí" {{ old('department_id') == 3 ? 'selected' : '' }}>Potosí</option>
+                                <option value="Tarija" {{ old('department_id') == 4 ? 'selected' : '' }}>Tarija</option>
+                                <option value="Santa Cruz" {{ old('department_id') == 5 ? 'selected' : '' }}>Santa Cruz</option>
+                                <option value="Beni" {{ old('department_id') == 6 ? 'selected' : '' }}>Beni</option>
+                                <option value="Pando" {{ old('department_id') == 7 ? 'selected' : '' }}>Pando</option>
+                                <option value="Cochabamba" {{ old('department_id') == 8 ? 'selected' : '' }}>Cochabamba</option>
+                                <option value="Sucre" {{ old('department_id') == 9 ? 'selected' : '' }}>Sucre</option>
+                            </select>
                         </div>
                         
                         <div class="w-1/2 mr-2">
@@ -58,7 +71,7 @@
                     <div class="flex">
                         <div class="w-1/2 mr-2">
                             <label for="latitude"
-                                class="block text-gray-700 text-sm font-bold mb-2">{{ __('outlet.latitude') }}</label>
+                                class="block text-gray-700 text-sm font-bold mb-2">Latitude</label>
                             <input id="latitude" type="text"
                                 class="form-input{{ $errors->has('latitude') ? ' border-red-500' : '' }}" name="latitude"
                                 value="{{ old('latitude', request('latitude')) }}" required>
@@ -66,14 +79,14 @@
                         </div>
                         <div class="w-1/2">
                             <label for="longitude"
-                                class="block text-gray-700 text-sm font-bold mb-2">{{ __('outlet.longitude') }}</label>
+                                class="block text-gray-700 text-sm font-bold mb-2">Longitude</label>
                             <input id="longitude" type="text"
                                 class="form-input{{ $errors->has('longitude') ? ' border-red-500' : '' }}" name="longitude"
                                 value="{{ old('longitude', request('longitude')) }}" required>
                             {!! $errors->first('longitude', '<p class="text-red-500 text-xs italic">:message</p>') !!}
                         </div>
                     </div>
-                    <div id="mapid" class="mt-4"></div>
+                    <div id="mapid" class="mt-4 h-64 sm:h-96 lg:h-128 w-full"></div>
                     <div class="flex items-center justify-between mt-4">
                         <button class="btn btn-primary ml-2">Registrar Centro</button>
                         {{-- <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Registrar Centro</button> --}}
