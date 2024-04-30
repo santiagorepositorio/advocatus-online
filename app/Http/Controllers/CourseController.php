@@ -82,16 +82,16 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Course $course)
-    {   
+    {   $postBodyWithoutTags = strip_tags($course->description);
         SEOMeta::setTitle($course->title);
-        SEOMeta::setDescription($course->description);
+        SEOMeta::setDescription($postBodyWithoutTags);
        
 
         SEOMeta::setTitle($course->title);
-        SEOMeta::setDescription($course->description);
+        SEOMeta::setDescription($postBodyWithoutTags);
         SEOMeta::addMeta('article:section', $course->category, 'property');       
 
-        OpenGraph::setDescription($course->description);
+        OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($course->title);
         OpenGraph::addImage(Storage::url($course->image->url));       
        
@@ -100,7 +100,7 @@ class CourseController extends Controller
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($course->title);
-        JsonLd::setDescription($course->description);
+        JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage(Storage::url($course->image->url));
 
 

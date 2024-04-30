@@ -52,16 +52,17 @@ class BlogController extends Controller
      */
     public function show(Post $post)
     {
+        $postBodyWithoutTags = strip_tags($post->body);
 
         SEOMeta::setTitle($post->title);
-        SEOMeta::setDescription($post->body);
+        SEOMeta::setDescription($postBodyWithoutTags);
        
 
         SEOMeta::setTitle($post->title);
-        SEOMeta::setDescription($post->body);
+        SEOMeta::setDescription($postBodyWithoutTags);
         SEOMeta::addMeta('article:section', $post->category, 'property');       
 
-        OpenGraph::setDescription($post->body);
+        OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($post->title);
         OpenGraph::addImage($post->image);
     
@@ -69,7 +70,7 @@ class BlogController extends Controller
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($post->title);
-        JsonLd::setDescription($post->body);
+        JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage($post->image);
 
         $similares = Post::where('category_id', $post->category_id)   
