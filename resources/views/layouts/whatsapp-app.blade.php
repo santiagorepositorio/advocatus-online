@@ -26,6 +26,10 @@
             window.PUSHER_APP_KEY = '{{ config('broadcasting.connections.pusher.key') }}';
             window.APP_ENV = {{ config('app.env') == 'production' ? true : false }};
         </script> --}}
+        {!! SEOMeta::generate() !!}
+        {!! OpenGraph::generate() !!}
+        {!! Twitter::generate() !!}
+        {!! JsonLd::generate() !!}
 
 </head>
 

@@ -24,7 +24,10 @@
 
     <!-- Styles -->
     @livewireStyles
-
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
     @stack('css')
 </head>
 
