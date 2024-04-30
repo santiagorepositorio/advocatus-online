@@ -36,15 +36,21 @@ class CourseController extends Controller
     public function index()
     {
         
-        SEOMeta::setTitle("Últimas publicaciones");
-        SEOMeta::setDescription("Aquí encontrarás las últimas publicaciones que he subido a mi blog.");
-        SEOMeta::setCanonical("https://advocatus-online.com/");
-        // SEOTools::setDescription("Aquí encontrarás las últimas publicaciones que he subido a mi blog.");
-        OpenGraph::setDescription("Aquí encontrarás las últimas publicaciones que he subido a mi blog.");
-        OpenGraph::setTitle("Últimas publicaciones");
+        SEOMeta::setTitle('Home');
+        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('http://current.url.com');
         OpenGraph::addProperty('type', 'articles');
-        TwitterCard::setSite('@acy291190');
-        TwitterCard::setTitle("Últimas publicaciones");
+
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@LuizVinicius73');
+
+        JsonLd::setTitle('Homepage');
+        JsonLd::setDescription('This is my page description');
+        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
         return view('courses.index');
     }
 
@@ -79,7 +85,28 @@ class CourseController extends Controller
     {   
         SEOMeta::setTitle($course->title);
         SEOMeta::setDescription($course->description);
+       
+
+        SEOMeta::setTitle($course->title);
+        SEOMeta::setDescription($course->description);
+        SEOMeta::addMeta('article:section', $course->category, 'property');       
+
+        OpenGraph::setDescription($course->description);
+        OpenGraph::setTitle($course->title);
         OpenGraph::addImage(Storage::url($course->image->url));
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle($course->title);
+        TwitterCard::setSite('@LuizVinicius73');
+
+        JsonLd::setTitle($course->title);
+        JsonLd::setDescription($course->description);
+        JsonLd::addImage(Storage::url($course->image->url));
+
+
+
+
         $this->authorize('published', $course);
 
         $similares = Course::where('category_id', $course->category_id)
