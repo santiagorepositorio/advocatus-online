@@ -54,14 +54,14 @@ class BlogController extends Controller
     {
 
         SEOMeta::setTitle($post->title);
-        SEOMeta::setDescription($post->description);
+        SEOMeta::setDescription($post->body);
        
 
         SEOMeta::setTitle($post->title);
-        SEOMeta::setDescription($post->description);
+        SEOMeta::setDescription($post->body);
         SEOMeta::addMeta('article:section', $post->category, 'property');       
 
-        OpenGraph::setDescription($post->description);
+        OpenGraph::setDescription($post->body);
         OpenGraph::setTitle($post->title);
         OpenGraph::addImage(Storage::url($post->image->url));
         OpenGraph::setUrl('https://advocatus-online.com/');
@@ -71,7 +71,7 @@ class BlogController extends Controller
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($post->title);
-        JsonLd::setDescription($post->description);
+        JsonLd::setDescription($post->body);
         JsonLd::addImage(Storage::url($post->image->url));
 
         $similares = Post::where('category_id', $post->category_id)   
