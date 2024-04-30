@@ -79,7 +79,7 @@ class CourseController extends Controller
     {   
         SEOMeta::setTitle($course->title);
         SEOMeta::setDescription($course->description);
-       
+        OpenGraph::addImage(Storage::url($course->image->url));
         $this->authorize('published', $course);
 
         $similares = Course::where('category_id', $course->category_id)

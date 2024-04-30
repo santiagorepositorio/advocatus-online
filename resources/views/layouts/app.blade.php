@@ -22,8 +22,9 @@
     <!-- Styles -->
     @livewireStyles
     {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
 
-    @yield('headseo')
+
 
 </head>
 
