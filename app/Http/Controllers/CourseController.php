@@ -79,15 +79,7 @@ class CourseController extends Controller
     {   
         SEOMeta::setTitle($course->title);
         SEOMeta::setDescription($course->description);
-        //SEOTools::setTitle($post->title);
-        SEOTools::setDescription($course->description);
-        OpenGraph::setDescription($course->description);
-        OpenGraph::setTitle($course->title);
-        OpenGraph::addProperty('type', 'articles');
-        //OpenGraph::setUrl('http://current.url.com');
-        TwitterCard::setTitle($course->title);
-        TwitterCard::setSite('@acy291190');
-        // funcion que evita ver cursos no publicados
+       
         $this->authorize('published', $course);
 
         $similares = Course::where('category_id', $course->category_id)
