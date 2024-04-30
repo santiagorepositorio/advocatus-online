@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\User;
-
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -22,6 +26,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class CourseController extends Controller
 {
+    
 
     /**
      * Display a listing of the resource.
@@ -30,6 +35,16 @@ class CourseController extends Controller
      */
     public function index()
     {
+        
+        SEOMeta::setTitle("Últimas publicaciones");
+        SEOMeta::setDescription("Aquí encontrarás las últimas publicaciones que he subido a mi blog.");
+        SEOMeta::setCanonical("https://advocatus-online.com/");
+        // SEOTools::setDescription("Aquí encontrarás las últimas publicaciones que he subido a mi blog.");
+        OpenGraph::setDescription("Aquí encontrarás las últimas publicaciones que he subido a mi blog.");
+        OpenGraph::setTitle("Últimas publicaciones");
+        OpenGraph::addProperty('type', 'articles');
+        TwitterCard::setSite('@acy291190');
+        TwitterCard::setTitle("Últimas publicaciones");
         return view('courses.index');
     }
 
@@ -61,7 +76,18 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Course $course)
-    {   // funcion que evita ver cursos no publicados
+    {   
+        SEOMeta::setTitle($course->title);
+        SEOMeta::setDescription($course->description);
+        //SEOTools::setTitle($post->title);
+        SEOTools::setDescription($course->description);
+        OpenGraph::setDescription($course->description);
+        OpenGraph::setTitle($course->title);
+        OpenGraph::addProperty('type', 'articles');
+        //OpenGraph::setUrl('http://current.url.com');
+        TwitterCard::setTitle($course->title);
+        TwitterCard::setSite('@acy291190');
+        // funcion que evita ver cursos no publicados
         $this->authorize('published', $course);
 
         $similares = Course::where('category_id', $course->category_id)

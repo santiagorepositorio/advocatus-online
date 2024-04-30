@@ -187,6 +187,7 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
    
     

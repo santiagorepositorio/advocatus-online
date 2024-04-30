@@ -21,6 +21,12 @@
 
     <!-- Styles -->
     @livewireStyles
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
+    {!! SEO::generate(true) !!}
+    @yield('headseo')
 
 </head>
 

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "artesaos/seotools": "^1.2",
         "barryvdh/laravel-dompdf": "^2.0",
         "chillerlan/php-qrcode": "^5.0",
         "doctrine/dbal": "^4.0",
