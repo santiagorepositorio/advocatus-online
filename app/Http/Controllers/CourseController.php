@@ -93,9 +93,8 @@ class CourseController extends Controller
 
         OpenGraph::setDescription($course->description);
         OpenGraph::setTitle($course->title);
-        OpenGraph::addImage(Storage::url($course->image->url));
-        OpenGraph::setUrl('https://advocatus-online.com/');
-        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(Storage::url($course->image->url));       
+       
 
         TwitterCard::setTitle($course->title);
         TwitterCard::setSite('@Sobotred');

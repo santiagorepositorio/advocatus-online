@@ -24,11 +24,11 @@
 
     <!-- Styles -->
     @livewireStyles
+    @stack('css')
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
-    @stack('css')
 </head>
 
 <body class="font-sans antialiased sm:overflow-auto"
