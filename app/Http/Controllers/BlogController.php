@@ -63,14 +63,14 @@ class BlogController extends Controller
 
         OpenGraph::setDescription($post->body);
         OpenGraph::setTitle($post->title);
-        OpenGraph::addImage(Storage::url($post->image));
+        OpenGraph::addImage($post->image);
     
         TwitterCard::setTitle($post->title);
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($post->title);
         JsonLd::setDescription($post->body);
-        JsonLd::addImage(Storage::url($post->image));
+        JsonLd::addImage($post->image);
 
         $similares = Post::where('category_id', $post->category_id)   
                     ->where('id', '!=', $post->id)                 
