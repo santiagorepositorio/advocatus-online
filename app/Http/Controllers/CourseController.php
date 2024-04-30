@@ -36,21 +36,21 @@ class CourseController extends Controller
     public function index()
     {
         
-        SEOMeta::setTitle('Home');
-        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setTitle('Cursos Virtuales');
+        SEOMeta::setDescription('Set de cursos para Abogados  & Informaticos');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
-        OpenGraph::setDescription('This is my page description');
-        OpenGraph::setTitle('Home');
-        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::setDescription('Set de cursos para Abogados  & Informaticos');
+        OpenGraph::setTitle('Cursos Virtuales');
+        OpenGraph::setUrl('https://advocatus-online.com/courses');
         OpenGraph::addProperty('type', 'articles');
 
-        TwitterCard::setTitle('Homepage');
-        TwitterCard::setSite('@LuizVinicius73');
+        TwitterCard::setTitle('Cursos Virtuales');
+        TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle('Homepage');
-        JsonLd::setDescription('This is my page description');
-        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
+        JsonLd::setDescription('Set de cursos para Abogados  & Informaticos');
+        JsonLd::addImage('https://advocatus-online.com/assets/imgs/logo/logo-top-1.png');
         return view('courses.index');
     }
 
@@ -94,11 +94,11 @@ class CourseController extends Controller
         OpenGraph::setDescription($course->description);
         OpenGraph::setTitle($course->title);
         OpenGraph::addImage(Storage::url($course->image->url));
-        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::setUrl('https://advocatus-online.com/');
         OpenGraph::addProperty('type', 'articles');
 
         TwitterCard::setTitle($course->title);
-        TwitterCard::setSite('@LuizVinicius73');
+        TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($course->title);
         JsonLd::setDescription($course->description);

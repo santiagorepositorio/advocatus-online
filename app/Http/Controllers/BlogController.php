@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -47,6 +53,26 @@ class BlogController extends Controller
     public function show(Post $post)
     {
 
+        SEOMeta::setTitle($post->title);
+        SEOMeta::setDescription($post->description);
+       
+
+        SEOMeta::setTitle($post->title);
+        SEOMeta::setDescription($post->description);
+        SEOMeta::addMeta('article:section', $post->category, 'property');       
+
+        OpenGraph::setDescription($post->description);
+        OpenGraph::setTitle($post->title);
+        OpenGraph::addImage(Storage::url($post->image->url));
+        OpenGraph::setUrl('https://advocatus-online.com/');
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle($post->title);
+        TwitterCard::setSite('@Sobotred');
+
+        JsonLd::setTitle($post->title);
+        JsonLd::setDescription($post->description);
+        JsonLd::addImage(Storage::url($post->image->url));
 
         $similares = Post::where('category_id', $post->category_id)   
                     ->where('id', '!=', $post->id)                 
