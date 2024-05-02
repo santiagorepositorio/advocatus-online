@@ -10,6 +10,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\Storage;
 
 
 class FolderController extends Controller
@@ -68,39 +69,47 @@ class FolderController extends Controller
      */
     public function show(Folder $folder)
     {
+        $postBodyWithoutTags = strip_tags('Caperta de Material Digital Jurídico & Informatico');
         SEOMeta::setTitle($folder->name);
-        SEOMeta::setDescription('Caperta de Material Digital Jurídico & Informatico');
-        SEOMeta::setCanonical('https://advocatus-online.com/folders');
+        SEOMeta::setDescription($postBodyWithoutTags);       
 
-        OpenGraph::setDescription('Caperta de Material Digital Jurídico & Informatico');
+        SEOMeta::setTitle($folder->name);
+        SEOMeta::setDescription($postBodyWithoutTags);
+        SEOMeta::addMeta('article:section', $folder->category, 'property');       
+
+        OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($folder->name);
-        OpenGraph::setUrl('https://advocatus-online.com/folders');
-        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage('https://advocatus-online.com/assets/imgs/icons8-carpeta-48.png');    
 
         TwitterCard::setTitle($folder->name);
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($folder->name);
-        JsonLd::setDescription('Caperta de Material Digital Jurídico & Informatico');
+        JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage('https://advocatus-online.com/assets/imgs/icons8-carpeta-48.png');
+
         return view('folders.show', compact('folder'));
     }
 
     public function ver(File $item){
-        SEOMeta::setTitle($item->name);
-        SEOMeta::setDescription('Archivo para Descargar de :'.$item->folder->name);
-        SEOMeta::setCanonical('https://advocatus-online.com/folders');
 
-        OpenGraph::setDescription('Archivo para Descargar de :'.$item->folder->name);
+        $postBodyWithoutTags = strip_tags('Archivo para Descargar de :'.$item->folder->name);
+        SEOMeta::setTitle($item->name);
+        SEOMeta::setDescription($postBodyWithoutTags);       
+
+        SEOMeta::setTitle($item->name);
+        SEOMeta::setDescription($postBodyWithoutTags);
+        SEOMeta::addMeta('article:section', $item->folder->category, 'property');       
+
+        OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($item->name);
-        OpenGraph::setUrl('https://advocatus-online.com/folders');
-        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage('https://advocatus-online.com/assets/imgs/archivo-min.png');    
 
         TwitterCard::setTitle($item->name);
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($item->name);
-        JsonLd::setDescription('Archivo para Descargar de :'.$item->folder->name);
+        JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage('https://advocatus-online.com/assets/imgs/archivo-min.png');
 
         return view('folders.ver', compact('item'));

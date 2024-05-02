@@ -10,6 +10,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\Storage;
 
 class OutletController extends Controller
 {
@@ -91,21 +92,24 @@ class OutletController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Outlet $outlet)
-    {
-        SEOMeta::setTitle('Centro: '.$outlet->name);
-        SEOMeta::setDescription('Ciudad:'.$outlet->city.' [Dirección: '.$outlet->address. ', Contacto: '.$outlet->phone.']');
-        SEOMeta::setCanonical('https://advocatus-online.com/centros_inclusivos');
+    {   
+        $postBodyWithoutTags = strip_tags('Ciudad:'.$outlet->city.' [Dirección: '.$outlet->address. ', Contacto: '.$outlet->phone.']');
+        SEOMeta::setTitle($outlet->name);
+        SEOMeta::setDescription($postBodyWithoutTags);       
 
-        OpenGraph::setDescription('Ciudad:'.$outlet->city.' [Dirección: '.$outlet->address. ', Contacto: '.$outlet->phone.']');
-        OpenGraph::setTitle('Centro: '.$outlet->name);
-        OpenGraph::setUrl('https://advocatus-online.com/centros_inclusivos');
-        OpenGraph::addProperty('type', 'articles');
+        SEOMeta::setTitle($outlet->name);
+        SEOMeta::setDescription($postBodyWithoutTags);
+        SEOMeta::addMeta('article:section', $outlet->category, 'property');       
 
-        TwitterCard::setTitle('Centro: '.$outlet->name);
+        OpenGraph::setDescription($postBodyWithoutTags);
+        OpenGraph::setTitle($outlet->name);
+        OpenGraph::addImage('https://advocatus-online.com/assets/imgs/theme/mapageo.png');    
+
+        TwitterCard::setTitle($outlet->name);
         TwitterCard::setSite('@Sobotred');
 
-        JsonLd::setTitle('Centro: '.$outlet->name);
-        JsonLd::setDescription('Ciudad:'.$outlet->city.' [Dirección: '.$outlet->address. ', Contacto: '.$outlet->phone.']');
+        JsonLd::setTitle($outlet->name);
+        JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/mapageo.png');
         return view('outlets.show', compact('outlet'));
     }

@@ -34,8 +34,7 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {        
         SEOMeta::setTitle('Cursos Virtuales');
         SEOMeta::setDescription('Set de cursos para Abogados  & Informaticos');
         SEOMeta::setCanonical('https://advocatus-online.com/courses');
@@ -82,7 +81,8 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Course $course)
-    {   $postBodyWithoutTags = strip_tags($course->description);
+    {   
+        $postBodyWithoutTags = strip_tags($course->description);
         SEOMeta::setTitle($course->title);
         SEOMeta::setDescription($postBodyWithoutTags);
        

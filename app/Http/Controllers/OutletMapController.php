@@ -19,21 +19,24 @@ class OutletMapController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {    
+        $postBodyWithoutTags = strip_tags('Guía de referencia sobre Centros Inclusivos por Departamentos a Nivel Nacional - Bolivia');
         SEOMeta::setTitle('Centros e Institutos Inclusivos');
-        SEOMeta::setDescription('Guía de referencia sobre Centros Inclusivos por Departamentos a Nivel Nacional - Bolivia');
-        SEOMeta::setCanonical('https://advocatus-online.com/centros_inclusivos');
+        SEOMeta::setDescription($postBodyWithoutTags);       
 
-        OpenGraph::setDescription('Guía de referencia sobre Centros Inclusivos por Departamentos a Nivel Nacional - Bolivia');
+        SEOMeta::setTitle('Centros e Institutos Inclusivos');
+        SEOMeta::setDescription($postBodyWithoutTags);
+        SEOMeta::addMeta('article:section', 'Centros Inclusivos', 'property');       
+
+        OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle('Centros e Institutos Inclusivos');
-        OpenGraph::setUrl('https://advocatus-online.com/centros_inclusivos');
-        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage('https://advocatus-online.com/assets/imgs/theme/mapageo.png');    
 
         TwitterCard::setTitle('Centros e Institutos Inclusivos');
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle('Centros e Institutos Inclusivos');
-        JsonLd::setDescription('Guía de referencia sobre Centros Inclusivos por Departamentos a Nivel Nacional - Bolivia');
+        JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/mapageo.png');
         $categories = Category::where('status', 'Centro')->get();
         return view('outlets.map', compact('categories'));

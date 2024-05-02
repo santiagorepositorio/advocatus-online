@@ -20,6 +20,21 @@ class BlogController extends Controller
      */
     public function index()
     {
+        SEOMeta::setTitle('Artículos Publicados');
+        SEOMeta::setDescription('Publicaciones profesionales Jurídico & Informáticos sobre temas del Derecho, Discapacidad, TEA y otros referentes');
+        SEOMeta::setCanonical('https://advocatus-online.com/posts');
+
+        OpenGraph::setDescription('Publicaciones profesionales Jurídico & Informáticos sobre temas del Derecho, Discapacidad, TEA y otros referentes');
+        OpenGraph::setTitle('Artículos Publicados');
+        OpenGraph::setUrl('https://advocatus-online.com/posts');
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle('Artículos Publicados');
+        TwitterCard::setSite('@Sobotred');
+
+        JsonLd::setTitle('Artículos Publicados');
+        JsonLd::setDescription('Publicaciones profesionales Jurídico & Informáticos sobre temas del Derecho, Discapacidad, TEA y otros referentes');
+        JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/bloguear.png');
         return view('blogs.index');
     }
 
