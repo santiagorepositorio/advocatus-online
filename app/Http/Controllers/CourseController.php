@@ -38,7 +38,7 @@ class CourseController extends Controller
         
         SEOMeta::setTitle('Cursos Virtuales');
         SEOMeta::setDescription('Set de cursos para Abogados  & Informaticos');
-        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        SEOMeta::setCanonical('https://advocatus-online.com/courses');
 
         OpenGraph::setDescription('Set de cursos para Abogados  & Informaticos');
         OpenGraph::setTitle('Cursos Virtuales');
@@ -48,9 +48,9 @@ class CourseController extends Controller
         TwitterCard::setTitle('Cursos Virtuales');
         TwitterCard::setSite('@Sobotred');
 
-        JsonLd::setTitle('Homepage');
+        JsonLd::setTitle('Cursos Virtuales');
         JsonLd::setDescription('Set de cursos para Abogados  & Informaticos');
-        JsonLd::addImage('https://advocatus-online.com/assets/imgs/logo/logo-top-1.png');
+        JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/icono.png');
         return view('courses.index');
     }
 

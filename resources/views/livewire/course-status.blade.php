@@ -28,7 +28,7 @@
                     @endif
                 </div>
                 @if ($current->resource)
-                    <div class="flex items-center text-gray-600 cursor-pointer" wire:click="download">
+                    <div class="flex items-center text-gray-600 cursor-pointer">
                         <i class="fas fa-download text-gray-600 mr-2 text-lg"></i>
                         <p class="text-sm ml-2">Descargar Recurso</p>
                     </div>

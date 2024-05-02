@@ -52,6 +52,8 @@ Route::get('courses', [CourseController::class, 'index'])->name('courses.index')
 Route::get('posts', [BlogController::class, 'index'])->name('posts.index');
 Route::get('folders', [FolderController::class, 'index'])->name('folders.index');
 Route::get('folders/{folder}', [FolderController::class, 'show'])->name('folders.show');
+Route::get('folder/{item}', [FolderController::class, 'ver'])->name('folder.ver');
+Route::get('download/{item}', [FolderController::class, 'download'])->name('folder.download');
 Route::get('posts/{post}', [BlogController::class, 'show'])->name('posts.show');
 Route::get('profiles', [ProfileController::class, 'index'])->name('profiles.index');
 Route::get('/course.show/{course}', [CourseController::class, 'show'])->name('courses.show');

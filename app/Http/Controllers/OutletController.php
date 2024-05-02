@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Outlet;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class OutletController extends Controller
 {
@@ -87,6 +92,21 @@ class OutletController extends Controller
      */
     public function show(Outlet $outlet)
     {
+        SEOMeta::setTitle('Centro: '.$outlet->name);
+        SEOMeta::setDescription('Ciudad:'.$outlet->city.' [Dirección: '.$outlet->address. ', Contacto: '.$outlet->phone.']');
+        SEOMeta::setCanonical('https://advocatus-online.com/centros_inclusivos');
+
+        OpenGraph::setDescription('Ciudad:'.$outlet->city.' [Dirección: '.$outlet->address. ', Contacto: '.$outlet->phone.']');
+        OpenGraph::setTitle('Centro: '.$outlet->name);
+        OpenGraph::setUrl('https://advocatus-online.com/centros_inclusivos');
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle('Centro: '.$outlet->name);
+        TwitterCard::setSite('@Sobotred');
+
+        JsonLd::setTitle('Centro: '.$outlet->name);
+        JsonLd::setDescription('Ciudad:'.$outlet->city.' [Dirección: '.$outlet->address. ', Contacto: '.$outlet->phone.']');
+        JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/mapageo.png');
         return view('outlets.show', compact('outlet'));
     }
 
