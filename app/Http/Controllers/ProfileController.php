@@ -115,7 +115,7 @@ class ProfileController extends Controller
         $newProfile = $request->validate([
             'city'   => 'nullable|max:255',
             'state'   => 'nullable|max:255',
-            'about'   => 'nullable|max:255',
+            'about'   => 'nullable|max:500',
             'name'      => 'required|max:60',
             'slug'   => 'required|max:255',
             'rpa'   => 'nullable|max:255',
