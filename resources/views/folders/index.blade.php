@@ -4,7 +4,7 @@
             <div class="w-full md:w-3/4 lg:w-1/2">
                 <h1 class="text-white font-fold text-4xl">Modelos de Memoriales</h1>
             <p class="text-white text-lg mt-2">En sus distintas Materias del Derecho</p>
-            @livewire('search')         
+            @livewire('search-folder')         
           
             </div>            
         </div>

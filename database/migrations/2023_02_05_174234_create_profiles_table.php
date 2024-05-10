@@ -16,17 +16,18 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('city');
-            $table->string('state');
-            $table->text('about');
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->text('about')->nullable();
             $table->string('name');           
             $table->string('slug');
             $table->string('rpa')->nullable();
             $table->string('nit')->nullable();            
             $table->string('phone');
             $table->string('email');           
-            $table->text('iframe')->nullable();
-            $table->enum('status', [Profile::BORRADOR, Profile::REVISION, Profile::PUBLICADO])->default(Profile::BORRADOR);
+            $table->string('latitude', 15)->nullable();
+            $table->string('longitude', 15)->nullable();
+            $table->enum('status', [Profile::BORRADOR, Profile::REVISION, Profile::PUBLICADO])->default(Profile::PUBLICADO);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Education extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
     //Relacion uno a muchos inversa
     public function profile()
     {

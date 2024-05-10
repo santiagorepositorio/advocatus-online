@@ -67,7 +67,7 @@
             border: none;
             border-radius: 50%;
             /* Hacer el botón redondo */
-            padding: 10px;
+           
             /* Espaciado interior */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             /* Sombra */

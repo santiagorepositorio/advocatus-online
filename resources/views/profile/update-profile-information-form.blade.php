@@ -5,6 +5,9 @@
 
     <x-slot name="description">
         {{ __('Actualiza tu Nombre, Email y Celular') }}
+     
+
+        
     </x-slot>
 
     <x-slot name="form">
@@ -98,5 +101,6 @@
         <x-jet-button wire:loading.attr="disabled" wire:target="photo">
             {{ __('Guardar') }}
         </x-jet-button>
+
     </x-slot>
 </x-jet-form-section>

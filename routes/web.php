@@ -58,6 +58,11 @@ Route::get('posts/{post}', [BlogController::class, 'show'])->name('posts.show');
 Route::get('profiles', [ProfileController::class, 'index'])->name('profiles.index');
 Route::get('/course.show/{course}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/{profile}', [ProfileController::class, 'show'])->name('profiles.show');
+Route::get('edit/{profile}', [ProfileController::class, 'edit'])->name('edit.profile')->middleware('auth');
+Route::put('update/{profile}', [ProfileController::class, 'update'])->name('update.profile')->middleware('auth');
+Route::get('profile/{profile}/educations', [ProfileController::class, 'edutacion_profile'])->name('profile.educations')->middleware('auth');
+Route::get('profile/{profile}/experiences', [ProfileController::class, 'experience_profile'])->name('profile.experiences')->middleware('auth');
+Route::get('profile/{profile}/socials', [ProfileController::class, 'social_profile'])->name('profile.socials')->middleware('auth');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

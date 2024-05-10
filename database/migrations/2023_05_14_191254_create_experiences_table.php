@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('institution');
+            $table->string('gestion');
+            $table->foreignId('profile_id')
+                ->constrained();
             $table->timestamps();
         });
     }

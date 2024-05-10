@@ -18,6 +18,18 @@
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/> --}}
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+
+    <style>
+        #mapid {
+            height: 27vh;
+            border: 1px solid #CBD5E0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+    </style>
 
     <!-- Styles -->
     @livewireStyles

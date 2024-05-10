@@ -25,6 +25,9 @@ class UserSeeder extends Seeder
             // 'slug' => Str::slug('Santiago Quispe Apaza')
         ]);
         $user->assignRole('SuperAdmin');
+        $user->assignRole('Instructor');
+        $user->assignRole('Administrativo');
+        $user->assignRole('Colaborador');
 
         $user2 = User::create([
             'name' => 'Albert Perez Perez',

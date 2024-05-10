@@ -55,4 +55,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
         $user->sendEmailVerificationNotification();
     }
+
+
+    public function profesional(){
+        return "PERFIL PROFESIONAL";
+    }
 }

@@ -14,6 +14,21 @@ class Profile extends Model
     const BORRADOR = 1;
     const REVISION = 2;
     const PUBLICADO = 3;
+    public $appends = [
+        'coordinate', 'map_popup_content',
+    ];
+    public function getNameLinkAttribute()
+    {
+        $title = __('app.show_detail_title', [
+            'name' => $this->name, 'type' => __('profile.profile'),
+        ]);
+        $link = '<a href="'.route('edit.profile', $this).'"';
+        $link .= ' title="'.$title.'">';
+        $link .= $this->name;
+        $link .= '</a>';
+
+        return $link;
+    }
 
     public function getRatingAttribute(){
         if($this->reviews_count){
@@ -41,9 +56,9 @@ class Profile extends Model
     {
         return $this->hasMany('App\Models\Social');
     }
-    public function educationS()
+    public function educations()
     {
-        return $this->hasMany('App\Models\Educaction');
+        return $this->hasMany('App\Models\Education');
     }
     public function experiences()
     {
@@ -63,6 +78,22 @@ class Profile extends Model
 
      public function image(){
         return $this->morphOne('App\Models\Image', 'imageable');
+    }
+    public function getCoordinateAttribute()
+    {
+        if ($this->latitude && $this->longitude) {
+            return $this->latitude.', '.$this->longitude;
+        }
+    }
+
+    public function getMapPopupContentAttribute()
+    {
+        $mapPopupContent = '';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('Centro').':</strong><br>'.$this->name_link.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('Contacto').':</strong><br>'.$this->phone.'</div>';
+        // $mapPopupContent .= '<div class="my-2"><strong>'.__('Ubicación').':</strong><br>'.$this->coordinate.'</div>';
+
+        return $mapPopupContent;
     }
 
 }

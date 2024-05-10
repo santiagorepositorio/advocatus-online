@@ -12,7 +12,7 @@
         <div class="relative p-2 -mt-16 ">
             <div class="bg-white p-4 rounded-lg shadow-lg">
                 <h4
-                    class="sm:text-sm lg:text-lg text-blue-900 font-semibold uppercase leading-tight truncate justify-center">
+                    class="sm:text-sm lg:text-lg text-blue-900 font-semibold leading-tight truncate justify-center">
                     {{ $profile->name }}</h4>
                 <div class="text-gray-600 text-xs font-semibold">
                     {{ $profile->category->name }}
@@ -42,7 +42,7 @@
                 <div class="flex justify-between relative">
                     <a href="{{ route('profiles.show', $profile) }}">
                         <div
-                            class=" absolute bg-blue-500 hover:bg-blue-700 shadow-lg  shadow-blue-600 text-white cursor-pointer px-2 text-center py-1 rounded-lg h-8 w-8 hover:h-12 hover:w-12 flex items-center duration-300">
+                            class=" absolute bg-blue-500 hover:bg-blue-700 shadow-lg  shadow-blue-600 text-white cursor-pointer px-2 text-center py-1 rounded-lg h-8 w-12 flex items-center duration-300">
                             <h4 class="text-sm hover:text-base">
 
                                 Ver
@@ -51,7 +51,7 @@
                         </div>
                     </a>
 
-                    <a href="https://api.whatsapp.com/send?phone=591{{ $profile->phone }}"><img
+                    <a href="https://wa.me/{{ $profile->phone }}"><img
                             class="absolute right-0 h-8 w-8 hover:h-12 hover:w-12 flex items-center duration-300"
                             src="{{ asset('assets/imgs/theme/icons/icon-whatsapp.svg') }}"></a>
                 </div>

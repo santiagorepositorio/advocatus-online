@@ -16,7 +16,7 @@
             'active' => request()->routeIs('courses.*'),
         ],
         [
-            'name' => 'Blog',
+            'name' => 'Articulos',
             'route' => route('posts.index'),
             'active' => request()->routeIs('posts.*'),
         ],
