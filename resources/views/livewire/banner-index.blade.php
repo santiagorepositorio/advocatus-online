@@ -200,10 +200,10 @@
         <script type="text/javascript">
             var typed = new Typed('.type', {
                 strings: [
-                    'Diplomado | LegalTech',
+                    'Talleres | LegalTech',
                     'Curso de | Robotica',
-                    'Taller de | App',
-                    'Diplomado | DDRR',
+                    'Material | Memoriales',
+                    'Libros | Jurídicos',
                     'Curso de | Laravel'
                 ],
                 loop: true,
@@ -217,7 +217,7 @@
             const hours = document.getElementById("hours");
             const mins = document.getElementById("mins");
             const seconds = document.getElementById("seconds");
-            const newYear = '24 march 2024';
+            const newYear = '1 june 2024';
 
             function countTimer() {
                 const newYearDate = new Date(newYear);
@@ -249,11 +249,9 @@
                 </h1>
                 <!-- DESCRIPCION-->
                 <p class="countdown7 flex">Bienvenidos a la Nueva Plataforma enfocado en un Market Place Jur&iacute;co
-                    donde podrás revisar los contenidos de los diferentes Cursos de Actualización para Abogados.
-                    Muy Pronto se tendrá un espacio para que puedas crear tu perfil Profesional para poder publicar un
-                    Articulo de tu Autoría!</p>
-                <p><span class="countdown7-number1">Taller de Presentacion de la Nueva Plataforma Advocatus Online, 24 de
-                        Marzo </span></p>
+                    donde podrás revisar los contenidos de los diferentes Cursos de Actualización.
+                    Publica tus Art&iacute;culos Profesionales!</p>
+                <p><span class="countdown7-number1">Participa de la Capacitación en la Api WhatsApp con Laravel en la Modalidad Virtual</span></p>
                 <div class="countdown7 flex">
 
                     <p><span class="countdown7-number1">Empieza en:</span></p>
@@ -284,7 +282,7 @@
 
                 <div class="whatsapp-container">
                     <h2 class="titlep text-center mr-4">Participa</h2>
-                    <a href="https://chat.whatsapp.com/Bd24VdFAvBR0ubQJ05lZ7B" class="whatsapp-link">
+                    <a href="https://chat.whatsapp.com/HF0p7xDqVc64Fsy3jZpKUN" class="whatsapp-link">
                         <i class="fab fa-whatsapp fa-lg"></i> Únete al Grupo
                     </a>
                 </div>

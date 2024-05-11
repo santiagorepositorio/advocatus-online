@@ -132,7 +132,7 @@
 </html> --}}
 <x-app-layout>
     @livewire('banner-index')
-
+    @livewire('profiles-one')
     <section class="mt-4 p-4">
         <h1 class="text-center text-3xl text-gray-600">CURSOS MAS VENDIDOS</h1>
         <p class="text-center text-gray-500 text-sm mb-6"></p>
@@ -144,7 +144,7 @@
 
     </section>
     
-    @livewire('profiles-one')
+    
     <!-- Banner de Publicidad -->
     {{-- <section class="py-10">
         <div class="swiper" style="width: 100%;">
@@ -179,7 +179,7 @@
     </section> --}}
     
 
-    {{-- @livewire('blogs-one')  --}}
+    @livewire('blogs-one') 
     {{-- <section class="mt-4 py-12 from-blue-100 via-blue-300 to-blue-500 bg-gradient-to-br">
         <h1 class="text-center text-3xl text-gray-600">Blogs Destacados</h1>
         <p class="text-center text-gray-500 text-sm mb-6"></p>
