@@ -17,9 +17,9 @@ return new class extends Migration
         Schema::create('publicities', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->string('description');
             $table->text('link');
-            $table->enum('status', [Publicity::BORRADOR, Publicity::ACTIVO, Publicity::INACTIVO])->default(Publicity::BORRADOR);
+            $table->enum('status', [Publicity::BORRADOR, Publicity::ACTIVO, Publicity::INACTIVO])->default(Publicity::ACTIVO);
             $table->timestamps();
         });
     }

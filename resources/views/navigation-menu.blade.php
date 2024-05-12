@@ -37,7 +37,7 @@
         // ],
     ];
 @endphp
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
+<nav x-data="{ open: false }" class="sticky left-0 top-0 z-50 bg-white/80 w-full backdrop-blur shadow-sm shadow-blue-200">
     <!-- Primary Navigation Menu -->
     <div class="container mx-auto">
         <div class="flex justify-between h-16">
@@ -197,6 +197,11 @@
                                     </x-jet-dropdown-link>
                                 @endcan
                                 @can('Listar cursos')
+                                    <x-jet-dropdown-link href="{{ route('instructor.publicities.index') }}">
+                                        Publicidad
+                                    </x-jet-dropdown-link>
+                                @endcan
+                                @can('Listar cursos')
                                     <x-jet-dropdown-link href="{{ route('instructor.folders.upload', auth()->user()->id) }}">
                                         Subir Documentos
                                     </x-jet-dropdown-link>
@@ -307,6 +312,11 @@
                     @can('Listar cursos')
                         <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
                             Instructor
+                        </x-jet-responsive-nav-link>
+                    @endcan
+                    @can('Listar cursos')
+                        <x-jet-responsive-nav-link href="{{ route('instructor.publicities.index') }}" :active="request()->routeIs('instructor.publicities.index')">
+                            Publicidad
                         </x-jet-responsive-nav-link>
                     @endcan
                     @can('Listar cursos')

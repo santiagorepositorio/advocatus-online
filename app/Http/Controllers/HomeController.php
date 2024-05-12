@@ -32,7 +32,7 @@ class HomeController extends Controller
         JsonLd::setDescription('Para Abogados & Informáticos');
         JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/icono.png');
 
-        $publicities = Publicity::where('status', '1')->get();
+        $publicities = Publicity::where('status', '2')->get();
         $courses = Course::where('status', '3')->latest('id')->get()->take(8);
         $profiles = Profile::where('status', '3')
             ->latest('id')

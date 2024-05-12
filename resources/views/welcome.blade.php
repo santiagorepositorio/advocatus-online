@@ -143,451 +143,44 @@
         </div>
 
     </section>
-    
-    
+
+
     <!-- Banner de Publicidad -->
-    {{-- <section class="py-10">
-        <div class="swiper" style="width: 100%;">
+    <section class="py-10">
+
+        <div class="swiper2 mySwiper2">
             <div class="swiper-wrapper">
-                
                 @forelse ($publicities as $publicity)
-                <div class="swiper-slide">
-                    <div class="bg-cover bg-center text-white lg:py-24 lg:px-10 object-fill"
-                        style="background-image: url({{  Storage::url($publicity->image->url) }})">
-    
-                        <div class="mx-auto max-w-7xl"><br>
-                            <p class="font-bold text-sm uppercase">Publicidad</p>
-                        <p class="lg:text-3xl font-bold">{{ $publicity->title }}</p>
-                        <br>
-                        <a href="{{ $publicity->link }}" class="bg-purple-800 sm:py-3 sm:px-4 lg:py-4 lg:px-8 text-white font-bold uppercase sm:text-sm lg:text-xs rounded hover:bg-gray-200 hover:text-gray-800">Ver Detalles</a>
+                    <div class="swiper-slide">
+                        <div class="bg-cover bg-center text-white lg:py-24 lg:px-10 object-fill"
+                            style="background-image: url({{ Storage::url($publicity->image->url) }})">
+                            <div class="mx-auto max-w-7xl"><br>
+                                <p class="font-bold text-sm uppercase">Publicidad</p>
+                                <p class="lg:text-3xl font-bold">{{ $publicity->title }}</p>
+                                <br>
+                                <a href="{{ $publicity->link }}"
+                                    class="bg-purple-800 sm:py-3 sm:px-4 lg:py-4 lg:px-8 text-white font-bold uppercase sm:text-sm lg:text-xs rounded hover:bg-gray-200 hover:text-gray-800">Ver
+                                    Detalles</a>
+                            </div>
                         </div>
-    
+                        <div class="bg-slate-500 items-center">
+                            <p class="text-white sm:text-xs lg:text-2xl mb-10 leading-none text-center">
+                                {{ $publicity->description }}</p>
+                        </div>
                     </div>
-                    <div class="bg-slate-500 items-center">
-                    <p class="text-white sm:text-xs lg:text-2xl mb-10 leading-none text-center">{{ $publicity->description }}</p>
-                </div>
-            </div>
                 @empty
-                    
                 @endforelse
-                
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section> --}}
-    
-
-    @livewire('blogs-one') 
-    {{-- <section class="mt-4 py-12 from-blue-100 via-blue-300 to-blue-500 bg-gradient-to-br">
-        <h1 class="text-center text-3xl text-gray-600">Blogs Destacados</h1>
-        <p class="text-center text-gray-500 text-sm mb-6"></p>
-        <!-- component -->
-        <div class=" container items-center mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 ">
-            <div
-                class="p-2 items-center justify-center rounded-xl group sm:flex space-x-2 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl flex-col">
-                <div>
-                    <img class="h-36 w-full object-cover rounded-md" alt="art cover" loading="lazy"
-                        src='https://picsum.photos/seed/2/2000/1000' />
-                    <div
-                        class="bg-blue-500 shadow-lg shadow- shadow-blue-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2 mt-4">
-
-                        <span>Ver</span>
-                    </div>
-                </div>
-                <div class="pl-0 p-2">
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between">
-                            <div class="flex gap-3 space-y-1">
-                                <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                                    class="rounded-full h-8 w-8" />
-                                <span class="text-sm">Yeah same question here too</span>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <h4 class="text-md font-semibold text-cyan-900 text-justify">
-                                Provident de illo eveniet commodi fuga fugiat laboriosam expedita.
-                            </h4>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div class="text-grey-500 flex ">
-                                <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
-                                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <p class="text-xs">2 hours ago</p>
-                            </div>
-                            <div class="rounded-lg flex space-x-2">
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 1024 1024" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg" class="text-md">
-                                        <path
-                                            d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"
-                                        class="text-md">
-                                        <path
-                                            d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z">
-                                        </path>
-                                        <circle cx="15" cy="10" r="2"></circle>
-                                        <circle cx="9" cy="10" r="2"></circle>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div
-                                class="bg-red-500 shadow-lg shadow- shadow-red-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
-                                    class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 0 0-26.5-5.4H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h129.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM184 456V172h81v284h-81zm627.2 160.4H496.8l9.6 198.4c.6 11.9-4.7 23.1-14.6 30.5-6.1 4.5-13.6 6.8-21.1 6.7a44.28 44.28 0 0 1-42.2-32.3L329 459.2V172h415.4a56.85 56.85 0 0 1 33.6 51.8c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-14 25.5 21.9 19a56.76 56.76 0 0 1 19.6 43c0 19.1-11 37.5-28.8 48.4z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-                            <div
-                                class="bg-green-500 shadow-lg shadow- shadow-green-600 text-white cursor-pointer px-3 text-center justify-center items-center py-1 rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
-                                    class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM184 852V568h81v284h-81zm636.4-353l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7 9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="p-2 items-center justify-center rounded-xl group sm:flex space-x-2 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl flex-col">
-                <div>
-                    <img class="h-36 w-full object-cover rounded-md" alt="art cover" loading="lazy"
-                        src='https://picsum.photos/seed/2/2000/1000' />
-                    <div
-                        class="bg-blue-500 shadow-lg shadow- shadow-blue-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2 mt-4">
-
-                        <span>Ver</span>
-                    </div>
-                </div>
-                <div class="pl-0 p-2">
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between">
-                            <div class="flex gap-3 space-y-1">
-                                <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                                    class="rounded-full h-8 w-8" />
-                                <span class="text-sm">Yeah same question here too</span>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <h4 class="text-md font-semibold text-cyan-900 text-justify">
-                                Provident de illo eveniet commodi fuga fugiat laboriosam expedita.
-                            </h4>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div class="text-grey-500 flex ">
-                                <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
-                                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <p class="text-xs">2 hours ago</p>
-                            </div>
-                            <div class="rounded-lg flex space-x-2">
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 1024 1024" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg" class="text-md">
-                                        <path
-                                            d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 24 24" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg" class="text-md">
-                                        <path
-                                            d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z">
-                                        </path>
-                                        <circle cx="15" cy="10" r="2"></circle>
-                                        <circle cx="9" cy="10" r="2"></circle>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div
-                                class="bg-red-500 shadow-lg shadow- shadow-red-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                    viewBox="0 0 1024 1024" class="text-xl" height="1em" width="1em"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 0 0-26.5-5.4H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h129.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM184 456V172h81v284h-81zm627.2 160.4H496.8l9.6 198.4c.6 11.9-4.7 23.1-14.6 30.5-6.1 4.5-13.6 6.8-21.1 6.7a44.28 44.28 0 0 1-42.2-32.3L329 459.2V172h415.4a56.85 56.85 0 0 1 33.6 51.8c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-14 25.5 21.9 19a56.76 56.76 0 0 1 19.6 43c0 19.1-11 37.5-28.8 48.4z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-                            <div
-                                class="bg-green-500 shadow-lg shadow- shadow-green-600 text-white cursor-pointer px-3 text-center justify-center items-center py-1 rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                    viewBox="0 0 1024 1024" class="text-xl" height="1em" width="1em"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM184 852V568h81v284h-81zm636.4-353l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7 9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="p-2 items-center justify-center rounded-xl group sm:flex space-x-2 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl flex-col">
-                <div>
-                    <img class="h-36 w-full object-cover rounded-md" alt="art cover" loading="lazy"
-                        src='https://picsum.photos/seed/2/2000/1000' />
-                    <div
-                        class="bg-blue-500 shadow-lg shadow- shadow-blue-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2 mt-4">
-
-                        <span>Ver</span>
-                    </div>
-                </div>
-                <div class="pl-0 p-2">
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between">
-                            <div class="flex gap-3 space-y-1">
-                                <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                                    class="rounded-full h-8 w-8" />
-                                <span class="text-sm">Yeah same question here too</span>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <h4 class="text-md font-semibold text-cyan-900 text-justify">
-                                Provident de illo eveniet commodi fuga fugiat laboriosam expedita.
-                            </h4>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div class="text-grey-500 flex ">
-                                <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
-                                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <p class="text-xs">2 hours ago</p>
-                            </div>
-                            <div class="rounded-lg flex space-x-2">
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 1024 1024" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg" class="text-md">
-                                        <path
-                                            d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 24 24" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg" class="text-md">
-                                        <path
-                                            d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z">
-                                        </path>
-                                        <circle cx="15" cy="10" r="2"></circle>
-                                        <circle cx="9" cy="10" r="2"></circle>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div
-                                class="bg-red-500 shadow-lg shadow- shadow-red-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                    viewBox="0 0 1024 1024" class="text-xl" height="1em" width="1em"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 0 0-26.5-5.4H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h129.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM184 456V172h81v284h-81zm627.2 160.4H496.8l9.6 198.4c.6 11.9-4.7 23.1-14.6 30.5-6.1 4.5-13.6 6.8-21.1 6.7a44.28 44.28 0 0 1-42.2-32.3L329 459.2V172h415.4a56.85 56.85 0 0 1 33.6 51.8c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-14 25.5 21.9 19a56.76 56.76 0 0 1 19.6 43c0 19.1-11 37.5-28.8 48.4z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-                            <div
-                                class="bg-green-500 shadow-lg shadow- shadow-green-600 text-white cursor-pointer px-3 text-center justify-center items-center py-1 rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                    viewBox="0 0 1024 1024" class="text-xl" height="1em" width="1em"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM184 852V568h81v284h-81zm636.4-353l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7 9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="p-2 items-center justify-center rounded-xl group sm:flex space-x-2 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl flex-col">
-                <div>
-                    <img class="h-36 w-full object-cover rounded-md" alt="art cover" loading="lazy"
-                        src='https://picsum.photos/seed/2/2000/1000' />
-                    <div
-                        class="bg-blue-500 shadow-lg shadow- shadow-blue-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2 mt-4">
-
-                        <span>Ver</span>
-                    </div>
-                </div>
-                <div class="pl-0 p-2">
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between">
-                            <div class="flex gap-3 space-y-1">
-                                <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                                    class="rounded-full h-8 w-8" />
-                                <span class="text-sm">Yeah same question here too</span>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <h4 class="text-md font-semibold text-cyan-900 text-justify">
-                                Provident de illo eveniet commodi fuga fugiat laboriosam expedita.
-                            </h4>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div class="text-grey-500 flex ">
-                                <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
-                                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <p class="text-xs">2 hours ago</p>
-                            </div>
-                            <div class="rounded-lg flex space-x-2">
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 1024 1024" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg" class="text-md">
-                                        <path
-                                            d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z">
-                                        </path>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                                <div class="cursor-pointer text-center text-md justify-center items-center flex">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 24 24" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg" class="text-md">
-                                        <path
-                                            d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z">
-                                        </path>
-                                        <circle cx="15" cy="10" r="2"></circle>
-                                        <circle cx="9" cy="10" r="2"></circle>
-                                    </svg>
-                                    <span class="text-md mx-1">80</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div
-                                class="bg-red-500 shadow-lg shadow- shadow-red-600 text-white cursor-pointer px-3 py-1 text-center justify-center items-center rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                    viewBox="0 0 1024 1024" class="text-xl" height="1em" width="1em"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 0 0-26.5-5.4H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h129.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM184 456V172h81v284h-81zm627.2 160.4H496.8l9.6 198.4c.6 11.9-4.7 23.1-14.6 30.5-6.1 4.5-13.6 6.8-21.1 6.7a44.28 44.28 0 0 1-42.2-32.3L329 459.2V172h415.4a56.85 56.85 0 0 1 33.6 51.8c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-13.9 25.4 21.9 19a56.76 56.76 0 0 1 19.6 43c0 9.7-2.3 18.9-6.9 27.3l-14 25.5 21.9 19a56.76 56.76 0 0 1 19.6 43c0 19.1-11 37.5-28.8 48.4z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-                            <div
-                                class="bg-green-500 shadow-lg shadow- shadow-green-600 text-white cursor-pointer px-3 text-center justify-center items-center py-1 rounded-xl flex space-x-2">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                    viewBox="0 0 1024 1024" class="text-xl" height="1em" width="1em"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 0 0-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 0 0 471 99.9c-52 0-98 35-111.8 85.1l-85.9 311H144c-17.7 0-32 14.3-32 32v364c0 17.7 14.3 32 32 32h601.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM184 852V568h81v284h-81zm636.4-353l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 16.5-7.2 32.2-19.6 43l-21.9 19 13.9 25.4a56.2 56.2 0 0 1 6.9 27.3c0 22.4-13.2 42.6-33.6 51.8H329V564.8l99.5-360.5a44.1 44.1 0 0 1 42.2-32.3c7.6 0 15.1 2.2 21.1 6.7 9.9 7.4 15.2 18.6 14.6 30.5l-9.6 198.4h314.4C829 418.5 840 436.9 840 456c0 16.5-7.2 32.1-19.6 43z">
-                                    </path>
-                                </svg>
-                                <span>23</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
     </section>
-    <section class="mt-12 ">
-        <h1 class="text-gray-600 text-center text-3xl mb-6">
-            CONTENIDO
-        </h1>
-        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/juridica.jpeg') }}"
-                        alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Cursos</h1>
-                </header>
-
-            </article>
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/licenciada.jpg') }}"
-                        alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Cursos</h1>
-                </header>
-           
-            </article>
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/tecnologia.webp') }}"
-                        alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Cursos</h1>
-                </header>
-              
-            </article>
-            <article>
-                <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/tecnologia.webp') }}"
-                        alt="">
-                </figure>
-                <header class="mt-2">
-                    <h1 class="text-center text-xl text-gray-700">Cursos</h1>
-                </header>
-             
-            </article>
 
 
-        </div>
-    </section> --}}
+    @livewire('blogs-one')
+
+
     <!-- Banner de APK ANDROID -->
     <section class="bg-white dark:bg-gray-900 mt-8">
         <div class="container flex flex-col items-center px-4 py-12 mx-auto xl:flex-row">
@@ -602,18 +195,18 @@
                     Descarga nuestra aplicación móvil gratuita
                 </h2>
 
-                <p class="block max-w-2xl mt-4 text-xl text-gray-500 dark:text-gray-300">Accede desde cualquier parte, como Abogado forma parte del MarketPlace Juridico</p>
+                <p class="block max-w-2xl mt-4 text-xl text-gray-500 dark:text-gray-300">Accede desde cualquier parte,
+                    como Abogado forma parte del MarketPlace Juridico</p>
 
                 <div class="mt-6 sm:-mx-2">
                     <div class="inline-flex w-full overflow-hidden rounded-lg shadow sm:w-auto sm:mx-2">
                         <a href="#"
                             class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium text-white bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-600 sm:w-auto">
-                            <svg class="w-6 h-6 mx-2 fill-current" xmlns:xlink=""
-                                x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+                            <svg class="w-6 h-6 mx-2 fill-current" xmlns:xlink="" x="0px" y="0px" viewBox="0 0 512 512"
+                                xml:space="preserve">
                                 <g>
                                     <g>
-                                        <path
-                                            d="M407,0H105C47.103,0,0,47.103,0,105v302c0,57.897,47.103,105,105,105h302c57.897,0,105-47.103,105-105V105
+                                        <path d="M407,0H105C47.103,0,0,47.103,0,105v302c0,57.897,47.103,105,105,105h302c57.897,0,105-47.103,105-105V105
                                         C512,47.103,464.897,0,407,0z M482,407c0,41.355-33.645,75-75,75H105c-41.355,0-75-33.645-75-75V105c0-41.355,33.645-75,75-75h302
                                         c41.355,0,75,33.645,75,75V407z">
                                         </path>
@@ -621,8 +214,7 @@
                                 </g>
                                 <g>
                                     <g>
-                                        <path
-                                            d="M305.646,123.531c-1.729-6.45-5.865-11.842-11.648-15.18c-11.936-6.892-27.256-2.789-34.15,9.151L256,124.166
+                                        <path d="M305.646,123.531c-1.729-6.45-5.865-11.842-11.648-15.18c-11.936-6.892-27.256-2.789-34.15,9.151L256,124.166
                                         l-3.848-6.665c-6.893-11.937-22.212-16.042-34.15-9.151h-0.001c-11.938,6.893-16.042,22.212-9.15,34.151l18.281,31.664
                                         L159.678,291H110.5c-13.785,0-25,11.215-25,25c0,13.785,11.215,25,25,25h189.86l-28.868-50h-54.079l85.735-148.498
                                         C306.487,136.719,307.375,129.981,305.646,123.531z">
@@ -631,8 +223,7 @@
                                 </g>
                                 <g>
                                     <g>
-                                        <path
-                                            d="M401.5,291h-49.178l-55.907-96.834l-28.867,50l86.804,150.348c3.339,5.784,8.729,9.921,15.181,11.65
+                                        <path d="M401.5,291h-49.178l-55.907-96.834l-28.867,50l86.804,150.348c3.339,5.784,8.729,9.921,15.181,11.65
                                         c2.154,0.577,4.339,0.863,6.511,0.863c4.332,0,8.608-1.136,12.461-3.361c11.938-6.893,16.042-22.213,9.149-34.15L381.189,341
                                         H401.5c13.785,0,25-11.215,25-25C426.5,302.215,415.285,291,401.5,291z">
                                         </path>
@@ -640,8 +231,7 @@
                                 </g>
                                 <g>
                                     <g>
-                                        <path
-                                            d="M119.264,361l-4.917,8.516c-6.892,11.938-2.787,27.258,9.151,34.15c3.927,2.267,8.219,3.345,12.458,3.344
+                                        <path d="M119.264,361l-4.917,8.516c-6.892,11.938-2.787,27.258,9.151,34.15c3.927,2.267,8.219,3.345,12.458,3.344
                                         c8.646,0,17.067-4.484,21.693-12.495L176.999,361H119.264z">
                                         </path>
                                     </g>
@@ -669,97 +259,74 @@
             </div>
         </div>
     </section>
+    <section class="mt-12 ">
+        <h1 class="text-gray-600 text-center text-3xl mb-6">
+            CONTENIDO
+        </h1>
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
+            <article>
+                <figure>
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/juridica.jpeg') }}"
+                        alt="">
+                </figure>
+                <header class="mt-2">
+                    <h1 class="text-center text-xl text-gray-700">Cursos</h1>
+                </header>
 
-    
+            </article>
+            <article>
+                <figure>
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/licenciada.jpg') }}"
+                        alt="">
+                </figure>
+                <header class="mt-2">
+                    <h1 class="text-center text-xl text-gray-700">Guía de Contactos de Aogados</h1>
+                </header>
+
+            </article>
+            <article>
+                <figure>
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/tecnologia.webp') }}"
+                        alt="">
+                </figure>
+                <header class="mt-2">
+                    <h1 class="text-center text-xl text-gray-700">Libros de Investigación</h1>
+                </header>
+
+            </article>
+            <article>
+                <figure>
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/tecnologia.webp') }}"
+                        alt="">
+                </figure>
+                <header class="mt-2">
+                    <h1 class="text-center text-xl text-gray-700">Memoriales para Abogados</h1>
+                </header>
+
+            </article>
 
 
-
+        </div>
+    </section>
     <section class="mt-24 bg-gray-700 py-12">
-        <h1 class="text-center text-white text-3xl">CURSOS MAS REQUERIDOS</h1>
-        <p class="text-center text-white">Listado de Cursos en Derecho</p>
-        <div class="flex justify-center mt-4">
-            <a href="{{ route('courses.index') }}"
-                class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                CATALOGO
+        <h1 class="text-center text-white text-3xl">Si tienes Hijos con Trastorno del Espectro Autista!</h1>
+        <p class="text-center text-white">Revisa el Material Digital en Psicopedagoía y/o Busca un Centro en la Ciudad
+            que vives para terapias o Escuelas donde aceptan Alumnos con TEA</p>
+        <div class="flex justify-center mt-4 gap-6">
+            <a href="{{ route('folders.index') }}"
+                class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">
+                Material Digital
+            </a>
+            <a href="{{ route('outlet_map.index') }}"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Centros Inclusivos
             </a>
 
         </div>
     </section>
-   
-        <!-- Paletas de Ultimos -->
-        <section>
-        
-            <div class="flex justify-center items-center ">
-                <!--actual component start-->
-                <div x-data="setup()">
-                    <ul class="flex justify-center items-center my-4">
-                        <template x-for="(tab, index) in tabs" :key="index">
-                            <li class="cursor-pointer py-2 px-4 text-gray-500 border-b-8"
-                                :class="activeTab === index ? 'text-blue-500 border-blue-500' : ''"
-                                @click="activeTab = index" x-text="tab"></li>
-                        </template>
-                    </ul>
-    
-                    <div class=" h-auto w-auto text-center mx-auto ">
-                        <div x-show="activeTab===0">
-                            <h1 class="text-center text-3xl text-gray-600">ULTIMOS PERFILES</h1>
-                            <p class="text-center text-gray-500 text-sm mb-6"></p>
-                        </div>
-                        <div x-show="activeTab===1">
-                            <h1 class="text-center text-3xl text-gray-600">ULTIMOS CURSOS</h1> 
-                            <div class="flex justify-center mt-4">
-                                <a href="{{ route('courses.index') }}"
-                                    class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    CATALOGO
-                                </a>
-                    
-                            </div>
-                            <p class="text-center text-gray-500 text-sm mb-6"></p>
-                            <div
-                                class="container mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
-                                @foreach ($courses as $course)
-                                    <x-course-card :course="$course" />
-                                @endforeach
-                            </div>
-                        </div>
-                        <div x-show="activeTab===2">
-                            <h1 class="text-center text-3xl text-gray-600">ULTIMOS PRODUCTOS</h1>
-                            <p class="text-center text-gray-500 text-sm mb-6"></p>    
-                        </div>                  
-                    </div>
-    
-                    <ul class="flex justify-center items-center my-4">
-                        <template x-for="(tab, index) in tabs" :key="index">
-                            <li class="cursor-pointer py-3 px-4 rounded transition"
-                                :class="activeTab === index ? 'bg-blue-500 text-white' : ' text-gray-500'"
-                                @click="activeTab = index" x-text="tab"></li>
-                        </template>
-                    </ul>
-    
-                  
-                </div>
-                <!--actual component end-->
-            </div>
-    
-            <script>
-                function setup() {
-                    return {
-                        activeTab: 0,
-                        tabs: [
-                            "PROFESIONALES",
-                            "CURSOS",
-                            "PRODUCTOS",
-                          
-                        ]
-                    };
-                };
-            </script>
-    
-    
-        </section>
-    <section>
 
-        <div class="min-h-screen bg-gray-100 p-3 relative" hidden>
+    <section>
+        <div class="min-h-screen bg-gray-100 p-3 relative hidden">
             <div class="w-96 mx-auto" style="scroll-snap-type: x mandatory;">
                 <!-- first -->
                 <div class="">
@@ -893,54 +460,25 @@
 
     </section>
     @push('glider')
+        
+
+        <!-- Initialize Swiper -->
         <script>
-            Livewire.on('glider', function() {
-
-                new Glider(document.querySelector('.glider'), {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    draggable: true,
-                    dots: '.dots',
-                    arrows: {
-                        prev: '.glider-prev',
-                        next: '.glider-next'
-                    },
-
-
-                    responsive: [{
-                            breakpoint: 640,
-                            settings: {
-                                slidesToShow: 1.5,
-                                slidesToScroll: 2,
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 2.5,
-                                slidesToScroll: 3,
-                            }
-                        },
-
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToShow: 3.5,
-                                slidesToScroll: 4,
-                            }
-                        },
-
-                        {
-                            breakpoint: 1280,
-                            settings: {
-                                slidesToShow: 4.5,
-                                slidesToScroll: 5,
-                            }
-                        },
-
-                    ]
-                });
-
+            var swiper2 = new Swiper(".mySwiper2", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
             });
         </script>
     @endpush

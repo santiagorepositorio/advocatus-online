@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Publicity extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
     const BORRADOR = 1;
     const ACTIVO = 2;
     const INACTIVO = 3;

@@ -1,25 +1,18 @@
 <x-app-layout>
     <section class="bg-gray-200">
-        <div class="h-full  p-8 max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
+        <div class="h-full p-8 max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
             <div class="bg-white rounded-lg shadow-xl pb-4">
-                <div class="w-full h-[624px]">
+                <div class="w-full h-auto">
                     @isset($profile->image)
                         <img src="{{ Storage::url($profile->image->url) }}"
-                            class="w-full h-full object-cover rounded-tl-lg rounded-tr-lg">
+                            class="w-full  h-auto object-center object-cover rounded-tl-lg rounded-tr-lg">
                     @else
-                        <img class="w-24 h-24 object-cover rounded-tl-lg rounded-tr-lg"
+                        <img class="w-32 h-32 object-cover rounded-tl-lg rounded-tr-lg"
                             src="{{ asset('img/home/imagen-no-disponible.png') }}" alt="">
                     @endisset
                 </div>
-
-
-
-
-
-
-                <div class="flex flex-col items-center ">
-                    <img src="{{ $profile->user->profile_photo_url }}"
-                        class=" mt-2 border-4 border-white rounded-full w-20 h-auto sm:w-40 md:w-60 lg:w-80 xl:w-96">
+                <div class="flex flex-col items-center -mt-8">
+                    <img src="{{ $profile->user->profile_photo_url }}" class=" border-4 border-white rounded-full w-16 h-16 sm:w-20 md:w-22 lg:w-24 xl:w-26 sm:h-20 md:h-22 lg:h-24 xl:h-26">
                     <div class="flex items-center space-x-2 mt-2 mb-4">
 
                         <div x-data="{ openSettings: false }" class="hover:bg-slate-600 rounded">
@@ -73,7 +66,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl">{{ $profile->name }}</p>
+                        <p class="text-md sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">{{ $profile->name }}</p>
 
                     </div>
                     <div class="flex justify-between gap-4">
@@ -87,7 +80,7 @@
                                 <li><i class="fas fa-star text-yellow-400"></i></li>
                             </ul>
                             <span
-                                class="md:text-xs bg-yellow-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">4.5</span>
+                                class="md:text-xs bg-yellow-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
                         </div>
                     </div>
                     <p class="text-sm text-gray-500">
@@ -111,35 +104,6 @@
                         @empty
                             
                         @endforelse
-
-                        
-                        
-                        
-
-                        {{-- <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                    clip-rule="evenodd" />
-                            </svg>
-
-                        </a>
-                        <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                    clip-rule="evenodd" />
-                            </svg>
-
-                        </a> --}}
-                        <!-- Agrega aquí otros enlaces sociales -->
                     </div>
                     <div class="flex items-center justify-center gap-4 mt-2">
                         <a
@@ -486,7 +450,7 @@
                             @if ($profile->email)
                             <li class="flex border-b py-2">
                                 <span class="font-bold w-48">Email:</span>
-                                <span class="text-gray-700">{{ $profile->email }}</span>
+                                <span class="text-gray-700 text-sm sm:text-md lg:text-lg">{{ $profile->email }}</span>
                             </li>
                                 
                             @endif

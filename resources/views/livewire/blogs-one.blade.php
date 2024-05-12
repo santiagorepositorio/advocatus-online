@@ -3,12 +3,10 @@
     <p class="text-center text-gray-500 text-sm mb-6"></p>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-        @forelse ($posts as $post)
-
-            <article
-                class=" cursor-pointer w-full h-80 bg-cover bg-center @if ($loop->first) md:col-span-2 @endif"
-                style="background-image: url({{ $post->image }})">
-                <a href="{{ route('posts.show', $post) }}">
+        @forelse ($posts as $post) 
+        
+                <article class=" cursor-pointer w-full h-80 bg-cover bg-center @if ($loop->first) md:col-span-2 @endif"
+                    style="background-image: url({{ $post->image }})"><a href="{{ route('posts.show', $post) }}">
                     <div class="w-full h-full px-8 flex flex-col justify-end -mt-4">
                         @foreach ($post->tags as $tag)
                             <a href="#">
@@ -23,10 +21,9 @@
                             {{ $post->title }}
 
                         </h1>
-                    </div>
-                </a>
-            </article>
-
+                    </div></a>
+                </article>
+            
         @empty
 
         @endforelse

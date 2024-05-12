@@ -16,11 +16,24 @@
 
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Required Core Stylesheet -->
+
+   
+    <style>     
+    
+        .swiper-slide {  
+          width: 200px;
+          height: auto !important;
+        }
+        
+      </style>
+   
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-    crossorigin=""/>
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
 
     <style>
         #mapid {
@@ -89,11 +102,13 @@
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <a href="/" class="flex-shrink-0 flex items-center mx-6 lg:mx-0">
-                    <img class="block lg:hidden h-12 w-auto mx-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}" alt="ITSW">
-                    <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}" alt="ITSW">
+                    <img class="block lg:hidden h-12 w-auto mx-auto"
+                        src="{{ asset('assets/imgs/logo/logo-top-1.png') }}" alt="ITSW">
+                    <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}"
+                        alt="ITSW">
                 </a>
-        </div>
-            
+            </div>
+
 
 
 
@@ -136,7 +151,8 @@
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a
-                    href="https://sobotredsystems.com/" class="hover:underline">Santiago Boris Quispe Apaza™</a>. All Rights
+                    href="https://sobotredsystems.com/" class="hover:underline">Santiago Boris Quispe Apaza™</a>. All
+                Rights
                 Reserved.
             </span>
 
@@ -150,7 +166,7 @@
                     </svg>
                     <span class="sr-only">Facebook page</span>
                 </a>
-                
+
                 <a href="#" class="text-green-500 hover:text-gray-900 ">
                     <img class="w-5 h-5" src="{{ asset('assets/imgs/theme/icons/icon-whatsapp.svg') }}" alt="">
 
@@ -190,7 +206,7 @@
             });
         }
     </script>
-     {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
      <script>
          var swiper = new Swiper('.mySwiper', {
              spaceBetween: 30,
@@ -212,6 +228,8 @@
     <script src="{{ asset('assets/js/main.js?v=3.3') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 
     @stack('swipe')
     @stack('glider')

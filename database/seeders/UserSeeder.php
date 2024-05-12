@@ -49,6 +49,6 @@ class UserSeeder extends Seeder
         ]);
         $user2->assignRole('Administrativo');
 
-        //User::factory(100)->create();
+        User::factory(100)->create();
     }
 }
