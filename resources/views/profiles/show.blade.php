@@ -5,14 +5,14 @@
                 <div class="w-full h-auto">
                     @isset($profile->image)
                         <img src="{{ Storage::url($profile->image->url) }}"
-                            class="w-full  h-auto object-center object-cover rounded-tl-lg rounded-tr-lg">
+                            class="w-full h-auto object-center object-cover rounded-tl-lg rounded-tr-lg">
                     @else
                         <img class="w-32 h-32 object-cover rounded-tl-lg rounded-tr-lg"
                             src="{{ asset('img/home/imagen-no-disponible.png') }}" alt="">
                     @endisset
                 </div>
                 <div class="flex flex-col items-center -mt-8">
-                    <img src="{{ $profile->user->profile_photo_url }}" class=" border-4 border-white rounded-full w-16 h-16 sm:w-20 md:w-22 lg:w-24 xl:w-26 sm:h-20 md:h-22 lg:h-24 xl:h-26">
+                    <img src="{{ $profile->user->profile_photo_url }}" class=" border-4 border-white rounded-full w-16 object-center object-cover h-16 sm:w-20 md:w-22 lg:w-24 xl:w-26 sm:h-20 md:h-22 lg:h-24 xl:h-26">
                     <div class="flex items-center space-x-2 mt-2 mb-4">
 
                         <div x-data="{ openSettings: false }" class="hover:bg-slate-600 rounded">

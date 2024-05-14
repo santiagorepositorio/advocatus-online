@@ -16,13 +16,13 @@
 
         <div class="mt-5">
             <x-button-primary wire:click="confirmUserProfessional" wire:loading.attr="disabled" color="blue">
-                Crear Perfil Profesional
+                Gestionar Perfil Profesional
             </x-button-primary>
 
             
-            <x-jet-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
+            {{-- <x-jet-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
                 {{ __('Delete Account') }}
-            </x-jet-danger-button>
+            </x-jet-danger-button> --}}
 
         </div>
 

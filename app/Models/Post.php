@@ -95,8 +95,10 @@ class Post extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
-
-
+    public function questions()
+    {
+        return $this->morphMany(Question::class, 'questionable');
+    }
     //Relacion muchos a muchos polimorfica
     public function tags()
     {

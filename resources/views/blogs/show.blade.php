@@ -37,6 +37,9 @@
                 <p class="pb-6">{!! $post->body !!}</p>
         
               </div>
+              <div class=" mb-16">
+                @livewire('question', ['model' => $post])
+              </div>
         </section>
         <aside class="col-span-1 hidden lg:block">
             <h1 class="text-xl font-semibold mb-6">Artículos Similares </h1><h1 class="text-2xl  text-slate-700font-bold mb-6">"{{$post->category->name}}"</h1>
