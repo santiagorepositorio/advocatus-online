@@ -19,16 +19,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Required Core Stylesheet -->
 
-   
-    <style>     
-    
-        .swiper-slide {  
-          width: 200px;
-          height: auto !important;
+
+    <style>
+        .swiper-slide {
+            width: 200px;
+            height: auto !important;
         }
+
+       
         
-      </style>
-   
+    </style>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
@@ -233,6 +234,7 @@
 
     @stack('swipe')
     @stack('glider')
+    @stack('jseditor')
 </body>
 
 </html>

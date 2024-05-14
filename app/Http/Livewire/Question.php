@@ -33,7 +33,7 @@ class Question extends Component
             'user_id' => auth()->id(),
         ]);
       
-        $this->reset('message');
+        $this->message = '';
     }
     public function edit($questionsId)
     {

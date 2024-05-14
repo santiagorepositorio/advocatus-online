@@ -99,7 +99,7 @@
 
                             <span class="flex items-center">
                                 <i class="far fa-comment-alt mr-2"></i>
-                                0
+                                {{ $post->questions()->count() }}
                             </span>
                         </div>
                     </div>
