@@ -87,7 +87,7 @@
                             {!! $errors->first('longitude', '<p class="text-red-500 text-xs italic">:message</p>') !!}
                         </div>
                     </div>
-                    <div id="mapid" class="mt-4 h-64 sm:h-96 lg:h-128 w-full"></div>
+                    <div id="mapid" class="mt-4 h-64 sm:h-96 lg:h-128 w-full z-0"></div>
                     <div class="flex items-center justify-between mt-4">
                         <button class="btn btn-primary ml-2">Registrar Centro</button>
                         {{-- <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Registrar Centro</button> --}}

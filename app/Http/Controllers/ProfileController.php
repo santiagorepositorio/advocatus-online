@@ -98,6 +98,7 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
+        $this->authorize('update', $profile);
         $categories = Category::where('status', 'Perfil')->pluck('name', 'id');
         return view('profile-professional.edit', compact('profile', 'categories'));
     }

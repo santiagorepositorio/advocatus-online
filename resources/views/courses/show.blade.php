@@ -16,7 +16,7 @@
                 <p class="mb-2"><i class="fas fa-chart-line"></i> Nivel: {{ $course->level->name }}</p>
                 <p class="mb-2"><i class="fas fa-th-list"></i> Categoria: {{ $course->category->name }}</p>
                 <p class="mb-2"><i class="fas fa-users"></i> Matriculados: {{ $course->students_count }}</p>
-                <p class="mb-2"><i class="fas fa-star"></i> Calificacion: {{ $course->rating }}</p>
+                <p class="mb-2"><i class="fas fa-star"></i> Calificación: {{ $course->rating }}</p>
             
               
             </div>
@@ -84,8 +84,8 @@
                     {!! $course->description !!}
                 </div>
             </section>
-            <div class="card mt-2 p-6">
-            @livewire('courses-reviews', ['course' => $course])
+            <div class="border mt-2 p-2 mb-4 bg-gray-200 rounded-2xl">
+            @livewire('courses-reviews', ['model' => $course])
             </div>
 
         </div>

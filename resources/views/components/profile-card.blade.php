@@ -1,7 +1,7 @@
 @props(['profile'])
 
 <article class="mt-4">
-    
+
     <div
         class="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
         <div class="flex rounded-t-lg h-32 w-full overflow-hidden">
@@ -15,7 +15,7 @@
 
         </div>
         <img class="relative h-12 w-12 -mt-8 object-center object-cover rounded-full shadow-lg mx-auto"
-        src="{{ $profile->user->profile_photo_url }}" alt="{{ $profile->name }}">
+            src="{{ $profile->user->profile_photo_url }}" alt="{{ $profile->name }}">
 
 
         <div class="flex flex-col items-center justify-center"> <!-- Contenedor principal -->
@@ -26,9 +26,24 @@
                 </h1>
             </div>
             <div class="flex items-center"> <!-- Segunda fila -->
-                <a class="text-blue-400 text-lg font-bold" href="">
-                    {{ '' . Str::slug($profile->category->name, '') }}
-                </a>
+                <button class="text-blue-400 text-lg font-bold" href="">
+                    {{ $profile->category->name }}
+                </button>
+            </div>
+            <div class="mt-1 flex justify-center">
+                <ul class="flex text-xs mr-1">
+                    <li><i class="fas fa-star text-{{ $profile->rating >= 1 ? 'yellow' : 'gray' }}-400 "></i>
+                    </li>
+                    <li><i class="fas fa-star text-{{ $profile->rating >= 2 ? 'yellow' : 'gray' }}-400"></i>
+                    </li>
+                    <li><i class="fas fa-star text-{{ $profile->rating >= 3 ? 'yellow' : 'gray' }}-400"></i>
+                    </li>
+                    <li><i class="fas fa-star text-{{ $profile->rating >= 4 ? 'yellow' : 'gray' }}-400"></i>
+                    </li>
+                    <li><i class="fas fa-star text-{{ $profile->rating >= 5 ? 'yellow' : 'gray' }}-400"></i>
+                    </li>
+                </ul>
+                <span  class=" md:text-xs bg-yellow-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ">{{ $profile->rating }}</span>
             </div>
         </div>
 

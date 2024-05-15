@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'status'];
-    protected $withCount = ['students', 'reviews'];
+    protected $withCount = ['students', 'comments'];
     
 
     const BORRADOR = 1;
@@ -21,8 +21,8 @@ class Course extends Model
     const CERTIFICADO = 3;
     
     public function getRatingAttribute(){
-        if($this->reviews_count){
-            return round($this->reviews->avg('rating'), 1);
+        if($this->comments_count){
+            return round($this->comments->avg('rating'), 1);
         }else{
             return 1;
         }
@@ -104,6 +104,11 @@ class Course extends Model
 
     public function image(){
         return $this->morphOne('App\Models\Image', 'imageable');
+    }
+    
+    //Relacion uno a muchos polimorfica
+    public function comments(){
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
     //Relacion hasManyThrough

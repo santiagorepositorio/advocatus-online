@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Audience;
+use App\Models\Comment;
 use App\Models\Course;
 use App\Models\Description;
 use App\Models\Goal;
@@ -26,8 +27,9 @@ class CourseSeeder extends Seeder
         $courses = Course::factory(10)->create();
 
         foreach ($courses as $course) {
-            Review::factory(5)->create([
-                'course_id' => $course->id
+            Comment::factory(5)->create([
+                'commentable_id' => $course->id,
+                'commentable_type' => 'App\Models\Course'
             ]);
 
             Image::factory(1)->create([

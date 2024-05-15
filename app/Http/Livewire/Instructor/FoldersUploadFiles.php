@@ -20,7 +20,8 @@ class FoldersUploadFiles extends Component
         'folder.user_id' => 'required',
         'folder.category_id' => 'required',
     ];
-    public function mount(){
+    public function mount()
+    {
         // $this->folder = $folder;
         $this->folder =  new Folder();
         // $this->authorize('dicatated', $folder);
@@ -31,49 +32,54 @@ class FoldersUploadFiles extends Component
         $folders = Folder::where('user_id', auth()->user()->id)->get();
         return view('livewire.instructor.folders-upload-files', compact('folders', 'categories'));
     }
-    public function edit(Folder $folder){
+    public function edit(Folder $folder)
+    {
         $this->folder = $folder;
     }
 
-    public function update(){
+    public function update()
+    {
         $this->validate();
-        $this->folder->save();        
+        $this->folder->save();
         // $this->folder =  new Folder();
         $this->folder = Folder::find($this->folder->id);
         $this->folder =  new Folder();
     }
-    public function store(){
-        // $this->validate([
-        //     'name' => 'required',            
-        //     'user_id' => 'required',
-        //     'category_id' => 'required'
-        // ]);
+    public function store()
+    {
+        $this->validate([
+            'name' => 'required',
+            'category_id' => 'required'
+        ]);
         Folder::create([
-            'name' => $this->name,           
+            'name' => $this->name,
             'user_id' =>  auth()->user()->id,
-            'status' => 3,
             'category_id' => $this->category_id,
         ]);
         $this->reset('name', 'user_id', 'category_id');
         $this->folder = Folder::find($this->folder->id);
         $this->folder =  new Folder();
     }
-    public function destroy(Folder $folder){
+    public function destroy(Folder $folder)
+    {
         $folder->delete();
         $this->folder = Folder::find($this->folder->id);
         $this->folder =  new Folder();
     }
-    public function privado(Folder $folder1){
-        if ($folder1->status == 3 || ($folder1->status == 0 && $folder1->status != 2)) {
-            $folder1->status = 2;
-            $folder1->save();
-        } 
-    }
-    public function publico(Folder $folder1){
-        if ($folder1->status == 2 || ($folder1->status == 0 && $folder1->status != 3)) {
-            $folder1->status = 3;
-            $folder1->save();
-        } 
-    }
+    public function borrador(Folder $folder1)
+    {
 
+        $folder1->status = 1;
+        $folder1->save();
+    }
+    public function privado(Folder $folder1)
+    {
+        $folder1->status = 2;
+        $folder1->save();
+    }
+    public function publico(Folder $folder1)
+    {
+        $folder1->status = 3;
+        $folder1->save();
+    }
 }

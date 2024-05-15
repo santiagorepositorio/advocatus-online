@@ -34,7 +34,7 @@
         <div class="bg-gray-200 px-4 py-2 rounded-t-md">Mapa</div>
         <div class="p-4">
             @if ($outlet->coordinate)
-            <div id="mapid" class="h-64 md:h-auto"></div>
+            <div id="mapid" class="h-64 md:h-auto z-0"></div>
             @else
             <div>{{ __('outlet.no_coordinate') }}</div>
             @endif

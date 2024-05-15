@@ -23,6 +23,20 @@ class Post extends Model
     const BORRADOR = 1;
     const REVISION = 2;
     const PUBLICADO = 3;
+    public function scopeFilter($query, $filters){
+        $query->when($filters['category'] ?? null, function ($query, $category) {
+            $query->whereIn('category_id', $category);
+        })->when($filters['order'] ?? 'new', function ($query, $order) {
+            $sort = $order === 'new' ? 'desc' : 'asc';
+            $query->orderBy('published_at', $sort);
+        })->when($filters['tag'] ?? null, function ($query, $tag){
+            $query->wherehas('tags', function($query) use($tag){
+                $query->where('tags.name', $tag);
+            });
+        });
+
+    }
+
     public function getRouteKeyName()
     {
         return "slug";
@@ -86,10 +100,10 @@ class Post extends Model
 
     //Relacion uno a uno polimorfica
     //Relacion uno a muchos polimorfica
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
+    // public function comments()
+    // {
+    //     return $this->morphMany(Comment::class, 'commentable');
+    // }
 
     public function images()
     {

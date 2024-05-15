@@ -10,7 +10,7 @@ class Profile extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'status'];
-   // protected $withCount = ['students', 'reviews'];
+    protected $withCount = ['comments'];
     const BORRADOR = 1;
     const REVISION = 2;
     const PUBLICADO = 3;
@@ -31,8 +31,8 @@ class Profile extends Model
     }
 
     public function getRatingAttribute(){
-        if($this->reviews_count){
-            return round($this->reviews->avg('rating'), 1);
+        if($this->comments_count){
+            return round($this->comments->avg('rating'), 1);
         }else{
             return 1;
         }
@@ -78,6 +78,11 @@ class Profile extends Model
 
      public function image(){
         return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
+    //Relacion uno a muchos polimorfica
+    public function comments(){
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
     public function getCoordinateAttribute()
     {

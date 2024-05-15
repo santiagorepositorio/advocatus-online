@@ -113,7 +113,7 @@
                         {!! $errors->first('longitude', '<span class="text-red-600" role="alert">:message</span>') !!}
                     </div>
                 </div>
-                <div id="mapid" class="mb-4 h-64"></div>
+                <div id="mapid" class="mb-4 h-64 z-0"></div>
                 <div class="flex justify-end">
                     <button class="btn btn-primary ml-2">Guardar Cambios</button>
 

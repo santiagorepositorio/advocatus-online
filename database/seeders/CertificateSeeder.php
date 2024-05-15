@@ -20,14 +20,14 @@ class CertificateSeeder extends Seeder
         
         $certificates = Certificate::factory(3)->create();
 
-        foreach ($certificates as $certificate) {
+        // foreach ($certificates as $certificate) {
            
-            Image::factory(1)->create([
-                'imageable_id' => $certificate->id,
-                'imageable_type' => 'App\Models\Certificate',
+        //     Image::factory(1)->create([
+        //         'imageable_id' => $certificate->id,
+        //         'imageable_type' => 'App\Models\Certificate',
                
-            ]);
+        //     ]);
 
-        }
+        // }
     }
 }

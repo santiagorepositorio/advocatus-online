@@ -12,7 +12,8 @@
                     @endisset
                 </div>
                 <div class="flex flex-col items-center -mt-8">
-                    <img src="{{ $profile->user->profile_photo_url }}" class=" border-4 border-white rounded-full w-16 object-center object-cover h-16 sm:w-20 md:w-22 lg:w-24 xl:w-26 sm:h-20 md:h-22 lg:h-24 xl:h-26">
+                    <img src="{{ $profile->user->profile_photo_url }}"
+                        class=" border-4 border-white rounded-full w-16 object-center object-cover h-16 sm:w-20 md:w-22 lg:w-24 xl:w-26 sm:h-20 md:h-22 lg:h-24 xl:h-26">
                     <div class="flex items-center space-x-2 mt-2 mb-4">
 
                         <div x-data="{ openSettings: false }" class="hover:bg-slate-600 rounded">
@@ -42,7 +43,8 @@
                                         </svg>
                                         <span class="text-sm text-gray-700">Compartir</span>
                                     </button>
-                                    <button class="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200 hidden">
+                                    <button
+                                        class="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200 hidden">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -72,21 +74,25 @@
                     <div class="flex justify-between gap-4">
                         <p class="text-gray-700">{{ $profile->category->name }}</p>
                         <div class="mt-1 flex justify-center">
-                            <ul class="flex text-xs mr-1">
-                                <li><i class="fas fa-star text-yellow-400"></i></li>
-                                <li><i class="fas fa-star text-yellow-400"></i></li>
-                                <li><i class="fas fa-star text-yellow-400"></i></li>
-                                <li><i class="fas fa-star text-yellow-400"></i></li>
-                                <li><i class="fas fa-star text-yellow-400"></i></li>
-                            </ul>
-                            <span
-                                class="md:text-xs bg-yellow-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
+                            <ul class="flex text-sm">
+                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 1 ? 'yellow' : 'gray' }}-400"></i>
+                                </li>
+                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 2 ? 'yellow' : 'gray' }}-400"></i>
+                                </li>
+                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 3 ? 'yellow' : 'gray' }}-400"></i>
+                                </li>
+                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 4 ? 'yellow' : 'gray' }}-400"></i>
+                                </li>
+                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 5 ? 'yellow' : 'gray' }}-400"></i>
+                                </li>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">{{ $profile->rating}}</span>
+                            </ul>                            
                         </div>
                     </div>
                     <p class="text-sm text-gray-500">
                         @if ($profile->city)
                             {{ $profile->city }}
-                        @endif - 
+                        @endif -
                         @if ($profile->state)
                             {{ $profile->state }}
                         @endif
@@ -95,22 +101,18 @@
                 <div class="lg:flex items-center lg:items-end justify-between px-8 mt-2">
                     <div class="flex items-center justify-center gap-4 mt-2">
                         @forelse ($profile->socials as $item)
-                        <!-- start::Timeline item -->
-                        <a href="{{ $item->link }}" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
-                            {!! $item->icon !!}
-                        </a>
-                        <!-- end::Timeline item -->
-                            
+                            <!-- start::Timeline item -->
+                            <a href="{{ $item->link }}"
+                                class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
+                                {!! $item->icon !!}
+                            </a>
+                            <!-- end::Timeline item -->
+
                         @empty
-                            
                         @endforelse
                     </div>
                     <div class="flex items-center justify-center gap-4 mt-2">
-                        <a
-                            class="flex items-center cursor-pointer bg-blue-600 hover:bg-rose-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-                            <i class="fas fa-star text-yellow-400 h-4 w-4"></i>
-                            <span>Calificar</span>
-                        </a>
+                        
                         <a href="https://wa.me/{{ $profile->phone }}"
                             class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
                             <i class="fab fa-whatsapp text-gray-100 h-4 w-4"></i>
@@ -133,280 +135,51 @@
                         <div class="relative px-4">
                             <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
                             @forelse ($profile->educations as $item)
-                            <!-- start::Timeline item -->
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                <!-- start::Timeline item -->
+                                <div class="flex items-center w-full my-6 -ml-1.5">
+                                    <div class="w-1/12 z-10">
+                                        <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                    </div>
+                                    <div class="w-11/12">
+                                        <p class="text-sm">
+                                            {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
+                                                {{ $item->institution }}</a>.</p>
+                                        <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
+                                    </div>
                                 </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        {{ $item->title }} <a href="#"
-                                            class="text-blue-600 font-bold"> {{ $item->institution }}</a>.</p>
-                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
-                                </div>
-                            </div>
-                            <!-- end::Timeline item -->
-                                
+                                <!-- end::Timeline item -->
+
                             @empty
-                                
-                            @endforelse
-
-
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">Profile informations changed.</p>
-                                    <p class="text-xs text-gray-500">3 min ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Diplomado en Educacion Superior <a href="#"
-                                            class="text-blue-600 font-bold">CEPIES</a>.</p>
-                                    <p class="text-xs text-gray-500">Docencia de Universidad</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">Invoice <a href="#"
-                                            class="text-blue-600 font-bold">#4563</a> was created.</p>
-                                    <p class="text-xs text-gray-500">57 min ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Message received from <a href="#"
-                                            class="text-blue-600 font-bold">Cecilia Hendric</a>.</p>
-                                    <p class="text-xs text-gray-500">1 hour ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">New order received <a href="#"
-                                            class="text-blue-600 font-bold">#OR9653</a>.</p>
-                                    <p class="text-xs text-gray-500">2 hours ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Message received from <a href="#" class="text-blue-600 font-bold">Jane
-                                            Stillman</a>.</p>
-                                    <p class="text-xs text-gray-500">2 hours ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">Invoice <a href="#"
-                                            class="text-blue-600 font-bold">#4563</a> was created.</p>
-                                    <p class="text-xs text-gray-500">57 min ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Message received from <a href="#"
-                                            class="text-blue-600 font-bold">Cecilia Hendric</a>.</p>
-                                    <p class="text-xs text-gray-500">1 hour ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">New order received <a href="#"
-                                            class="text-blue-600 font-bold">#OR9653</a>.</p>
-                                    <p class="text-xs text-gray-500">2 hours ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Message received from <a href="#" class="text-blue-600 font-bold">Jane
-                                            Stillman</a>.</p>
-                                    <p class="text-xs text-gray-500">2 hours ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
+                            @endforelse                           
                         </div>
                     </div>
                     <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
                         <div class="flex items-center gap-4">
-                            <h4 class="text-xl text-gray-900 font-bold">Experiencia Laboral</h4>                       
+                            <h4 class="text-xl text-gray-900 font-bold">Experiencia Laboral</h4>
                             <i class="fas fa-diagnoses text-blue-600 text-xl"></i>
-                            
-                            
+
                         </div>
                         <div class="relative px-4">
                             <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
 
                             @forelse ($profile->experiences as $item)
-                            <!-- start::Timeline item -->
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                <!-- start::Timeline item -->
+                                <div class="flex items-center w-full my-6 -ml-1.5">
+                                    <div class="w-1/12 z-10">
+                                        <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                    </div>
+                                    <div class="w-11/12">
+                                        <p class="text-sm">
+                                            {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
+                                                {{ $item->institution }}</a>.</p>
+                                        <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
+                                    </div>
                                 </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        {{ $item->title }} <a href="#"
-                                            class="text-blue-600 font-bold"> {{ $item->institution }}</a>.</p>
-                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
-                                </div>
-                            </div>
-                            <!-- end::Timeline item -->
-                                
+                                <!-- end::Timeline item -->
+
                             @empty
-                                
                             @endforelse
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Diplomado en Educacion Superior <a href="#"
-                                            class="text-blue-600 font-bold">CEPIES</a>.</p>
-                                    <p class="text-xs text-gray-500">2001</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">Profile informations changed.</p>
-                                    <p class="text-xs text-gray-500">3 min ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Diplomado en Educacion Superior <a href="#"
-                                            class="text-blue-600 font-bold">CEPIES</a>.</p>
-                                    <p class="text-xs text-gray-500">Docencia de Universidad</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">Invoice <a href="#"
-                                            class="text-blue-600 font-bold">#4563</a> was created.</p>
-                                    <p class="text-xs text-gray-500">57 min ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Message received from <a href="#"
-                                            class="text-blue-600 font-bold">Cecilia Hendric</a>.</p>
-                                    <p class="text-xs text-gray-500">1 hour ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">New order received <a href="#"
-                                            class="text-blue-600 font-bold">#OR9653</a>.</p>
-                                    <p class="text-xs text-gray-500">2 hours ago</p>
-                                </div>
-                            </div>-->
-                            <!-- end::Timeline item -->
-
-                            <!-- start::Timeline item 
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        Message received from <a href="#" class="text-blue-600 font-bold">Jane
-                                            Stillman</a>.</p>
-                                    <p class="text-xs text-gray-500">2 hours ago</p>
-                                </div>
-                            </div>-->
+                           
                             <!-- end::Timeline item -->
                         </div>
                     </div>
@@ -414,59 +187,58 @@
                 <div class="flex flex-col lg:w-2/3 2xl:w-2/3">
                     <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
                         @if ($profile->about)
-                        <h4 class="text-xl text-gray-900 font-bold">Nosotros</h4>
-                        <p class="mt-2 text-gray-700">{{ $profile->about }}</p>                            
+                            <h4 class="text-xl text-gray-900 font-bold">Nosotros</h4>
+                            <p class="mt-2 text-gray-700">{{ $profile->about }}</p>
                         @endif
                         <h4 class="text-xl text-gray-900 font-bold mt-4">Información Profesional</h4>
                         <ul class="mt-2 text-gray-700">
                             @if ($profile->name)
                                 <li class="flex  border-y py-2">
-                                <span class="font-bold w-48">Nombre del Propietario:</span>
-                                <span class="text-gray-700">{{ $profile->name }}</span>
-                            </li>
+                                    <span class="font-bold w-48">Nombre del Propietario:</span>
+                                    <span class="text-gray-700">{{ $profile->name }}</span>
+                                </li>
                             @endif
-                            
+
                             @if ($profile->rpa)
-                            <li class="flex border-b py-2">
-                                <span class="font-bold w-48">Registro Profesional:</span>
-                                <span class="text-gray-700">{{ $profile->rpa }}</span>
-                            </li>
-                                
+                                <li class="flex border-b py-2">
+                                    <span class="font-bold w-48">Registro Profesional:</span>
+                                    <span class="text-gray-700">{{ $profile->rpa }}</span>
+                                </li>
                             @endif
                             @if ($profile->nit)
-                            <li class="flex border-b py-2">
-                                <span class="font-bold w-48">NIT:</span>
-                                <span class="text-gray-700">{{ $profile->nit }}</span>
-                            </li>
-                                
+                                <li class="flex border-b py-2">
+                                    <span class="font-bold w-48">NIT:</span>
+                                    <span class="text-gray-700">{{ $profile->nit }}</span>
+                                </li>
                             @endif
                             @if ($profile->phone)
-                            <li class="flex border-b py-2">
-                                <span class="font-bold w-48">Celular:</span>
-                                <span class="text-gray-700">{{ $profile->phone }}</span>
-                            </li>
-                                
+                                <li class="flex border-b py-2">
+                                    <span class="font-bold w-48">Celular:</span>
+                                    <span class="text-gray-700">{{ $profile->phone }}</span>
+                                </li>
                             @endif
                             @if ($profile->email)
-                            <li class="flex border-b py-2">
-                                <span class="font-bold w-48">Email:</span>
-                                <span class="text-gray-700 text-sm sm:text-md lg:text-lg">{{ $profile->email }}</span>
-                            </li>
-                                
+                                <li class="flex border-b py-2">
+                                    <span class="font-bold w-48">Email:</span>
+                                    <span
+                                        class="text-gray-700 text-sm sm:text-md lg:text-lg">{{ $profile->email }}</span>
+                                </li>
                             @endif
                         </ul>
 
                         <div class="w-full">
                             @if ($profile->latitude && $profile->longitude)
-                            <div id="mapid" class="h-64 md:h-auto"></div>
-                                
+                                <div id="mapid" class="h-64 md:h-auto z-0"></div>
                             @endif
 
                         </div>
 
                     </div>
                     <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
-                        <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
+                        <div class="border mt-2 p-2 mb-4 bg-gray-200 rounded-2xl">
+                            @livewire('courses-reviews', ['model' => $profile])
+                        </div>
+                        {{-- <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
 
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
                             <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
@@ -560,7 +332,7 @@
                             <canvas id="verticalBarChart"
                                 style="display: block; box-sizing: border-box; height: 414px; width: 828px;"
                                 width="1656" height="828"></canvas>
-                        </div>
+                        </div> --}}
                     </div>
                     {{-- <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
                         <h4 class="text-xl text-gray-900 font-bold">Servicios</h4>

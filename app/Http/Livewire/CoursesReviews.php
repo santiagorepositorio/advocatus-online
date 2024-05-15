@@ -9,10 +9,21 @@ use Livewire\Component;
 class CoursesReviews extends Component
 {
     public $course_id, $comment;
+    public $model;
     public $rating = 5;
+    public $cant = 5;
+    public $comment_reg = [
+        'comment' => '',
+        'commentable_id' => null,
+    ];
     public function mount(Course $course)
     {
         $this->course_id = $course->id;
+    }
+
+    public function getCommentsProperty()
+    {
+        return $this->model->comments()->take($this->cant)->orderBy('created_at', 'desc')->get();
     }
     public function render()
     {
@@ -22,11 +33,16 @@ class CoursesReviews extends Component
     }
     public function store()
     {
-        $course = Course::find($this->course_id);
-        $course->reviews()->create([
+        $this->validate([
+            'comment' => 'required'
+        ]);
+        // $course = Course::find($this->model->id);
+        // dd($this->model->id);
+        $this->model->comments()->create([
             'comment' => $this->comment,
             'rating' => $this->rating,
             'user_id' => auth()->user()->id
         ]);
+        $this->reset('comment');
     }
 }

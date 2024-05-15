@@ -59,6 +59,10 @@
 
                 </div>
             </div>
+            <div class=" mb-16">
+           
+                @livewire('question', ['model' => $current], key('question-' . $current->id))
+            </div>
         </div>
 
         <div class="bg-white shadow-lg rounded overflow-hidden ">

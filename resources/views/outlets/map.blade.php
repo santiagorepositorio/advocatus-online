@@ -40,7 +40,7 @@
 
         </div>
         <div id="" class=" max-w-full mx-auto py-4">
-            <div id="mapid"></div>
+            <div id="mapid" class="z-0"></div>
         </div>
     </section>
 @endsection

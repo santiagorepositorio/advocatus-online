@@ -47,6 +47,12 @@ class Lesson extends Model
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
+    //Relacion uno a muchos polimorfica
+    public function questions()
+    {
+        return $this->morphMany(Question::class, 'questionable');
+    }
+
     public function reactions(){
     return $this->morphMany('App\Models\Reaction', 'reactionable');
     }

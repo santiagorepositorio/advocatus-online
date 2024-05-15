@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -35,7 +36,20 @@ class BlogController extends Controller
         JsonLd::setTitle('Artículos Publicados');
         JsonLd::setDescription('Publicaciones profesionales Jurídico & Informáticos sobre temas del Derecho, Discapacidad, TEA y otros referentes');
         JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/bloguear.png');
-        return view('blogs.index');
+
+        $posts = Post::where('published', 1)
+            ->filter(request()->all())
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+        $categories = Category::where('status', 'Blog')->get();
+
+        $populares = Post::withCount('questions')
+            ->where('published', 1)
+            ->whereHas('questions') // Asegurarse de que el post tenga al menos una pregunta
+            ->orderByDesc('questions_count') // Ordenar por la cantidad de preguntas
+            ->limit(5) // Obtener los primeros 5 posts
+            ->get();
+        return view('blogs.index', compact('posts', 'categories', 'populares'));
     }
 
     /**
@@ -71,16 +85,16 @@ class BlogController extends Controller
 
         SEOMeta::setTitle($post->title);
         SEOMeta::setDescription($postBodyWithoutTags);
-       
+
 
         SEOMeta::setTitle($post->title);
         SEOMeta::setDescription($postBodyWithoutTags);
-        SEOMeta::addMeta('article:section', $post->category, 'property');       
+        SEOMeta::addMeta('article:section', $post->category, 'property');
 
         OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($post->title);
         OpenGraph::addImage($post->image);
-    
+
         TwitterCard::setTitle($post->title);
         TwitterCard::setSite('@Sobotred');
 
@@ -88,12 +102,14 @@ class BlogController extends Controller
         JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage($post->image);
 
-        $similares = Post::where('category_id', $post->category_id)   
-                    ->where('id', '!=', $post->id)                 
-                    ->orderBy('published_at', 'desc') 
-                    ->where('published', 1)
-                    ->take(5)
-                    ->get();
+        $similares = Post::where('category_id', $post->category_id)
+            ->where('id', '!=', $post->id)
+            ->orderBy('published_at', 'desc')
+            ->where('published', 1)
+            ->take(5)
+            ->get();
+
+
 
 
         return view('blogs.show', compact('post', 'similares'));

@@ -125,10 +125,15 @@ class CourseController extends Controller
     {
 
         if ($course->price->value == 0) {
-            $course->students()->attach(auth()->user()->id, ['created_at' => now()]);
+            $course->students()->attach(auth()->user()->id, ['created_at' => now()]);            
             $course->students()->updateExistingPivot(auth()->user()->id, ['statusr' => '3']);
+            
+            
         } else {
             $course->students()->attach(auth()->user()->id, ['created_at' => now()]);
+            if (auth()->user()->id == $course->user_id) {
+                $course->students()->updateExistingPivot(auth()->user()->id, ['statusr' => '3']);
+            }
         }
         // $course->students()->attach(auth()->user()->id);
 

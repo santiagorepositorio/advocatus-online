@@ -75,6 +75,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        // $post = Post::where('slug', $post)
+        //                 ->where('user_id', auth()->id())
+        //                 ->firstOrFail();
         if (!Gate::allows('author', $post)) {
             abort(403, 'No tienes permisos para editar este post');
         }
