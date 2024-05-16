@@ -79,14 +79,14 @@ class ProfileController extends Controller
 
         OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($profile->name);
-        OpenGraph::addImage($profile->user->profile_photo_url);
+        OpenGraph::addImage(Storage::url($profile->image->url));
     
         TwitterCard::setTitle($profile->name);
         TwitterCard::setSite('@Sobotred');
 
         JsonLd::setTitle($profile->name);
         JsonLd::setDescription($postBodyWithoutTags);
-        JsonLd::addImage($profile->user->profile_photo_url);
+        JsonLd::addImage(Storage::url($profile->image->url));
         return view('profiles.show', compact('profile'));
     }
 
