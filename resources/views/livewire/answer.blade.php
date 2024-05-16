@@ -64,8 +64,7 @@
                         @else
                             <p>{!! $answer->body !!}</p>
                             @auth
-                                <button class="text-blue-800"
-                                    wire:click="$set('answer_to_answer.id', {{ $answer->id }})">
+                                <button class="text-blue-800" wire:click="$set('answer_to_answer.id', {{ $answer->id }})">
                                     <i class="fas fa-reply"></i>
                                     Responder
                                 </button>
@@ -73,20 +72,25 @@
                         @endif
                     </div>
                     @auth
+                        @can('update', $answer)                            
                         <div class="cursor-pointer ml-6">
                             <x-jet-dropdown class="">
                                 <x-slot name="trigger">
                                     <i class="text-red-700 fas fa-ellipsis-v"></i>
                                 </x-slot>
                                 <x-slot name="content">
+                                    @can('update', $answer)   
                                     <x-jet-dropdown-link class="cursor-pointer"
-                                        wire:click="edit({{ $answer->id }})">Editar</x-jet-dropdown-link>
+                                    wire:click="edit({{ $answer->id }})">Editar</x-jet-dropdown-link>
+                                    @endcan 
+                                    @can('delete', $answer)  
                                     <x-jet-dropdown-link class="cursor-pointer"
-                                        wire:click="destroy({{ $answer->id }})">Eliminar</x-jet-dropdown-link>
-
+                                    wire:click="destroy({{ $answer->id }})">Eliminar</x-jet-dropdown-link>
+                                    @endcan
                                 </x-slot>
                             </x-jet-dropdown>
                         </div>
+                        @endcan                        
                     @endauth
                 </div>
 

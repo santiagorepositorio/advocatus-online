@@ -4,19 +4,20 @@ namespace App\Http\Livewire;
 
 use App\Models\Question as ModelsQuestion;
 use Livewire\Component;
+use Illuminate\Support\Facades\Gate;
 
 class Question extends Component
 {
     public $model;
     public $message;
-   
+
     public $cant = 5;
 
     public $question_edit = [
         'id' => null,
         'body' => '',
     ];
-    
+
 
     public function getQuestionsProperty()
     {
@@ -32,8 +33,8 @@ class Question extends Component
             'body' => $this->message,
             'user_id' => auth()->id(),
         ]);
-      
-        $this->message ='';
+
+        $this->message = '';
     }
     public function edit($questionsId)
     {
@@ -53,17 +54,23 @@ class Question extends Component
             'question_edit.body' => 'required'
         ]);
         $question = ModelsQuestion::find($this->question_edit['id']);
-        $question->update([
-            'body' => $this->question_edit['body']
-        ]);
-     
+
+        if (Gate::allows('update', $question)) {
+            $question->update([
+                'body' => $this->question_edit['body']
+            ]);
+        }
+
         $this->reset('question_edit');
     }
     public function destroy($questionsId)
     {
         $question = ModelsQuestion::find($questionsId);
-        $question->delete();
-    
+
+        if (Gate::allows('delete', $question)) {
+            $question->delete();
+        }
+
         $this->reset('question_edit');
     }
 

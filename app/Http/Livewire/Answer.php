@@ -4,17 +4,18 @@ namespace App\Http\Livewire;
 
 use App\Models\Answer as ModelsAnswer;
 use Livewire\Component;
+use Illuminate\Support\Facades\Gate;
 
 class Answer extends Component
 {
     public $question;
     public $cant = 0;
     public $open = false;
-    public $answer_created =[
+    public $answer_created = [
         'open' => false,
         'body' => '',
     ];
-    public $answer_to_answer =[
+    public $answer_to_answer = [
         'id' => null,
         'body' => '',
     ];
@@ -22,7 +23,7 @@ class Answer extends Component
         'id' => null,
         'body' => '',
     ];
- 
+
 
     public function getAnswersProperty()
     {
@@ -37,7 +38,7 @@ class Answer extends Component
             'body' => $this->answer_created['body'],
             'user_id' => auth()->id(),
         ]);
-       $this->cant += 1;
+        $this->cant += 1;
         $this->reset('answer_created');
     }
     public function answer_to_answer_store()
@@ -51,9 +52,8 @@ class Answer extends Component
         ]);
         $this->cant += 1;
         $this->reset('answer_to_answer');
-    
     }
-    
+
     public function edit($answersId)
     {
         $answers = ModelsAnswer::find($answersId);
@@ -72,17 +72,20 @@ class Answer extends Component
             'answer_edit.body' => 'required'
         ]);
         $answers = ModelsAnswer::find($this->answer_edit['id']);
-        $answers->update([
-            'body' => $this->answer_edit['body']
-        ]);
-    
+        if (Gate::allows('update', $answers)) {
+            // $this->authorize('update', $answers);
+            $answers->update([
+                'body' => $this->answer_edit['body']
+            ]);
+        }
         $this->reset('answer_edit');
     }
     public function destroy($answersId)
     {
         $answers = ModelsAnswer::find($answersId);
-        $answers->delete();
-  
+        if (Gate::allows('delete', $answers)) {
+        $answers->delete();}
+
         $this->reset('answer_edit');
     }
     public function show_more_answer()
@@ -92,7 +95,6 @@ class Answer extends Component
         } else {
             $this->cant = 0;
         }
-        
     }
 
     public function render()

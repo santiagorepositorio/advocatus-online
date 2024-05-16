@@ -54,20 +54,25 @@
                                 @endif
                             </div>
                             @auth
-                                <div class="cursor-pointer ml-6">
-                                    <x-jet-dropdown class="">
-                                        <x-slot name="trigger">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </x-slot>
-                                        <x-slot name="content">
-                                            <x-jet-dropdown-link class="cursor-pointer"
-                                                wire:click="edit({{ $question->id }})">Editar</x-jet-dropdown-link>
-                                            <x-jet-dropdown-link class="cursor-pointer"
-                                                wire:click="destroy({{ $question->id }})">Eliminar</x-jet-dropdown-link>
-
-                                        </x-slot>
-                                    </x-jet-dropdown>
-                                </div>
+                                @can('update', $question)
+                                    {{-- @if ($question->user_id == auth()->id()) --}}
+                                    <div class="cursor-pointer ml-6">
+                                        <x-jet-dropdown class="">
+                                            <x-slot name="trigger">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </x-slot>
+                                            <x-slot name="content">
+                                                @can('update', $question)                                                    
+                                                <x-jet-dropdown-link class="cursor-pointer" wire:click="edit({{ $question->id }})">Editar</x-jet-dropdown-link>
+                                                @endcan
+                                                @can('delete', $question) 
+                                                <x-jet-dropdown-link class="cursor-pointer" wire:click="destroy({{ $question->id }})">Eliminar</x-jet-dropdown-link>
+                                                @endcan
+                                            </x-slot>
+                                        </x-jet-dropdown>
+                                    </div>
+                                    {{-- @endif --}}
+                                @endcan
                             @endauth
                         </div>
                         @livewire('answer', compact('question'), key('answer-' . $question->id))
