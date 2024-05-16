@@ -44,7 +44,8 @@
 border-transparent @endif pl-2">
                         <a href="{{ route('instructor.courses.edit', $course) }}"> Informacion del Curso</a>
                     </li>
-                    <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400
+                    <li
+                        class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400
 @else
 border-transparent @endif pl-2">
                         <a href="{{ route('instructor.courses.curriculum', $course) }}"> Lecciones del Curso</a>
@@ -79,7 +80,8 @@ border-transparent @endif pl-2">
                         class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.observation', $course) border-red-400
 @else
 border-transparent @endif pl-2">
-                        <a href="{{ route('instructor.courses.observation', $course) }}"> Observaciones / Link  / Certificado</a>
+                        <a href="{{ route('instructor.courses.observation', $course) }}"> Observaciones / Link /
+                            Certificado</a>
                     </li>
                     <li>
                         <hr class="mt-2 mb-6">

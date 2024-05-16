@@ -119,7 +119,7 @@
             'required' => true,
         ]) !!}
         {!! Form::label('mapid', 'Tu Ubicación') !!}
-        <div id="mapid" class=" mb-4 mt-4 h-64 sm:h-96 lg:h-128 w-full"></div>
+        <div id="mapid" class=" mb-4 mt-4 h-64 sm:h-96 lg:h-128 w-full z-0"></div>
 
     </div>
 </div>

@@ -40,7 +40,7 @@
                 <h1 class="font-fold text-3xl mb-2">Temario</h1>
                 @foreach ($course->sections as $section)
                     <article class="mb-4 shadow-lg rounded-lg" @if ($loop->first) x-data="{ open: true}" @else x-data="{ open: false}" @endif>
-                        <div class="border-2 border-blue-500 rounded-lg dark:border-white-700">
+                        <div class="border-2 border-blue-500 rounded-lg">
                             <button class="flex items-center justify-between w-full p-4" x-on:click="open = !open">
                                 <h1 class="font-semibold text-gray-700">{{ $section->name }}</h1>
         

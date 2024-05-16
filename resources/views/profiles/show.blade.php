@@ -85,7 +85,7 @@
                                 </li>
                                 <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 5 ? 'yellow' : 'gray' }}-400"></i>
                                 </li>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">{{ $profile->rating}}</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">{{ $profile->rating}}</span>
                             </ul>                            
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                         @forelse ($profile->socials as $item)
                             <!-- start::Timeline item -->
                             <a href="{{ $item->link }}"
-                                class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
+                                class="text-blue-500 hover:text-gray-900">
                                 {!! $item->icon !!}
                             </a>
                             <!-- end::Timeline item -->

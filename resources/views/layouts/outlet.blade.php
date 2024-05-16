@@ -70,33 +70,23 @@
         {{ $js }}
     @endisset
 
-    <footer class=" container p-4 bg-white sm:p-6 dark:bg-gray-900 mb-3">
+    <footer class=" container p-4 bg-white sm:p-6  mb-3">
         <div hidden><a href="#"><img
                     class="fixed z-90 bottom-10 right-8  w-12 h-12  drop-shadow-lg flex justify-center items-center hover:drop-shadow-2xl hover:animate-bounce duration-300"
                     src="{{ asset('assets/imgs/theme/icons/icon-whatsapp.svg') }}"></a></div>
-
-
-
-
-
-
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <a href="/" class="flex-shrink-0 flex items-center mx-6 lg:mx-0">
                     <img class="block lg:hidden h-12 w-auto mx-auto"
-                        src="{{ asset('assets/imgs/logo/logo-top-1.png') }}" alt="ITSW">
+                        src="{{ asset('assets/imgs/logo/logo-top-1.png') }}" alt="">
                     <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}"
                         alt="ITSW">
                 </a>
             </div>
-
-
-
-
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Referencias</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">Referencias</h2>
+                    <ul class="text-gray-600 ">
                         <li class="mb-4">
                             <a href="#" class="hover:underline">Portafolio</a>
                         </li>
@@ -106,8 +96,8 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Trabajos</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">Trabajos</h2>
+                    <ul class="text-gray-600 ">
                         <li class="mb-4">
                             <a href="#" class="hover:underline ">Sistemas Web</a>
                         </li>
@@ -117,8 +107,8 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-                    <ul class="text-gray-600 dark:text-gray-400">
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">Legal</h2>
+                    <ul class="text-gray-600 ">
                         <li class="mb-4">
                             <a href="{{ route('privacy-policy') }}" class="hover:underline">Politicas de Privacidad</a>
                         </li>
@@ -129,16 +119,16 @@
                 </div>
             </div>
         </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a
-                    href="https://sobotredsystems.com/" class="hover:underline">Santiago Boris Quispe Apaza™</a>. All
+            <span class="text-sm text-gray-500 sm:text-center ">© 2024 <a href="https://sobotredsystems.com/"
+                    class="hover:underline">Santiago Boris Quispe Apaza™</a>. All
                 Rights
                 Reserved.
             </span>
 
             <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-                <a href="#" class="text-blue-500 hover:text-gray-900 dark:hover:text-white">
+                <a href="#" class="text-blue-500 hover:text-gray-900 ">
 
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -152,11 +142,11 @@
                     <img class="w-5 h-5" src="{{ asset('assets/imgs/theme/icons/icon-whatsapp.svg') }}" alt="">
 
                 </a>
-                <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                <a href="#" class="text-gray-500 hover:text-gray-900 ">
                     <img class="w-5 h-5" src="{{ asset('assets/imgs/theme/icons/icon-youtube2.svg') }}" alt="">
 
                 </a>
-                <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                <a href="#" class="text-gray-500 hover:text-gray-900 ">
                     <img class="w-5 h-5" src="{{ asset('assets/imgs/theme/icons/icon-tiktok2.svg') }}" alt="">
                 </a>
             </div>
@@ -187,25 +177,6 @@
             });
         }
     </script>
-    {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-     <script>
-         var swiper = new Swiper('.mySwiper', {
-             spaceBetween: 30,
-             centeredSlides: true,
-             autoplay: {
-                 delay: 2500,
-                 disableOnInteraction: false,
-             },
-             pagination: {
-                 el: '.swiper-pagination',
-                 clickable: true,
-             },
-             navigation: {
-                 nextEl: '.swiper-button-next',
-                 prevEl: '.swiper-button-prev',
-             },
-         });
-     </script> --}}
     <script src="{{ asset('assets/js/main.js?v=3.3') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
