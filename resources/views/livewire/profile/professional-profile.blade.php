@@ -29,11 +29,11 @@
         <!-- Create Professional Profile Confirmation Modal -->
         <x-jet-dialog-modal wire:model="confirmingUserProfessional">
             <x-slot name="title">
-                {{ __('Create Perfil Profesional') }}
+                {{ __('Perfil Profesional') }}
             </x-slot>
 
             <x-slot name="content">
-                {{ __('Si estas seguro de crear tu perfil profesional debes confirmar con tu password') }}
+                {{ __('Si estas seguro de gestionar tu perfil profesional debes confirmar con tu password') }}
 
                 <div class="mt-4" x-data="{}"
                     x-on:confirming-create-user.window="setTimeout(() => $refs.password.focus(), 250)">
@@ -51,7 +51,7 @@
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>                
                 <x-button-primary class="ml-3" wire:click="createProfessional" wire:loading.attr="disabled" >
-                    Crear Perfil Profesional
+                    Gestionar Perfil Profesional
                 </x-button-primary>
             </x-slot>
         </x-jet-dialog-modal>

@@ -178,7 +178,7 @@
         });
 
         // Verificar si el usuario tiene el rol "Colaborador"
-        if (window.userRoles.includes('Colaborador')) {
+        if (window.userRoles.includes('SuperAdmin') || window.userRoles.includes('Colaborador')) {
             // El usuario tiene el rol "Colaborador"
             var theMarker;
 

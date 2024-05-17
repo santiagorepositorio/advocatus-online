@@ -126,7 +126,7 @@
 <h1 class="text-2xl font-bold mt-8 mb-2">
     Imgen del Perfil
 </h1>
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-2">
     <figure>
         @isset($profile->image)
             <img name="picture" id="picture" class="w-full h-72 object-cover object-center"

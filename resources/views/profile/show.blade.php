@@ -15,7 +15,9 @@
                 @livewire('profile.update-profile-information-form')
                 <x-jet-section-border />
             @endif
+            <div class="mt-10 sm:mt-0">
             @livewire('profile.professional-profile')
+            </div>
             <x-jet-section-border />
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">
