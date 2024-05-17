@@ -123,7 +123,7 @@
                 <div class="flex items-center justify-center gap-4 mt-2">
 
                     <div x-data="{ isOpen: false }">
-                        <!-- Modal toggle -->
+                        
                         <button @click="isOpen = true"
                             class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
@@ -131,41 +131,25 @@
                             Calificar
                         </button>
                     
-                        <!-- Main modal -->
+                      
                         <div x-show="isOpen" x-transition.opacity @keydown.escape.window="isOpen = false"
                             class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
                             <div @click.away="isOpen = false" class="relative w-full max-w-2xl max-h-full p-4">
-                                <!-- Modal content -->
+                                
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                    <!-- Modal header -->
-                                    {{-- <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                                                
-                                    </div> --}}
-                                    <!-- Modal body -->
+                                   
                                     <div class="p-4 md:p-5 space-y-4">
                                         @livewire('courses-reviews', ['model' => $profile])
                                     </div>
-                                    <!-- Modal footer -->
+                                    
                                     <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                        {{-- <button @click="isOpen = false" type="button"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            Cerrar
-                                        </button> --}}
-                                        {{-- <button @click="isOpen = false" type="button"
-                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                            Cancelar
-                                        </button> --}}
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- <a href="https://wa.me/{{ $profile->phone }}"
-                        class="flex items-center cursor-pointer bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-                        <i class="fas fa-star text-gray-100 h-4 w-4"></i>
-                        <span>Calificar</span>
-                    </a> --}}
-                    <!-- Agrega aquí otros botones de acción -->
+                    
                     <a href="https://wa.me/{{ $profile->phone }}"
                         class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
                         <i class="fab fa-whatsapp text-gray-100 h-4 w-4"></i>
