@@ -63,6 +63,8 @@ Route::put('update/{profile}', [ProfileController::class, 'update'])->name('upda
 Route::get('profile/{profile}/educations', [ProfileController::class, 'edutacion_profile'])->name('profile.educations')->middleware('auth');
 Route::get('profile/{profile}/experiences', [ProfileController::class, 'experience_profile'])->name('profile.experiences')->middleware('auth');
 Route::get('profile/{profile}/socials', [ProfileController::class, 'social_profile'])->name('profile.socials')->middleware('auth');
+Route::get('profile/cv', [ProfileController::class, 'cv'])->name('profile.cv')->middleware('auth');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

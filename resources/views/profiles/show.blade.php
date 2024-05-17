@@ -54,191 +54,243 @@
                                         <span class="text-sm text-gray-700">Denunciar</span>
                                     </button>
                                 </div>
-                                <div class="py-2">
-                                    <p class="text-gray-400 text-xs px-6 uppercase mb-1">Donwload</p>
-                                    <button class="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
-                                            </path>
-                                        </svg>
-                                        <span class="text-sm text-gray-700">CV</span>
-                                    </button>
+
+                                <a href="{{ route('profile.cv') }}">
+                                    <div class="py-2">
+                                        <p class="text-gray-400 text-xs px-6 uppercase mb-1">Donwload</p>
+                                        <button
+                                            class="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                                </path>
+                                            </svg>
+                                            <span class="text-sm text-gray-700">CV</span>
+                                        </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-md sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">{{ $profile->name }}</p>
+
+                </div>
+                <div class="flex justify-between gap-4">
+                    <p class="text-gray-700">{{ $profile->category->name }}</p>
+                    <div class="mt-1 flex justify-center">
+                        <ul class="flex text-sm">
+                            <li class="mr-1"><i
+                                    class="fas fa-star text-{{ $profile->rating >= 1 ? 'yellow' : 'gray' }}-400"></i>
+                            </li>
+                            <li class="mr-1"><i
+                                    class="fas fa-star text-{{ $profile->rating >= 2 ? 'yellow' : 'gray' }}-400"></i>
+                            </li>
+                            <li class="mr-1"><i
+                                    class="fas fa-star text-{{ $profile->rating >= 3 ? 'yellow' : 'gray' }}-400"></i>
+                            </li>
+                            <li class="mr-1"><i
+                                    class="fas fa-star text-{{ $profile->rating >= 4 ? 'yellow' : 'gray' }}-400"></i>
+                            </li>
+                            <li class="mr-1"><i
+                                    class="fas fa-star text-{{ $profile->rating >= 5 ? 'yellow' : 'gray' }}-400"></i>
+                            </li>
+                            <span
+                                class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">{{ $profile->rating }}</span>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500">
+                    @if ($profile->city)
+                        {{ $profile->city }}
+                    @endif -
+                    @if ($profile->state)
+                        {{ $profile->state }}
+                    @endif
+                </p>
+            </div>
+            <div class="lg:flex items-center lg:items-end justify-between px-8 mt-2">
+                <div class="flex items-center justify-center gap-4 mt-2">
+                    @forelse ($profile->socials as $item)
+                        <!-- start::Timeline item -->
+                        <a href="{{ $item->link }}" class="text-blue-500 hover:text-gray-900">
+                            {!! $item->icon !!}
+                        </a>
+                        <!-- end::Timeline item -->
+
+                    @empty
+                    @endforelse
+                </div>
+                <div class="flex items-center justify-center gap-4 mt-2">
+
+                    <div x-data="{ isOpen: false }">
+                        <!-- Modal toggle -->
+                        <button @click="isOpen = true"
+                            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            <i class="fas fa-star text-gray-100 h-4 w-4"></i>
+                            Calificar
+                        </button>
+                    
+                        <!-- Main modal -->
+                        <div x-show="isOpen" x-transition.opacity @keydown.escape.window="isOpen = false"
+                            class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
+                            <div @click.away="isOpen = false" class="relative w-full max-w-2xl max-h-full p-4">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <!-- Modal header -->
+                                    {{-- <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                                                
+                                    </div> --}}
+                                    <!-- Modal body -->
+                                    <div class="p-4 md:p-5 space-y-4">
+                                        @livewire('courses-reviews', ['model' => $profile])
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                        {{-- <button @click="isOpen = false" type="button"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Cerrar
+                                        </button> --}}
+                                        {{-- <button @click="isOpen = false" type="button"
+                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            Cancelar
+                                        </button> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <p class="text-md sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">{{ $profile->name }}</p>
-
                     </div>
-                    <div class="flex justify-between gap-4">
-                        <p class="text-gray-700">{{ $profile->category->name }}</p>
-                        <div class="mt-1 flex justify-center">
-                            <ul class="flex text-sm">
-                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 1 ? 'yellow' : 'gray' }}-400"></i>
-                                </li>
-                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 2 ? 'yellow' : 'gray' }}-400"></i>
-                                </li>
-                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 3 ? 'yellow' : 'gray' }}-400"></i>
-                                </li>
-                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 4 ? 'yellow' : 'gray' }}-400"></i>
-                                </li>
-                                <li class="mr-1"><i class="fas fa-star text-{{ $profile->rating >= 5 ? 'yellow' : 'gray' }}-400"></i>
-                                </li>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">{{ $profile->rating}}</span>
-                            </ul>                            
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-500">
-                        @if ($profile->city)
-                            {{ $profile->city }}
-                        @endif -
-                        @if ($profile->state)
-                            {{ $profile->state }}
-                        @endif
-                    </p>
+                    {{-- <a href="https://wa.me/{{ $profile->phone }}"
+                        class="flex items-center cursor-pointer bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+                        <i class="fas fa-star text-gray-100 h-4 w-4"></i>
+                        <span>Calificar</span>
+                    </a> --}}
+                    <!-- Agrega aquí otros botones de acción -->
+                    <a href="https://wa.me/{{ $profile->phone }}"
+                        class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+                        <i class="fab fa-whatsapp text-gray-100 h-4 w-4"></i>
+                        <span>Contactar</span>
+                    </a>
+                    <!-- Agrega aquí otros botones de acción -->
                 </div>
-                <div class="lg:flex items-center lg:items-end justify-between px-8 mt-2">
-                    <div class="flex items-center justify-center gap-4 mt-2">
-                        @forelse ($profile->socials as $item)
+            </div>
+        </div>
+
+
+
+        <div class="my-4 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+            <div class="lg:w-1/3 flex flex-col 2xl:w-1/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <div class="flex items-center gap-4">
+                        <h4 class="text-xl text-gray-900 font-bold">Estudios Realizados</h4>
+                        <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                    </div>
+                    <div class="relative px-4">
+                        <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
+                        @forelse ($profile->educations as $item)
                             <!-- start::Timeline item -->
-                            <a href="{{ $item->link }}"
-                                class="text-blue-500 hover:text-gray-900">
-                                {!! $item->icon !!}
-                            </a>
+                            <div class="flex items-center w-full my-6 -ml-1.5">
+                                <div class="w-1/12 z-10">
+                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                </div>
+                                <div class="w-11/12">
+                                    <p class="text-sm">
+                                        {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
+                                            {{ $item->institution }}</a>.</p>
+                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
+                                </div>
+                            </div>
                             <!-- end::Timeline item -->
 
                         @empty
                         @endforelse
                     </div>
-                    <div class="flex items-center justify-center gap-4 mt-2">
-                        
-                        <a href="https://wa.me/{{ $profile->phone }}"
-                            class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-                            <i class="fab fa-whatsapp text-gray-100 h-4 w-4"></i>
-                            <span>Contactar</span>
-                        </a>
-                        <!-- Agrega aquí otros botones de acción -->
+                </div>
+                <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
+                    <div class="flex items-center gap-4">
+                        <h4 class="text-xl text-gray-900 font-bold">Experiencia Laboral</h4>
+                        <i class="fas fa-diagnoses text-blue-600 text-xl"></i>
+
+                    </div>
+                    <div class="relative px-4">
+                        <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
+
+                        @forelse ($profile->experiences as $item)
+                            <!-- start::Timeline item -->
+                            <div class="flex items-center w-full my-6 -ml-1.5">
+                                <div class="w-1/12 z-10">
+                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                </div>
+                                <div class="w-11/12">
+                                    <p class="text-sm">
+                                        {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
+                                            {{ $item->institution }}</a>.</p>
+                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
+                                </div>
+                            </div>
+                            <!-- end::Timeline item -->
+
+                        @empty
+                        @endforelse
+
+                        <!-- end::Timeline item -->
                     </div>
                 </div>
             </div>
-
-
-
-            <div class="my-4 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-                <div class="lg:w-1/3 flex flex-col 2xl:w-1/3">
-                    <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
-                        <div class="flex items-center gap-4">
-                            <h4 class="text-xl text-gray-900 font-bold">Estudios Realizados</h4>
-                            <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
-                        </div>
-                        <div class="relative px-4">
-                            <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
-                            @forelse ($profile->educations as $item)
-                                <!-- start::Timeline item -->
-                                <div class="flex items-center w-full my-6 -ml-1.5">
-                                    <div class="w-1/12 z-10">
-                                        <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                    </div>
-                                    <div class="w-11/12">
-                                        <p class="text-sm">
-                                            {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
-                                                {{ $item->institution }}</a>.</p>
-                                        <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
-                                    </div>
-                                </div>
-                                <!-- end::Timeline item -->
-
-                            @empty
-                            @endforelse                           
-                        </div>
-                    </div>
-                    <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
-                        <div class="flex items-center gap-4">
-                            <h4 class="text-xl text-gray-900 font-bold">Experiencia Laboral</h4>
-                            <i class="fas fa-diagnoses text-blue-600 text-xl"></i>
-
-                        </div>
-                        <div class="relative px-4">
-                            <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
-
-                            @forelse ($profile->experiences as $item)
-                                <!-- start::Timeline item -->
-                                <div class="flex items-center w-full my-6 -ml-1.5">
-                                    <div class="w-1/12 z-10">
-                                        <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                    </div>
-                                    <div class="w-11/12">
-                                        <p class="text-sm">
-                                            {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
-                                                {{ $item->institution }}</a>.</p>
-                                        <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
-                                    </div>
-                                </div>
-                                <!-- end::Timeline item -->
-
-                            @empty
-                            @endforelse
-                           
-                            <!-- end::Timeline item -->
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col lg:w-2/3 2xl:w-2/3">
-                    <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
-                        @if ($profile->about)
-                            <h4 class="text-xl text-gray-900 font-bold">Nosotros</h4>
-                            <p class="mt-2 text-gray-700">{{ $profile->about }}</p>
+            <div class="flex flex-col lg:w-2/3 2xl:w-2/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    @if ($profile->about)
+                        <h4 class="text-xl text-gray-900 font-bold">Nosotros</h4>
+                        <p class="mt-2 text-gray-700">{{ $profile->about }}</p>
+                    @endif
+                    <h4 class="text-xl text-gray-900 font-bold mt-4">Información Profesional</h4>
+                    <ul class="mt-2 text-gray-700">
+                        @if ($profile->name)
+                            <li class="flex  border-y py-2">
+                                <span class="font-bold w-48">Nombre del Propietario:</span>
+                                <span class="text-gray-700">{{ $profile->name }}</span>
+                            </li>
                         @endif
-                        <h4 class="text-xl text-gray-900 font-bold mt-4">Información Profesional</h4>
-                        <ul class="mt-2 text-gray-700">
-                            @if ($profile->name)
-                                <li class="flex  border-y py-2">
-                                    <span class="font-bold w-48">Nombre del Propietario:</span>
-                                    <span class="text-gray-700">{{ $profile->name }}</span>
-                                </li>
-                            @endif
 
-                            @if ($profile->rpa)
-                                <li class="flex border-b py-2">
-                                    <span class="font-bold w-48">Registro Profesional:</span>
-                                    <span class="text-gray-700">{{ $profile->rpa }}</span>
-                                </li>
-                            @endif
-                            @if ($profile->nit)
-                                <li class="flex border-b py-2">
-                                    <span class="font-bold w-48">NIT:</span>
-                                    <span class="text-gray-700">{{ $profile->nit }}</span>
-                                </li>
-                            @endif
-                            @if ($profile->phone)
-                                <li class="flex border-b py-2">
-                                    <span class="font-bold w-48">Celular:</span>
-                                    <span class="text-gray-700">{{ $profile->phone }}</span>
-                                </li>
-                            @endif
-                            @if ($profile->email)
-                                <li class="flex border-b py-2">
-                                    <span class="font-bold w-48">Email:</span>
-                                    <span
-                                        class="text-gray-700 text-sm sm:text-md lg:text-lg">{{ $profile->email }}</span>
-                                </li>
-                            @endif
-                        </ul>
+                        @if ($profile->rpa)
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-48">Registro Profesional:</span>
+                                <span class="text-gray-700">{{ $profile->rpa }}</span>
+                            </li>
+                        @endif
+                        @if ($profile->nit)
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-48">NIT:</span>
+                                <span class="text-gray-700">{{ $profile->nit }}</span>
+                            </li>
+                        @endif
+                        @if ($profile->phone)
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-48">Celular:</span>
+                                <span class="text-gray-700">{{ $profile->phone }}</span>
+                            </li>
+                        @endif
+                        @if ($profile->email)
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-48">Email:</span>
+                                <span class="text-gray-700 text-sm sm:text-md lg:text-lg">{{ $profile->email }}</span>
+                            </li>
+                        @endif
+                    </ul>
 
-                        <div class="w-full">
-                            @if ($profile->latitude && $profile->longitude)
-                                <div id="mapid" class="h-64 md:h-auto z-0"></div>
-                            @endif
-
-                        </div>
+                    <div class="w-full">
+                        @if ($profile->latitude && $profile->longitude)
+                            <div id="mapid" class="h-64 md:h-auto z-0"></div>
+                        @endif
 
                     </div>
-                    <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
-                        <div class="border mt-2 p-2 mb-4 bg-gray-200 rounded-2xl">
-                            @livewire('courses-reviews', ['model' => $profile])
-                        </div>
-                        {{-- <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
+
+                </div>
+                <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
+                    <div class="border mt-2 p-2 mb-4 bg-gray-200 rounded-2xl">
+                        {{-- @livewire('courses-reviews', ['model' => $profile]) --}}
+                    </div>
+                    {{-- <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
 
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
                             <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
@@ -333,8 +385,8 @@
                                 style="display: block; box-sizing: border-box; height: 414px; width: 828px;"
                                 width="1656" height="828"></canvas>
                         </div> --}}
-                    </div>
-                    {{-- <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
+                </div>
+                {{-- <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
                         <h4 class="text-xl text-gray-900 font-bold">Servicios</h4>
                         <div class="mt-6 flex flex-wrap gap-4 justify-center">
 
@@ -355,8 +407,8 @@
 
 
                     </div> --}}
-                </div>
             </div>
+        </div>
 
 
 

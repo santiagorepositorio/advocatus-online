@@ -167,4 +167,8 @@ class ProfileController extends Controller
         return view('profile-professional.social', compact('profile'));
 
     }
+
+    public function cv(){
+        return view('profiles.cv');
+    }
 }

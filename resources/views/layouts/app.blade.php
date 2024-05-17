@@ -40,6 +40,12 @@
             border-radius: 0.5rem;
             overflow: hidden;
         }
+        .modal-enter-active, .modal-leave-active {
+            transition: opacity 0.25s ease;
+        }
+        .modal-enter, .modal-leave-to {
+            opacity: 0;
+        }
     </style>
 
     <!-- Styles -->
