@@ -1,7 +1,7 @@
 <section class=" mt-4 ">
     <h1 class="font-bold text-3xl text-gray-800 mb-2">Valoracion</h1>
-
-    <article class="my-4">
+    @auth
+       <article class="my-4">
         @switch($model->category->status)
             @case('Curso')
                 @can('enrolled', $model)
@@ -82,7 +82,9 @@
             @default
         @endswitch
 
-    </article>
+    </article> 
+    @endauth
+    
     {{-- @elsecan(auth()->check())
     <article class="my-4">
         @can('valued2', $model)
