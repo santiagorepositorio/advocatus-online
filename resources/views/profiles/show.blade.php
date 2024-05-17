@@ -122,7 +122,7 @@
                 </div>
                 <div class="flex items-center justify-center gap-4 mt-2">
 
-                    {{-- <div x-data="{ isOpen: false }">
+                    <div x-data="{ isOpen: false }">
                         
                         <button @click="isOpen = true"
                             class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     
                     <a href="https://wa.me/{{ $profile->phone }}"
                         class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
@@ -272,7 +272,7 @@
                 </div>
                 <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
                     <div class="border mt-2 p-2 mb-4 bg-gray-200 rounded-2xl">
-                        @livewire('courses-reviews', ['model' => $profile])
+                        {{-- @livewire('courses-reviews', ['model' => $profile]) --}}
                     </div>
                     {{-- <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
 
