@@ -327,7 +327,7 @@
 
 
     </section>
-    @push('glider') 
+    @push('glider')           <!-- Initialize Swiper -->
         <script>
             var swiper2 = new Swiper(".mySwiper2", {
                 spaceBetween: 30,
