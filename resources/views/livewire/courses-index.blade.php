@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <section class="mt-12">
+    <section class="mt-4 p-4">
         <div
             class="container mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
             @foreach ($courses as $course)
