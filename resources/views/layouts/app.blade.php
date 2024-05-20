@@ -55,7 +55,7 @@
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
 
-
+    <meta name="facebook-domain-verification" content="nznszlt2xwcogpvk399ott01z0ezuu" />
 
 </head>
 
