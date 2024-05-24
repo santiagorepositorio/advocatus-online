@@ -10,6 +10,9 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
+
 
 class ProfileController extends Controller
 {
@@ -71,16 +74,16 @@ class ProfileController extends Controller
 
         SEOMeta::setTitle($profile->name);
         SEOMeta::setDescription($postBodyWithoutTags);
-       
+
 
         SEOMeta::setTitle($profile->name);
         SEOMeta::setDescription($postBodyWithoutTags);
-        SEOMeta::addMeta('article:section', $profile->category, 'property');       
+        SEOMeta::addMeta('article:section', $profile->category, 'property');
 
         OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($profile->name);
         OpenGraph::addImage(Storage::url($profile->image->url));
-    
+
         TwitterCard::setTitle($profile->name);
         TwitterCard::setSite('@Sobotred');
 
@@ -98,6 +101,15 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
+        $imagePath = 'qr_codes/' . $profile->slug . '.png';
+        // $qrcode = QrCode::generate(env('APP_URL') . '/' . $profile->slug);
+        // QrCode::format('png')->generate(env('APP_URL') . '/' . $profile->slug, Storage::path($imagePath));
+        // $qrcode = QrCode::size(200)->format('png')->generate(env('APP_URL') . '/' . $profile->slug);
+
+        // Storage::put($imagePath, QrCode::format('png')->size(100)->generate(env('APP_URL') . '/' . $profile->slug));
+
+        // Obtener la URL pública de la imagen del QR
+        $imageUrl = Storage::url($imagePath);
         $this->authorize('update', $profile);
         $categories = Category::where('status', 'Perfil')->pluck('name', 'id');
         return view('profile-professional.edit', compact('profile', 'categories'));
@@ -126,17 +138,17 @@ class ProfileController extends Controller
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
             'category_id' => 'nullable|max:255',
-           
+
         ]);
         $profile->update($newProfile);
-        if($request->file('file')){
+        if ($request->file('file')) {
             $url = Storage::put('profiles', $request->file('file'));
-            if($profile->image){
+            if ($profile->image) {
                 Storage::delete($profile->image->url);
                 $profile->image->update([
                     'url' => $url
                 ]);
-            }else{
+            } else {
                 $profile->image()->create([
                     'url' => $url
                 ]);
@@ -155,20 +167,21 @@ class ProfileController extends Controller
     {
         //
     }
-    public function edutacion_profile(Profile $profile){
+    public function edutacion_profile(Profile $profile)
+    {
         return view('profile-professional.education', compact('profile'));
-
     }
-    public function experience_profile(Profile $profile){
+    public function experience_profile(Profile $profile)
+    {
         return view('profile-professional.experience', compact('profile'));
-
     }
-    public function social_profile(Profile $profile){
+    public function social_profile(Profile $profile)
+    {
         return view('profile-professional.social', compact('profile'));
-
     }
 
-    public function cv(){
+    public function cv()
+    {
         return view('profiles.cv');
     }
 }

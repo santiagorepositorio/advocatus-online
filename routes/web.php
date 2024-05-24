@@ -21,8 +21,12 @@ use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Return_;
 use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
 
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
+
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,3 +109,17 @@ Route::get('/auth/google-callback', [AuthController::class, 'google_callback'])-
 
 Route::post('/eliminar-datos-facebook/{user_id}', [AuthController::class, 'eliminarDatosFacebook']);
 
+// Route::get('/generate-qrcode', function () {
+//     $url = 'https://laravel.com';
+//     $filename = 'qrcode.png';
+//     $path = 'public/qrcodes/' . $filename; // Ruta donde se guardará el código QR dentro de la carpeta storage
+
+//     // Genera el código QR como contenido binario
+//     $qrCode = QrCode::format('png')->size(150)->generate($url);
+
+//     // Guarda el código QR en la carpeta storage/app/public/qrcodes
+//     Storage::disk('local')->put($path, $qrCode);
+
+//     // Devuelve una respuesta de descarga para el archivo generado
+//     return response()->download(storage_path('app/' . $path), $filename)->deleteFileAfterSend(true);
+// });

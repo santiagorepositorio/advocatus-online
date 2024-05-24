@@ -2,16 +2,25 @@
     <section class="bg-gray-200">
         <div class="h-full p-8 max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
             <div class="bg-white rounded-lg shadow-xl pb-4">
-                <div class="w-full h-auto">
+                <div class="relative w-full h-auto">
                     @isset($profile->image)
                         <img src="{{ Storage::url($profile->image->url) }}"
                             class="w-full h-auto object-center object-cover rounded-tl-lg rounded-tr-lg">
+                            <div class="absolute hidden md:block md:bottom-2 md:right-2 lg:bottom-4 lg:right-4 visible-print rounded-md text-center bg-white p-1">
+                                <div class="hidden md:block lg:hidden">
+                                    {!! QrCode::size(50)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
+                                </div>
+                                <div class="hidden lg:block">
+                                    {!! QrCode::size(100)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
+                                </div>
+                            </div>
                     @else
                         <img class="w-32 h-32 object-cover rounded-tl-lg rounded-tr-lg"
                             src="{{ asset('img/home/imagen-no-disponible.png') }}" alt="">
                     @endisset
+
                 </div>
-                <div class="flex flex-col items-center -mt-8">
+                <div class="relative flex flex-col items-center -mt-8">
                     <img src="{{ $profile->user->profile_photo_url }}"
                         class=" border-4 border-white rounded-full w-16 object-center object-cover h-16 sm:w-20 md:w-22 lg:w-24 xl:w-26 sm:h-20 md:h-22 lg:h-24 xl:h-26">
                     <div class="flex items-center space-x-2 mt-2 mb-4">
@@ -123,33 +132,34 @@
                 <div class="flex items-center justify-center gap-4 mt-2">
 
                     <div x-data="{ isOpen: false }">
+
                         
-                        <button @click="isOpen = true"
-                            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            type="button">
+                        <a @click="isOpen = true"
+                            class="flex items-center cursor-pointer bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
                             <i class="fas fa-star text-gray-100 h-4 w-4"></i>
-                            Calificar
-                        </button>
-                    
-                      
+                            <span>Calificar</span>
+                        </a>
+
+
                         <div x-show="isOpen" x-transition.opacity @keydown.escape.window="isOpen = false"
                             class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
                             <div @click.away="isOpen = false" class="relative w-full max-w-2xl max-h-full p-4">
-                                
+
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                   
+
                                     <div class="p-4 md:p-5 space-y-4">
                                         @livewire('courses-reviews', ['model' => $profile])
                                     </div>
-                                    
-                                    <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                        
+
+                                    <div
+                                        class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <a href="https://wa.me/{{ $profile->phone }}"
                         class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
                         <i class="fab fa-whatsapp text-gray-100 h-4 w-4"></i>
@@ -163,64 +173,6 @@
 
 
         <div class="my-4 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-            <div class="lg:w-1/3 flex flex-col 2xl:w-1/3">
-                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
-                    <div class="flex items-center gap-4">
-                        <h4 class="text-xl text-gray-900 font-bold">Estudios Realizados</h4>
-                        <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
-                    </div>
-                    <div class="relative px-4">
-                        <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
-                        @forelse ($profile->educations as $item)
-                            <!-- start::Timeline item -->
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
-                                            {{ $item->institution }}</a>.</p>
-                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
-                                </div>
-                            </div>
-                            <!-- end::Timeline item -->
-
-                        @empty
-                        @endforelse
-                    </div>
-                </div>
-                <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
-                    <div class="flex items-center gap-4">
-                        <h4 class="text-xl text-gray-900 font-bold">Experiencia Laboral</h4>
-                        <i class="fas fa-diagnoses text-blue-600 text-xl"></i>
-
-                    </div>
-                    <div class="relative px-4">
-                        <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
-
-                        @forelse ($profile->experiences as $item)
-                            <!-- start::Timeline item -->
-                            <div class="flex items-center w-full my-6 -ml-1.5">
-                                <div class="w-1/12 z-10">
-                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
-                                </div>
-                                <div class="w-11/12">
-                                    <p class="text-sm">
-                                        {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
-                                            {{ $item->institution }}</a>.</p>
-                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
-                                </div>
-                            </div>
-                            <!-- end::Timeline item -->
-
-                        @empty
-                        @endforelse
-
-                        <!-- end::Timeline item -->
-                    </div>
-                </div>
-            </div>
             <div class="flex flex-col lg:w-2/3 2xl:w-2/3">
                 <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
                     @if ($profile->about)
@@ -392,6 +344,65 @@
 
                     </div> --}}
             </div>
+            <div class="lg:w-1/3 flex flex-col 2xl:w-1/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <div class="flex items-center gap-4">
+                        <h4 class="text-xl text-gray-900 font-bold">Estudios Realizados</h4>
+                        <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                    </div>
+                    <div class="relative px-4">
+                        <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
+                        @forelse ($profile->educations as $item)
+                            <!-- start::Timeline item -->
+                            <div class="flex items-center w-full my-6 -ml-1.5">
+                                <div class="w-1/12 z-10">
+                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                </div>
+                                <div class="w-11/12">
+                                    <p class="text-sm">
+                                        {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
+                                            {{ $item->institution }}</a>.</p>
+                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
+                                </div>
+                            </div>
+                            <!-- end::Timeline item -->
+
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+                <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
+                    <div class="flex items-center gap-4">
+                        <h4 class="text-xl text-gray-900 font-bold">Experiencia Laboral</h4>
+                        <i class="fas fa-diagnoses text-blue-600 text-xl"></i>
+
+                    </div>
+                    <div class="relative px-4">
+                        <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
+
+                        @forelse ($profile->experiences as $item)
+                            <!-- start::Timeline item -->
+                            <div class="flex items-center w-full my-6 -ml-1.5">
+                                <div class="w-1/12 z-10">
+                                    <div class="w-3.5 h-3.5 bg-blue-600 rounded-full"></div>
+                                </div>
+                                <div class="w-11/12">
+                                    <p class="text-sm">
+                                        {{ $item->title }} <a href="#" class="text-blue-600 font-bold">
+                                            {{ $item->institution }}</a>.</p>
+                                    <p class="text-xs text-gray-500">{{ $item->gestion }}</p>
+                                </div>
+                            </div>
+                            <!-- end::Timeline item -->
+
+                        @empty
+                        @endforelse
+
+                        <!-- end::Timeline item -->
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 

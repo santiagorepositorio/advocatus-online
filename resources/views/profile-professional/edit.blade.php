@@ -4,6 +4,7 @@
     </x-slot>
     <h1 class="text-2xl font-bold">Informacion del Perfil</h1>
     <hr class="mt-2 mb-6">
+    
     {!! Form::model($profile, [
         'route' => ['update.profile', $profile],
         'method' => 'put',
