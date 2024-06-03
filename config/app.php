@@ -186,7 +186,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
+        // Intervention\Image\ImageServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
    
@@ -226,7 +226,7 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        // 'Image' => Intervention\Image\Facades\Image::class,
         'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,

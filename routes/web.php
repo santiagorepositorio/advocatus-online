@@ -13,6 +13,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\OutletMapController;
 use App\Http\Controllers\PostController;
+use App\Http\Livewire\Profile\QRGeneration;
 use App\Http\Livewire\ShoppingCartPayment;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
@@ -68,6 +69,7 @@ Route::get('profile/{profile}/educations', [ProfileController::class, 'edutacion
 Route::get('profile/{profile}/experiences', [ProfileController::class, 'experience_profile'])->name('profile.experiences')->middleware('auth');
 Route::get('profile/{profile}/socials', [ProfileController::class, 'social_profile'])->name('profile.socials')->middleware('auth');
 Route::get('profile/cv', [ProfileController::class, 'cv'])->name('profile.cv')->middleware('auth');
+Route::get('profile/{profile}/qr-generation', QRGeneration::class)->name('profile.qr-generation')->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',
@@ -109,17 +111,3 @@ Route::get('/auth/google-callback', [AuthController::class, 'google_callback'])-
 
 Route::post('/eliminar-datos-facebook/{user_id}', [AuthController::class, 'eliminarDatosFacebook']);
 
-// Route::get('/generate-qrcode', function () {
-//     $url = 'https://laravel.com';
-//     $filename = 'qrcode.png';
-//     $path = 'public/qrcodes/' . $filename; // Ruta donde se guardará el código QR dentro de la carpeta storage
-
-//     // Genera el código QR como contenido binario
-//     $qrCode = QrCode::format('png')->size(150)->generate($url);
-
-//     // Guarda el código QR en la carpeta storage/app/public/qrcodes
-//     Storage::disk('local')->put($path, $qrCode);
-
-//     // Devuelve una respuesta de descarga para el archivo generado
-//     return response()->download(storage_path('app/' . $path), $filename)->deleteFileAfterSend(true);
-// });

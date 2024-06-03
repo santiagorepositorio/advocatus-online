@@ -84,8 +84,7 @@ class CourseController extends Controller
     {   
         $postBodyWithoutTags = strip_tags($course->description);
         SEOMeta::setTitle($course->title);
-        SEOMeta::setDescription($postBodyWithoutTags);
-       
+        SEOMeta::setDescription($postBodyWithoutTags);       
 
         SEOMeta::setTitle($course->title);
         SEOMeta::setDescription($postBodyWithoutTags);
@@ -93,8 +92,7 @@ class CourseController extends Controller
 
         OpenGraph::setDescription($postBodyWithoutTags);
         OpenGraph::setTitle($course->title);
-        OpenGraph::addImage(Storage::url($course->image->url));       
-       
+        OpenGraph::addImage(Storage::url($course->image->url));     
 
         TwitterCard::setTitle($course->title);
         TwitterCard::setSite('@Sobotred');
@@ -102,9 +100,6 @@ class CourseController extends Controller
         JsonLd::setTitle($course->title);
         JsonLd::setDescription($postBodyWithoutTags);
         JsonLd::addImage(Storage::url($course->image->url));
-
-
-
 
         $this->authorize('published', $course);
 
@@ -114,10 +109,6 @@ class CourseController extends Controller
             ->latest('id')
             ->take(5)
             ->get();
-
-
-
-
         return view('courses.show', compact('course', 'similares'));
     }
 
@@ -161,7 +152,11 @@ class CourseController extends Controller
             $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
         }
 
-        $qrcode = QrCode::generate(env('APP_URL') . 'certificate/' . $course->slug . '/' . $user->id);
+        $qrcode = QrCode::
+                    backgroundColor(250, 240, 215)
+                    ->color(255, 0, 0)
+                    ->margin(1)
+                    ->generate(env('APP_URL') . 'certificate/' . $course->slug . '/' . $user->id);
 
         $html = View::make('certificate3')->with([
             'qrcode' => $qrcode,
@@ -189,6 +184,7 @@ class CourseController extends Controller
 
     public function certificateLink(Course $course, User $user)
     {
+
         return view('courseslink', compact('course', 'user'));
     }
 

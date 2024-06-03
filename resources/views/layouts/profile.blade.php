@@ -86,35 +86,42 @@
                             <li onclick="selected()"
                                 class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 @routeIs('edit.profile', $profile)text-white bg-indigo-600
 @else
-text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded">
-                                Informaciòn e perfil</li>
+text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded-lg" style="line-height: 0.8;">
+                                Información de perfil</li>
                         </a>
                         <a href="{{ route('profile.educations', $profile) }}">
                             <li onclick="selected()"
                                 class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 @routeIs('profile.educations', $profile)text-white bg-indigo-600
 @else
-text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded">
+text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded-lg" style="line-height: 0.8;">
                                 Estudios Realizados</li>
                         </a>
                         <a href="{{ route('profile.experiences', $profile) }}">
                             <li onclick="selected()"
                                 class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 @routeIs('profile.experiences', $profile)text-white bg-indigo-600
 @else
-text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded">
+text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded-lg" style="line-height: 0.8;">
                                 Experiencia Laboral</li>
                         </a>
                         <a href="{{ route('profile.socials', $profile) }}">
                             <li onclick="selected()"
                                 class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 @routeIs('profile.socials', $profile)text-white bg-indigo-600
 @else
-text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded">
+text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded-lg" style="line-height: 0.8;">
                                 Redes Sociales</li>
+                        </a>
+                        <a href="{{ route('profile.qr-generation', $profile) }}">
+                            <li onclick="selected()"
+                                class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 @routeIs('profile.qr-generation', $profile)text-white bg-indigo-600
+@else
+text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded" style="line-height: 0.8;">
+                                Generar QR</li>
                         </a>
 
                         <a href="{{ route('profile.show') }}">
                             <li onclick="selected()"
-                                class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white border border-blue bg-red-500 cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded">
-                                Salir</li>
+                                class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white border border-blue bg-red-500 cursor-pointer px-3 py-2.5 font-normal text-lg leading-3 shadow-md rounded-lg" style="line-height: 0.8;">
+                                Salir de Configuración</li>
                         </a>
                     </ul>
                 </nav>
@@ -153,6 +160,9 @@ text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 fo
             <a href="{{ route('profile.socials', $profile) }}"><li @click="open = false"
                 class="px-4 py-3 text-gray-600 @routeIs('profile.socials', $profile) bg-blue-100 @else bg-gray-50 @endif border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-blue-100 duration-100 cursor-pointer text-xs leading-3 font-normal">
                 Redes Sociales</li></a>
+            <a href="{{ route('profile.qr-generation', $profile) }}"><li @click="open = false"
+                class="px-4 py-3 text-gray-600 @routeIs('profile.qr-generation', $profile) bg-blue-100 @else bg-gray-50 @endif border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-blue-100 duration-100 cursor-pointer text-xs leading-3 font-normal">
+                Generar QR</li></a>
             <a href="{{ route('profile.show') }}"><li @click="open = false"
                 class="px-4 py-3 text-gray-600 bg-gray-50 border border-gray-50 focus:outline-none focus:bg-gray-100 hover:bg-blue-100 duration-100 cursor-pointer text-xs leading-3 font-normal">
                 Salir</li></a>
@@ -191,6 +201,40 @@ text-gray-600 border border-blue bg-gray-50 @endif cursor-pointer px-3 py-2.5 fo
     @isset($js)
         {{ $js }}
     @endisset
+    @stack('scripts')
+    <script>
+        function downloadPNG() {
+            const svgElement = document.getElementById('qrcode');
+            const svgData = atob(svgElement.src.split(',')[1]); // Decode base64
+    
+            const parser = new DOMParser();
+            const svgDoc = parser.parseFromString(svgData, 'image/svg+xml');
+            const svg = svgDoc.documentElement;
+    
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            const img = new Image();
+    
+            const svgString = new XMLSerializer().serializeToString(svg);
+            const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+    
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                context.drawImage(img, 0, 0);
+                URL.revokeObjectURL(url);
+    
+                const pngFile = canvas.toDataURL('image/png');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pngFile;
+                downloadLink.download = 'qrcode.png';
+                downloadLink.click();
+            };
+    
+            img.src = url;
+        }
+    </script>
 </body>
 
 </html>

@@ -11,8 +11,9 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
-
+use BaconQrCode\Renderer\GDLibRenderer;
+use BaconQrCode\Writer;
+use Im;
 
 class ProfileController extends Controller
 {
@@ -101,12 +102,44 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        $imagePath = 'qr_codes/' . $profile->slug . '.png';
+
         // $qrcode = QrCode::generate(env('APP_URL') . '/' . $profile->slug);
+
+        $imagePath = public_path('qr_codes/' . $profile->slug . '.png');
+
+        // Verificar si el archivo existe
+        if (!file_exists($imagePath)) {
+            // Crear el directorio si no existe
+            if (!file_exists(public_path('qr_codes'))) {
+                mkdir(public_path('qr_codes'), 0755, true);
+            }
+
+            // Aquí debes incluir el código necesario para crear el archivo PNG si no existe.
+            // Por ejemplo, podrías estar descargando una imagen o generándola de alguna forma.
+            // A continuación se muestra un ejemplo de cómo podrías crear un archivo vacío para propósitos de demostración
+            // Reemplaza esta parte con la lógica correcta para generar o copiar la imagen que necesitas
+            file_put_contents($imagePath, '');
+        }
+
+        // Verificar de nuevo si el archivo existe después del intento de creación
+        if (!file_exists($imagePath)) {
+            die("El archivo no se pudo crear: " . $imagePath);
+        }
+
+        // Generar el código QR con la imagen de merge
+        // $png = QrCode::format('png')
+        //     ->merge($imagePath, .17, true)
+        //     ->size(300)
+        //     ->errorCorrection('H')
+        //     ->generate(env('APP_URL') . '/' . $profile->slug);
+
+        // // Codificar el QR en base64
+        // $qrcode = base64_encode($png);
         // QrCode::format('png')->generate(env('APP_URL') . '/' . $profile->slug, Storage::path($imagePath));
         // $qrcode = QrCode::size(200)->format('png')->generate(env('APP_URL') . '/' . $profile->slug);
 
         // Storage::put($imagePath, QrCode::format('png')->size(100)->generate(env('APP_URL') . '/' . $profile->slug));
+       
 
         // Obtener la URL pública de la imagen del QR
         $imageUrl = Storage::url($imagePath);
