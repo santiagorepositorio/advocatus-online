@@ -126,11 +126,11 @@
                     <div
                         class="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 md:space-x-4">
                         <a href="data:image/svg+xml;base64,{{ $qrcode }}" download="qrcode.svg"
-                            class="btn btn-secondary flex items-center bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg">
+                            class="btn btn-secondary flex items-center bg-green-500 hover:bg-green-800 text-white py-2 px-4 rounded-lg">
                             <i class="fas fa-download mr-2"></i> Descargar SVG
                         </a>
                         <button onclick="downloadPNG()"
-                            class="btn btn-primary flex items-center bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-lg">
+                            class="btn btn-primary flex items-center bg-pink-500 hover:bg-pink-800 text-white py-2 px-4 rounded-lg">
                             <i class="fas fa-download mr-2"></i> Descargar PNG
                         </button>
                     </div>
