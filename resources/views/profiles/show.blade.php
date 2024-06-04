@@ -6,14 +6,15 @@
                     @isset($profile->image)
                         <img src="{{ Storage::url($profile->image->url) }}"
                             class="w-full h-auto object-center object-cover rounded-tl-lg rounded-tr-lg">
-                            <div class="absolute hidden md:block md:bottom-2 md:right-2 lg:bottom-4 lg:right-4 visible-print rounded-md text-center bg-white p-1">
-                                <div class="hidden md:block lg:hidden">
-                                    {!! QrCode::size(50)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
-                                </div>
-                                <div class="hidden lg:block">
-                                    {!! QrCode::size(100)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
-                                </div>
+                        <div
+                            class="absolute hidden md:block md:bottom-2 md:right-2 lg:bottom-4 lg:right-4 visible-print rounded-md text-center bg-white p-1">
+                            <div class="hidden md:block lg:hidden">
+                                {!! QrCode::size(50)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
                             </div>
+                            <div class="hidden lg:block">
+                                {!! QrCode::size(100)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
+                            </div>
+                        </div>
                     @else
                         <img class="w-32 h-32 object-cover rounded-tl-lg rounded-tr-lg"
                             src="{{ asset('img/home/imagen-no-disponible.png') }}" alt="">
@@ -43,15 +44,26 @@
                                 style="display: none;">
                                 <div class="xpy-2 border-b">
                                     <p class="text-gray-400 text-xs px-6 uppercase mb-1">Opciones</p>
-                                    <button class="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
+                                    <p class="gap-2 flex text-gray-400 text-xs px-6 uppercase mb-1">
+
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z">
                                             </path>
-                                        </svg>
-                                        <span class="text-sm text-gray-700">Compartir</span>
-                                    </button>
+                                        </svg>Compartir
+                                    </p>
+                                    <a href="https://api.whatsapp.com/send?text={{ $currentUrl = url()->current() }}"
+                                        class="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
+                                        <span class="text-sm text-gray-700"><i
+                                                class="fab fa-whatsapp text-gray-400 h-4 w-4"></i>WhatsApp</span>
+                                    </a>
+                                    <a href="https://api.whatsapp.com/send?text={{ $currentUrl = url()->current() }}"
+                                        class="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
+                                        <span class="text-sm text-gray-700"><i
+                                                class="fab fa-whatsapp text-gray-400 h-4 w-4"></i>Facebook</span>
+                                    </a>
+                                    <a href="http://www.facebook.com/sharer.php?u={{ $currentUrl = url()->current() }}&t=pagina de desarrollo web" target="_blank" class="facebook">Facebook</a>
                                     <button
                                         class="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200 hidden">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"
@@ -133,7 +145,7 @@
 
                     <div x-data="{ isOpen: false }">
 
-                        
+
                         <a @click="isOpen = true"
                             class="flex items-center cursor-pointer bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
                             <i class="fas fa-star text-gray-100 h-4 w-4"></i>
