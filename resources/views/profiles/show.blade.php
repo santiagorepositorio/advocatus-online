@@ -43,27 +43,29 @@
                                 class="bg-white absolute w-40 py-2 mt-1 border border-gray-200 shadow-2xl"
                                 style="display: none;">
                                 <div class="xpy-2 border-b">
-                                    <p class="text-gray-400 text-xs px-6 uppercase mb-1">Opciones</p>
-                                    <p class="gap-2 flex text-gray-400 text-xs px-6 uppercase mb-1">
 
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z">
-                                            </path>
-                                        </svg>Compartir
-                                    </p>
+                                    <p class="gap-2 flex text-gray-400 text-xs px-6 uppercase mb-1">Compartir</p>
                                     <a href="https://api.whatsapp.com/send?text={{ $currentUrl = url()->current() }}"
                                         class="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
                                         <span class="text-sm text-gray-700"><i
-                                                class="fab fa-whatsapp text-gray-400 h-4 w-4"></i>WhatsApp</span>
+                                                class="fab fa-whatsapp text-gray-400 h-4 w-4 mr-2"></i>WhatsApp</span>
                                     </a>
-                                    <a href="https://api.whatsapp.com/send?text={{ $currentUrl = url()->current() }}"
+                                    <a href="http://www.facebook.com/sharer.php?u={{ $currentUrl = url()->current() }}&t=Abogado en Linea"
                                         class="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
                                         <span class="text-sm text-gray-700"><i
-                                                class="fab fa-whatsapp text-gray-400 h-4 w-4"></i>Facebook</span>
+                                                class="fab fa-facebook text-gray-400 h-4 w-4 mr-2"></i>Facebook</span>
                                     </a>
-                                    <a href="http://www.facebook.com/sharer.php?u={{ $currentUrl = url()->current() }}&t=pagina de desarrollo web" target="_blank" class="facebook">Facebook</a>
+                                    <a href="https://twitter.com/intent/tweet?text=AbogadoenLinea&url={{ $currentUrl = url()->current() }}&via=advocatusonline&hashtags=#advocatusonline"
+                                        class="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
+                                        <span class="text-sm text-gray-700"><i
+                                                class="fab fa-twitter text-gray-400 h-4 w-4 mr-2"></i>Twitter</span>
+                                    </a>
+                                    <a href="http://www.linkedin.com/shareArticle?url={{ $currentUrl = url()->current() }}"
+                                        class="w-full flex items-center px-6 py-1.5 space-x-2 hover:bg-gray-200">
+                                        <span class="text-sm text-gray-700"><i
+                                                class="fab fa-linkedin text-gray-400 h-4 w-4 mr-2"></i>LinkedIn</span>
+                                    </a>
+
                                     <button
                                         class="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200 hidden">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"
@@ -78,7 +80,7 @@
 
                                 <a href="{{ route('profile.cv') }}">
                                     <div class="py-2">
-                                        <p class="text-gray-400 text-xs px-6 uppercase mb-1">Donwload</p>
+                                        <p class="text-gray-400 text-xs px-6 uppercase mb-1">Descargas</p>
                                         <button
                                             class="w-full flex items-center py-1.5 px-6 space-x-2 hover:bg-gray-200">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
@@ -94,7 +96,6 @@
                         </div>
                     </div>
                     <p class="text-md sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">{{ $profile->name }}</p>
-
                 </div>
                 <div class="flex justify-between gap-4">
                     <p class="text-gray-700">{{ $profile->category->name }}</p>
@@ -137,40 +138,41 @@
                             {!! $item->icon !!}
                         </a>
                         <!-- end::Timeline item -->
-
                     @empty
                     @endforelse
                 </div>
                 <div class="flex items-center justify-center gap-4 mt-2">
 
-                    <div x-data="{ isOpen: false }">
+                    <div x-data="{ openSettings: false }" class="hover:bg-slate-600 rounded">
+                        <a @click="openSettings = !openSettings"
+                            class="flex items-center cursor-pointer bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+                            <i class="fas fa-star text-gray-100 h-4 w-4"></i>
+                            <span>PRUEBA</span>
+                        </a>
+                        <div x-show="openSettings" @click.away="openSettings = false"
+                            class="bg-white absolute  border border-gray-200 shadow-2xl p-4 z-10 rounded" style="display: none;">                          
+                                        @livewire('courses-reviews', ['model' => $profile])               
+                        </div>
+                    </div>
 
-
-                        <a @click="isOpen = true"
+                    {{-- <div x-data="{ isOpen: false }">
+                        <a @click="isOpen = !isOpen"
                             class="flex items-center cursor-pointer bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
                             <i class="fas fa-star text-gray-100 h-4 w-4"></i>
                             <span>Calificar</span>
                         </a>
+                        <div x-show="isOpen" @click.away="isOpen = false"
+                            class="fixed inset-0 z-50 flex items-center justify-center  bg-black bg-opacity-50">
+                            <div class="w-full max-w-2xl max-h-full p-4">
 
-
-                        <div x-show="isOpen" x-transition.opacity @keydown.escape.window="isOpen = false"
-                            class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
-                            <div @click.away="isOpen = false" class="relative w-full max-w-2xl max-h-full p-4">
-
-                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-
+                                <div class=" bg-white rounded-lg shadow ">
                                     <div class="p-4 md:p-5 space-y-4">
                                         @livewire('courses-reviews', ['model' => $profile])
-                                    </div>
-
-                                    <div
-                                        class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <a href="https://wa.me/{{ $profile->phone }}"
                         class="flex items-center cursor-pointer bg-green-600 hover:bg-green-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
@@ -181,9 +183,6 @@
                 </div>
             </div>
         </div>
-
-
-
         <div class="my-4 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
             <div class="flex flex-col lg:w-2/3 2xl:w-2/3">
                 <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
@@ -226,7 +225,7 @@
                         @endif
                     </ul>
 
-                    <div class="w-full">
+                    <div class="w-full z-0">
                         @if ($profile->latitude && $profile->longitude)
                             <div id="mapid" class="h-64 md:h-auto z-0"></div>
                         @endif
@@ -238,123 +237,103 @@
                     <div class="border mt-2 p-2 mb-4 bg-gray-200 rounded-2xl">
                         {{-- @livewire('courses-reviews', ['model' => $profile]) --}}
                     </div>
-                    {{-- <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
+                    <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
 
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
-                            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-sm text-indigo-600">Calificaciones</span>
-                                    
-                                </div>
-                                <div class="flex items-center justify-between mt-6">
-                                    <div>
-                                        <i class="fas fa-star text-yellow-400"></i>
-
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <div class="flex items-end">
-                                            <span class="text-2xl 2xl:text-3xl font-bold">999</span>
-                                            <div class="flex items-center ml-2 mb-1">
-                                                <svg class="w-5 h-5 text-green-500" fill="none"
-                                                    stroke="currentColor" viewBox="0 0 24 24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                                </svg>
-                                                <span class="font-bold text-sm text-gray-500 ml-0.5">3%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-2">
+                        
+                        <div class="px-6 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-sm text-indigo-600">Calificaciones</span>
                             </div>
-                            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-sm text-green-600">Cursos</span>                                   
-                                </div>
-                                <div class="flex items-center justify-between mt-6">
-                                    <div>
-                                        <svg class="w-12 h-12 p-2.5 bg-green-400 bg-opacity-20 rounded-full text-green-600 border border-green-600"
-                                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <div class="flex items-end">
-                                            <span class="text-2xl 2xl:text-3xl font-bold">217</span>
-                                            <div class="flex items-center ml-2 mb-1">
-                                                <svg class="w-5 h-5 text-green-500" fill="none"
-                                                    stroke="currentColor" viewBox="0 0 24 24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                                </svg>
-                                                <span class="font-bold text-sm text-gray-500 ml-0.5">5%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-sm text-blue-600">Artículos</span>                                   
-                                </div>
-                                <div class="flex items-center justify-between mt-6">
-                                    <div>
-                                        <svg class="w-12 h-12 p-2.5 bg-blue-400 bg-opacity-20 rounded-full text-blue-600 border border-blue-600"
-                                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <div class="flex items-end">
-                                            <span class="text-2xl 2xl:text-3xl font-bold">554</span>
-                                            <div class="flex items-center ml-2 mb-1">
-                                                <svg class="w-5 h-5 text-green-500" fill="none"
-                                                    stroke="currentColor" viewBox="0 0 24 24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                                </svg>
-                                                <span class="font-bold text-sm text-gray-500 ml-0.5">7%</span>
-                                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div><i class="fas fa-star text-yellow-400 text-3xl"></i> </div>
+                                <div class="flex flex-col">
+                                    <div class="flex items-end">
+                                        <span
+                                            class="text-2xl 2xl:text-3xl font-bold">{{ $profile->comments->count() }}</span>
+                                        <div class="flex items-center ml-2 mb-1">
+                                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="px-6 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-sm text-green-600">Cursos Publicados</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div><i class="fas fa-chalkboard-teacher text-yellow-400 text-3xl"></i> </div>                            
 
-                        <div class="mt-4">
-                            <canvas id="verticalBarChart"
-                                style="display: block; box-sizing: border-box; height: 414px; width: 828px;"
-                                width="1656" height="828"></canvas>
-                        </div> --}}
+                                <div class="flex flex-col">
+                                    <div class="flex items-end">
+                                        <span
+                                            class="text-2xl 2xl:text-3xl font-bold">{{ $profile->user->courses_dictated->count() }}</span>
+                                        <div class="flex items-center ml-2 mb-1">
+                                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-sm text-blue-600">Artículos Publicados</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div><i class="fas fa-newspaper text-yellow-400 text-3xl"></i> </div>
+                                <div class="flex flex-col">
+                                    <div class="flex items-end">
+                                        <span
+                                            class="text-2xl 2xl:text-3xl font-bold">{{ $profile->user->posts->count() }}</span>
+                                        <div class="flex items-center ml-2 mb-1">
+                                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <canvas id="verticalBarChart"
+                            style="display: block; box-sizing: border-box; height: 414px; width: 828px;"
+                            width="1656" height="828"></canvas>
+                    </div>
                 </div>
-                {{-- <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
-                        <h4 class="text-xl text-gray-900 font-bold">Servicios</h4>
-                        <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8 hidden">
+                    <h4 class="text-xl text-gray-900 font-bold">Servicios</h4>
+                    <div class="mt-6 flex flex-wrap gap-4 justify-center">
 
-                            <img src="{{ asset('assets/imgs/banner/brand-1.png') }}" alt="brand"
-                                class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-10 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
-
-                            <img src="{{ asset('assets/imgs/banner/brand-2.png') }}" alt="brand"
-                                class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
-                            <img src="{{ asset('assets/imgs/banner/brand-3.png') }}" alt="brand"
-                                class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
-                            <img src="{{ asset('assets/imgs/banner/brand-4.png') }}" alt="brand"
-                                class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
-                            <img src="{{ asset('assets/imgs/banner/brand-5.png') }}" alt="brand"
-                                class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 px-5 py-3 shadow-lg shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
-                            <img src="{{ asset('assets/imgs/banner/brand-6.png') }}" alt="brand"
-                                class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                        <div class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-10 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                            <img src="{{ asset('assets/imgs/banner/brand-1.png') }}" alt="brand">
+                            Derecho Penal
                         </div>
 
-
-                    </div> --}}
+                        <img src="{{ asset('assets/imgs/banner/brand-2.png') }}" alt="brand"
+                            class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                        <img src="{{ asset('assets/imgs/banner/brand-3.png') }}" alt="brand"
+                            class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                        <img src="{{ asset('assets/imgs/banner/brand-4.png') }}" alt="brand"
+                            class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                        <img src="{{ asset('assets/imgs/banner/brand-5.png') }}" alt="brand"
+                            class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 px-5 py-3 shadow-lg shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                        <img src="{{ asset('assets/imgs/banner/brand-6.png') }}" alt="brand"
+                            class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                    </div>
+                </div>
             </div>
             <div class="lg:w-1/3 flex flex-col 2xl:w-1/3">
                 <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
@@ -378,7 +357,6 @@
                                 </div>
                             </div>
                             <!-- end::Timeline item -->
-
                         @empty
                         @endforelse
                     </div>
@@ -387,7 +365,6 @@
                     <div class="flex items-center gap-4">
                         <h4 class="text-xl text-gray-900 font-bold">Experiencia Laboral</h4>
                         <i class="fas fa-diagnoses text-blue-600 text-xl"></i>
-
                     </div>
                     <div class="relative px-4">
                         <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
@@ -406,19 +383,12 @@
                                 </div>
                             </div>
                             <!-- end::Timeline item -->
-
                         @empty
                         @endforelse
-
                         <!-- end::Timeline item -->
                     </div>
                 </div>
             </div>
-
-        </div>
-
-
-
         </div>
         @push('chart')
             <script src="{{ asset('assets/js/chart.js') }}"></script>

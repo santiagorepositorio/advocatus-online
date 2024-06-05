@@ -1,5 +1,5 @@
 <section class=" mt-4 ">
-    <h1 class="font-bold text-3xl text-gray-800 mb-2">Valoracion</h1>
+    <h1 class="font-bold text-2xl text-gray-800 mb-2">Valoración</h1>
     @auth
        <article class="my-4">
         @switch($model->category->status)
@@ -117,15 +117,15 @@
 
 
 
-    <p class=" text-gray-800 text-xl">Ultimas 5 de {{ $this->comments->count() }} Valoraciones</p>
+    <p class=" text-gray-800 text-base">Ultimas 5 de {{  $commentsCount  }} Valoraciones</p>
     @foreach ($this->comments as $review)
         <article class="flex mb-4 text-gray-800 items-center">
-            <figure class=" mr-4">
+            <figure class=" mr-2">
                 <img src="{{ $review->user->profile_photo_url }}" alt=""
                     class=" h-10 w-10 object-cover object-center rounded-full shadow-lg">
             </figure>
             <div class="card flex-1 rounded-full">
-                <div class="card-body bg-slate-100 ">
+                <div class="card-body bg-slate-100 text-sm ">
                     <p><b>{{ $review->user->name }}</b> <i
                             class="fas fa-star text-yellow-500"></i>({{ $review->rating }})</p>
                     {{ $review->comment }}

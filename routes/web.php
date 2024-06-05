@@ -111,3 +111,21 @@ Route::get('/auth/google-callback', [AuthController::class, 'google_callback'])-
 
 Route::post('/eliminar-datos-facebook/{user_id}', [AuthController::class, 'eliminarDatosFacebook']);
 
+// Route::get('/email-preferencias', function (){
+//     return URL::temporarySignedRoute('cambio.preferencias', now()->subMinutes(2), ['user' => 1]);
+// });
+//                                                  I
+// Route::get('/cambio-preferencias', function (Request $request){
+//     if(!$request->hasValidSignature()){
+//         return abort(401);}
+//     $user = User::find($request->query('user'));
+//     if (!$user)
+//     {return abort (401);}
+//    Auth::login($user);
+//    return view('profile.edit', [
+//     'user' => $request->user(),
+   
+//    ]);
+        
+//     })->name('cambio.preferencias');
+    

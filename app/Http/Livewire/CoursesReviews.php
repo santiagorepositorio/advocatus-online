@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Comment;
 use App\Models\Course;
 use App\Models\Review;
 use Livewire\Component;
@@ -12,6 +13,7 @@ class CoursesReviews extends Component
     public $model;
     public $rating = 5;
     public $cant = 5;
+    public $com_cant;
     public $comment_reg = [
         'comment' => '',
         'commentable_id' => null,
@@ -19,6 +21,7 @@ class CoursesReviews extends Component
     public function mount(Course $course)
     {
         $this->course_id = $course->id;
+      
     }
 
     public function getCommentsProperty()
@@ -28,8 +31,9 @@ class CoursesReviews extends Component
     public function render()
     {
         $course = Course::find($this->course_id);
+        $commentsCount = Comment::where('commentable_id', $this->model->id)->count();
 
-        return view('livewire.courses-reviews', compact('course'));
+        return view('livewire.courses-reviews', compact('course','commentsCount'));
     }
     public function store()
     {
@@ -44,5 +48,6 @@ class CoursesReviews extends Component
             'user_id' => auth()->user()->id
         ]);
         $this->reset('comment');
+        $this->emit('render');
     }
 }
