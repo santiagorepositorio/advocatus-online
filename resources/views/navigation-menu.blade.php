@@ -46,9 +46,9 @@
 
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/" class="flex-shrink-0 flex items-center mx-6">
-                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}"
+                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/advocatus-logo.png') }}"
                             alt="ITSW">
-                        <img class="block lg:hidden h-12 w-auto" src="{{ asset('assets/imgs/theme/icono.png') }}"
+                        <img class="block lg:hidden h-12 w-auto" src="{{ asset('assets/imgs/logo/advocatus-icono.png') }}"
                             alt="ITSW">
                     </a>
                 </div>

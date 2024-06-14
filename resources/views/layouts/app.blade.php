@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/imgs/logo/icono.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/imgs/logo/advocatus-icono.png') }}">
 
 
     <!-- Fonts -->
@@ -101,8 +101,8 @@
             <div class="mb-6 md:mb-0">
                 <a href="/" class="flex-shrink-0 flex items-center mx-6 lg:mx-0">
                     <img class="block lg:hidden h-12 w-auto mx-auto"
-                        src="{{ asset('assets/imgs/logo/logo-top-1.png') }}" alt="">
-                    <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}"
+                        src="{{ asset('assets/imgs/logo/advocatus-logo.png') }}" alt="">
+                    <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/advocatus-logo.png') }}"
                         alt="ITSW">
                 </a>
             </div>

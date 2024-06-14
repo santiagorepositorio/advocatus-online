@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section class="bg-gray-200">
-        <div class="h-full p-8 max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
+    <section class="bg-gray-300">
+        <div class="h-full p-8 lg:max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
             <div class="bg-white rounded-lg shadow-xl pb-4">
                 <div class="relative w-full h-auto">
                     @isset($profile->image)
@@ -150,8 +150,9 @@
                             <span>PRUEBA</span>
                         </a>
                         <div x-show="openSettings" @click.away="openSettings = false"
-                            class="bg-white absolute  border border-gray-200 shadow-2xl p-4 z-10 rounded" style="display: none;">                          
-                                        @livewire('courses-reviews', ['model' => $profile])               
+                            class="bg-white absolute  border border-gray-200 shadow-2xl p-4 z-10 rounded"
+                            style="display: none;">
+                            @livewire('courses-reviews', ['model' => $profile])
                         </div>
                     </div>
 
@@ -240,7 +241,7 @@
                     <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-2">
-                        
+
                         <div class="px-6 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
                             <div class="flex items-center justify-between">
                                 <span class="font-bold text-sm text-indigo-600">Calificaciones</span>
@@ -267,7 +268,7 @@
                                 <span class="font-bold text-sm text-green-600">Cursos Publicados</span>
                             </div>
                             <div class="flex items-center justify-between mt-2">
-                                <div><i class="fas fa-chalkboard-teacher text-yellow-400 text-3xl"></i> </div>                            
+                                <div><i class="fas fa-chalkboard-teacher text-yellow-400 text-3xl"></i> </div>
 
                                 <div class="flex flex-col">
                                     <div class="flex items-end">
@@ -313,11 +314,22 @@
                             width="1656" height="828"></canvas>
                     </div>
                 </div>
+                <div class="flex-1 justify-center items-center bg-white rounded-lg shadow-xl mt-4 p-8 hidden">
+                    <h4 class="text-xl text-center text-gray-900 font-bold mb-4">Compartir por QR</h4>
+                    <div class="flex justify-center border-r-2 border-l-2 mb-4">
+                        <div class="h-40 w-40  border-black rounded-lg bg-white p-1">
+                            {!! QrCode::size(150)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
+                        </div>
+                    </div>
+                    <p class="text-center">Escanea el Código QR</p>
+                </div>
+
                 <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8 hidden">
                     <h4 class="text-xl text-gray-900 font-bold">Servicios</h4>
                     <div class="mt-6 flex flex-wrap gap-4 justify-center">
 
-                        <div class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-10 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
+                        <div
+                            class=" w-52 cursor-pointer rounded-xl border border-blue-300/20 bg-white px-10 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-75 hover:shadow-lg ">
                             <img src="{{ asset('assets/imgs/banner/brand-1.png') }}" alt="brand">
                             Derecho Penal
                         </div>
@@ -387,6 +399,15 @@
                         @endforelse
                         <!-- end::Timeline item -->
                     </div>
+                </div>
+                <div class="flex-1 justify-center items-center bg-white rounded-lg shadow-xl mt-4 p-8">
+                    <h4 class="text-xl text-center text-gray-900 font-bold mb-4">Compartir por QR</h4>
+                    <div class="flex justify-center border-r-2 border-l-2 mb-4">
+                        <div class="h-40 w-40  border-black rounded-lg bg-white p-1">
+                            {!! QrCode::size(150)->generate(Request::url(env('APP_URL') . '/' . $profile->slug)) !!}
+                        </div>
+                    </div>
+                    <p class="text-center">Escanea el Código QR</p>
                 </div>
             </div>
         </div>
