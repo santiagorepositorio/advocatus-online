@@ -35,7 +35,7 @@ class BlogController extends Controller
 
         JsonLd::setTitle('Artículos Publicados');
         JsonLd::setDescription('Publicaciones profesionales Jurídico & Informáticos sobre temas del Derecho, Discapacidad, TEA y otros referentes');
-        JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/bloguear.png');
+        JsonLd::addImage('https://advocatus-online.com/assets/imgs/logo/advocatus-icono.png');
 
         $posts = Post::where('published', 1)
             ->filter(request()->all())

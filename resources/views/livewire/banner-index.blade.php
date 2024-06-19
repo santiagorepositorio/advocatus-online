@@ -281,9 +281,9 @@
                 </div>
 
                 <div class="whatsapp-container">
-                    <h2 class="titlep text-center mr-4">Participa</h2>
-                    <a href="https://chat.whatsapp.com/HF0p7xDqVc64Fsy3jZpKUN" class="whatsapp-link">
-                        <i class="fab fa-whatsapp fa-lg"></i> Únete al Grupo
+                    <h2 class="titlep text-center mr-4">Únete</h2>
+                    <a href="https://chat.whatsapp.com/EGFfdX95LSWGKrsYpXBM3o" class="whatsapp-link">
+                        <i class="fab fa-whatsapp fa-lg"></i>Comunidad a nivel Nacional
                     </a>
                 </div>
 

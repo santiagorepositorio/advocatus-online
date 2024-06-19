@@ -49,7 +49,7 @@ class CourseController extends Controller
 
         JsonLd::setTitle('Cursos Virtuales');
         JsonLd::setDescription('Set de cursos para Abogados  & Informaticos');
-        JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/icono.png');
+        JsonLd::addImage('https://advocatus-online.com/assets/imgs/logo/advocatus-icono.png');
         return view('courses.index');
     }
 

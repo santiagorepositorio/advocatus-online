@@ -16,21 +16,21 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        SEOMeta::setTitle('Plataforma Jurídica');
-        SEOMeta::setDescription('Para Abogados & Informáticos');
-        SEOMeta::setCanonical('https://advocatus-online.com/courses');
+        SEOMeta::setTitle('Marketplace Juríco');
+        SEOMeta::setDescription('Abogados en Linea, es una iniciativa de Sobotred Systems para dar un paso más a LegalTech');
+        SEOMeta::setCanonical('https://advocatus-online.com/');
 
-        OpenGraph::setDescription('Para Abogados & Informáticos');
-        OpenGraph::setTitle('Plataforma Jurídica');
-        OpenGraph::setUrl('https://advocatus-online.com/courses');
+        OpenGraph::setDescription('Abogados en Linea, es una iniciativa de Sobotred Systems para dar un paso más a LegalTech');
+        OpenGraph::setTitle('Marketplace Juríco');
+        OpenGraph::setUrl('https://advocatus-online.com/');
         OpenGraph::addProperty('type', 'articles');
 
-        TwitterCard::setTitle('Plataforma Jurídica');
+        TwitterCard::setTitle('Marketplace Juríco');
         TwitterCard::setSite('@Sobotred');
 
-        JsonLd::setTitle('Plataforma Jurídica');
-        JsonLd::setDescription('Para Abogados & Informáticos');
-        JsonLd::addImage('https://advocatus-online.com/assets/imgs/theme/icono.png');
+        JsonLd::setTitle('Marketplace Juríco');
+        JsonLd::setDescription('Abogados en Linea, es una iniciativa de Sobotred Systems para dar un paso más a LegalTech');
+        JsonLd::addImage('https://advocatus-online.com/assets/imgs/logo/advocatus-icono.png');
 
         $publicities = Publicity::where('status', '2')->get();
         $courses = Course::where('status', '3')->latest('id')->get()->take(8);
