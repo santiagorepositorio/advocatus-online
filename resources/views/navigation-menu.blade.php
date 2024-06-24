@@ -235,7 +235,7 @@
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="ml-4 text-sm text-gray-700 underline">Registrate</a>
+                                class="ml-4 text-sm text-gray-700 underline">Regístrate</a>
                         @endif
 
                     @endauth
@@ -383,7 +383,7 @@
                     {{ __('Ingresa') }}
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                    {{ __('Registrate') }}
+                    {{ __('Regístrate') }}
                 </x-jet-responsive-nav-link>
             </div>
         @endauth

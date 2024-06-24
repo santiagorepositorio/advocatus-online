@@ -147,7 +147,7 @@
                         <a @click="openSettings = !openSettings"
                             class="flex items-center cursor-pointer bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
                             <i class="fas fa-star text-gray-100 h-4 w-4"></i>
-                            <span>PRUEBA</span>
+                            <span>CALIFICAR</span>
                         </a>
                         <div x-show="openSettings" @click.away="openSettings = false"
                             class="bg-white absolute  border border-gray-200 shadow-2xl p-4 z-10 rounded"
@@ -237,6 +237,7 @@
                 <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
                     <div class="border mt-2 p-2 mb-4 bg-gray-200 rounded-2xl">
                         {{-- @livewire('courses-reviews', ['model' => $profile]) --}}
+                        SERVICIOS 
                     </div>
                     <h4 class="text-xl text-gray-900 font-bold">Estadistica</h4>
 
