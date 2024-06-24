@@ -9,7 +9,7 @@
                         <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
                             Usuarios
                         </h6>
-                        <span class="text-xl font-semibold">100 + </span>
+                        <span class="text-xl font-semibold">{{ 100 + $usuariosHome->count() }} </span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +2.6%
                         </span>
@@ -29,7 +29,7 @@
                 <div class="flex items-center shadow justify-between p-4 bg-white rounded-md">
                     <div>
                         <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
-                            Descargas
+                            Material
                         </h6>
                         <span class="text-xl font-semibold">99</span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
@@ -53,7 +53,7 @@
                         <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
                             Cursos
                         </h6>
-                        <span class="text-xl font-semibold">100</span>
+                        <span class="text-xl font-semibold">{{ $cursosHome->count() }} </span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +3.1%
                         </span>
@@ -75,7 +75,7 @@
                         <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
                             Artículos
                         </h6>
-                        <span class="text-xl font-semibold">215</span>
+                        <span class="text-xl font-semibold">{{ $articulosHome->count() }} </span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +3.1%
                         </span>
@@ -197,7 +197,7 @@
         <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/juridica.jpeg') }}"
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/cursos.webp') }}"
                         alt="">
                 </figure>
                 <header class="mt-2">
@@ -207,7 +207,7 @@
             </article>
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/licenciada.jpg') }}"
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/guia.webp') }}"
                         alt="">
                 </figure>
                 <header class="mt-2">
@@ -227,7 +227,7 @@
             </article>
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/tecnologia.webp') }}"
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{ asset('img/home/memoriales.webp') }}"
                         alt="">
                 </figure>
                 <header class="mt-2">

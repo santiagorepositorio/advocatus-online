@@ -213,6 +213,32 @@
             });
         </script>
         <script>
+             const days = document.getElementById("days");
+    const hours = document.getElementById("hours");
+    const mins = document.getElementById("mins");
+    const seconds = document.getElementById("seconds");
+    const foundationDate = '1 January 2024'; // Cambia esta fecha a la de fundación deseada
+
+    function countTimer() {
+        const foundationDateTime = new Date(foundationDate);
+        const currentDate = new Date();
+        const totalSeconds = (currentDate - foundationDateTime) / 1000;
+
+        const daysCalc = Math.floor(totalSeconds / 3600 / 24);
+        const hoursCalc = Math.floor((totalSeconds / 3600) % 24);
+        const minsCalc = Math.floor((totalSeconds / 60) % 60);
+        const secondsCalc = Math.floor(totalSeconds % 60);
+
+        days.innerHTML = daysCalc;
+        hours.innerHTML = hoursCalc;
+        mins.innerHTML = minsCalc;
+        seconds.innerHTML = secondsCalc;
+    }
+
+    countTimer();
+    setInterval(countTimer, 1000);
+        </script>
+        {{-- <script>
             const days = document.getElementById("days");
             const hours = document.getElementById("hours");
             const mins = document.getElementById("mins");
@@ -237,24 +263,26 @@
             countTimer();
 
             setInterval(countTimer, 1000);
-        </script>
+        </script> --}}
     @endpush
     <section class="main-banner7">
         <div class="grid7-container7">
             <div class="content">
                 <h1 class="title text-center">
-                    <span class="line-1">Marketplace Jur&iacute;co</span>
+                    <span class="line-1">Marketplace Jur&iacute;dico</span>
                     <br>
                     <span class="line-2 type"></span>
                 </h1>
                 <!-- DESCRIPCION-->
-                <p class="countdown7 flex">Bienvenidos a la Nueva Plataforma enfocado en un Market Place Jur&iacute;co
+                <h2 class=" flex">Bienvenidos a la Nueva Plataforma enfocado en un Market Place Jur&iacute;co
                     donde podrás revisar los contenidos de los diferentes Cursos de Actualización.
-                    Publica tus Art&iacute;culos Profesionales!</p>
-                <p><span class="countdown7-number1">Participa de la Capacitación en la Api WhatsApp con Laravel en la Modalidad Virtual</span></p>
-                <div class="countdown7 flex">
+                    Publica tus Art&iacute;culos Profesionales!</h2>
 
-                    <p><span class="countdown7-number1">Empieza en:</span></p>
+                    <br>
+                {{-- <p><span class="countdown7-number1">Participa de la Capacitación en la Api WhatsApp con Laravel en la Modalidad Virtual</span></p> --}}
+                <div class="countdown7 ">
+
+                    <p><span class="countdown7-number1">Tiempo trabajando:</span></p>
                     <div class="flex">
                         <p class="countdown7-item flex">
                             <span class="countdown7-number" id="days">--</span>
