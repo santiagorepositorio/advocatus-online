@@ -4,12 +4,13 @@
         <div class="container flex flex-col items-center justify-center mx-auto xl:flex-row">
             <div class="grid grid-cols-1 gap-4 lg:gap-16 p-2 mt-2 lg:grid-cols-2 xl:grid-cols-4">
                 <!-- Users card -->
-                <div class="flex items-center shadow justify-between p-4 bg-white rounded-md ">
+                <div class="flex items-center shadow justify-between p-2 bg-white rounded-md w-full">
                     <div>
-                        <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
+                        <h6 class="text-lg font-medium leading-none tracking-wider text-gray-500 uppercase">
                             Visitas
                         </h6>
-                        <span class="text-xl font-semibold">{{ 100 + $visitasHome->count() }} </span>
+                        <h2 class="num text-4xl font-medium leading-none tracking-wider text-sky-900 uppercase"
+                            data-val="{{ 100 + $visitasHome->count() }}">{{ 100 + $visitasHome->count() }} </h2>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +100%
                         </span>
@@ -25,15 +26,15 @@
                         </span>
                     </div>
                 </div>
-                <!-- Users card -->
-                <div class="flex items-center shadow justify-between p-4 bg-white rounded-md hidden">
+                <div class="flex items-center shadow justify-between p-2 bg-white rounded-md w-full">
                     <div>
-                        <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
-                            Usuarios
+                        <h6 class="text-lg font-medium leading-none tracking-wider text-gray-500 uppercase">
+                            Materiales
                         </h6>
-                        <span class="text-xl font-semibold">{{ 100 + $usuariosHome->count() }} </span>
+                        <h2 class="num text-4xl font-medium leading-none tracking-wider text-sky-900 uppercase"
+                            data-val="450">450</h2>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +2.6%
+                            +100%
                         </span>
                     </div>
                     <div>
@@ -41,63 +42,46 @@
                             <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                                </path>
+                                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2m-4-4l-4 4m0 0l-4-4m4 4V4" />
                             </svg>
+
                         </span>
                     </div>
                 </div>
-                <!-- Value card -->
-                <div class="flex items-center shadow justify-between p-4 bg-white rounded-md">
+                <!-- Users card -->
+                <div class="flex items-center shadow justify-between p-2 bg-white rounded-md w-full">
                     <div>
-                        <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
-                            Material
-                        </h6>
-                        <span class="text-xl font-semibold">99</span>
-                        <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +4.4%
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                              </svg>
-                              
-                        </span>
-                    </div>
-                </div>
-
-
-                <!-- Orders card -->
-                <div class="flex items-center shadow justify-between p-4 bg-white rounded-md">
-                    <div>
-                        <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
+                        <h6 class="text-lg font-medium leading-none tracking-wider text-gray-500 uppercase">
                             Cursos
                         </h6>
-                        <span class="text-xl font-semibold">{{ $cursosHome->count() }} </span>
+                        <h2 class="num text-4xl font-medium leading-none tracking-wider text-sky-900 uppercase"
+                            data-val="{{ 100 + $cursosHome->count() }}">{{ 100 + $cursosHome->count() }} </h2>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +3.1%
                         </span>
                     </div>
                     <div>
                         <span>
-                            <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16h8M8 8h8M8 12h8M6 4v16h12V4H6zM2 6h2v12H2V6zm18 0h2v12h-2V6z" />
+                            <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16h8M8 8h8M8 12h8M6 4v16h12V4H6zM2 6h2v12H2V6zm18 0h2v12h-2V6z" />
                                 <circle cx="12" cy="2" r="2" />
-                              </svg>
-                              
+                            </svg>
+
                         </span>
                     </div>
                 </div>
 
-                <!-- Tickets card -->
-                <div class="flex items-center shadow justify-between p-4 bg-white rounded-md">
+
+                <!-- Orders card -->
+                <div class="flex items-center shadow justify-between p-2 bg-white rounded-md w-full">
                     <div>
-                        <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
+                        <h6 class="text-lg font-medium leading-none tracking-wider text-gray-500 uppercase">
                             Artículos
                         </h6>
-                        <span class="text-xl font-semibold">{{ $articulosHome->count() }} </span>
+                        <h2 class="num text-4xl font-medium leading-none tracking-wider text-sky-900 uppercase"
+                            data-val="{{ 100 + $articulosHome->count() }}">{{ 100 + $articulosHome->count() }} </h2>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +3.1%
                         </span>
@@ -113,6 +97,10 @@
                         </span>
                     </div>
                 </div>
+
+
+                <!-- Tickets card -->
+
             </div>
         </div>
     </section>
@@ -170,8 +158,7 @@
         <div class="container flex flex-col items-center px-4 py-12 mx-auto xl:flex-row">
             <div class="flex justify-center xl:w-1/2">
                 <img class="h-80 w-80 sm:w-[28rem] sm:h-[28rem] flex-shrink-0 object-cover rounded-full"
-                    src="{{ asset('img/home/qr-promo.png') }}"
-                    alt="">
+                    src="{{ asset('img/home/qr-promo.png') }}" alt="">
             </div>
 
             <div class="flex flex-col items-center mt-6 xl:items-start xl:w-1/2 xl:mt-0">
@@ -179,17 +166,21 @@
                     Configura tu Tarjeta Personal Digital
                 </h2>
 
-                <p class="block max-w-2xl mt-4 text-xl text-gray-500 ">Comparte tu Tarjeta Personal Digital a cualquier red social, por Link o QR,
+                <p class="block max-w-2xl mt-4 text-xl text-gray-500 ">Comparte tu Tarjeta Personal Digital a cualquier
+                    red social, por Link o QR,
                     como Profesional obtén tu QR para tu tarjeta personal de forma libre MarketPlace Jurídico</p>
 
                 <div class="mt-6 sm:-mx-2">
                     <div class="inline-flex w-full overflow-hidden rounded-lg shadow sm:w-auto sm:mx-2">
                         <a href="{{ route('register') }}"
                             class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium text-white bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-600 sm:w-auto">
-                            <svg class="w-6 h-6 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 8a4 4 0 118 0 4 4 0 01-8 0zm2-2a2 2 0 100-4 2 2 0 000 4zM9 12l3 3m0-3h-6" clip-rule="evenodd" />
-                              </svg>
-                              
+                            <svg class="w-6 h-6 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 8a4 4 0 118 0 4 4 0 01-8 0zm2-2a2 2 0 100-4 2 2 0 000 4zM9 12l3 3m0-3h-6"
+                                    clip-rule="evenodd" />
+                            </svg>
+
                             <span class="mx-2">
                                 Regístrate
                             </span>

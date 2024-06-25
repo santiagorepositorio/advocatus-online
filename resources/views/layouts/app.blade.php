@@ -228,11 +228,26 @@
             });
         }
     </script>
-
     <script src="{{ asset('assets/js/main.js?v=3.3') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        let valueDisplays = document.querySelectorAll(".num");
+        let interval = 4000;
+        valueDisplays.forEach((valueDisplay) => {
+            let startValue = 0;
+            let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+            let duration = Math.floor(interval / endValue);
+            let counter = setInterval(function() {
+                startValue += 1;
+                valueDisplay.textContent = startValue;
+                if (startValue == endValue) {
+                    clearInterval(counter);
+                }
+            }, duration);
+        });
+    </script>
 
 
     @stack('swipe')
