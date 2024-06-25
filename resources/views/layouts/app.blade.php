@@ -40,10 +40,14 @@
             border-radius: 0.5rem;
             overflow: hidden;
         }
-        .modal-enter-active, .modal-leave-active {
+
+        .modal-enter-active,
+        .modal-leave-active {
             transition: opacity 0.25s ease;
         }
-        .modal-enter, .modal-leave-to {
+
+        .modal-enter,
+        .modal-leave-to {
             opacity: 0;
         }
     </style>
@@ -59,7 +63,31 @@
 
 </head>
 
+
 <body class="font-sans antialiased">
+
+    @php
+        if (!function_exists('contar')) {
+            function contar()
+            {
+                $ip = request()->ip(); // Usar request() para obtener la IP
+                $today = now()->toDateString(); // Obtener la fecha de hoy
+
+                $contarC = \App\Models\Counter::where('ip', $ip)->whereDate('created_at', $today)->count();
+
+                if ($contarC == 0) {
+                    \App\Models\Counter::create([
+                        'ip' => $ip,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
+        }
+
+        // Llamar a la función contar
+        contar();
+    @endphp
     <x-jet-banner />
 
     <div class="min-h-screen bg-gray-100">

@@ -7,6 +7,28 @@
                 <div class="flex items-center shadow justify-between p-4 bg-white rounded-md ">
                     <div>
                         <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
+                            Visitas
+                        </h6>
+                        <span class="text-xl font-semibold">{{ 100 + $visitasHome->count() }} </span>
+                        <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
+                            +100%
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <!-- Users card -->
+                <div class="flex items-center shadow justify-between p-4 bg-white rounded-md hidden">
+                    <div>
+                        <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
                             Usuarios
                         </h6>
                         <span class="text-xl font-semibold">{{ 100 + $usuariosHome->count() }} </span>

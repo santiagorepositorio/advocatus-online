@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Counter;
 use App\Models\Course;
 use App\Models\Post;
 use App\Models\Profile;
@@ -13,6 +14,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOTools;
+use PHPUnit\Framework\Constraint\Count;
 
 class HomeController extends Controller
 {
@@ -34,6 +36,7 @@ class HomeController extends Controller
         JsonLd::setDescription('Abogados en Linea, es una iniciativa de Sobotred Systems para dar un paso más a LegalTech');
         JsonLd::addImage('https://advocatus-online.com/assets/imgs/logo/advocatus-icono.png');
 
+        $visitasHome = Counter::get();
         $usuariosHome = User::get();
         $cursosHome = Course::get();
         $articulosHome = Post::get();
@@ -49,6 +52,7 @@ class HomeController extends Controller
             ->orderByDesc('students_count') // Ordena los cursos por el recuento de estudiantes en orden descendente
             ->limit(8) // Limita los resultados a los 10 cursos más suscritos
             ->get();
-        return view('welcome', compact('courses', 'profiles', 'publicities', 'topSubscribedCourses', 'usuariosHome', 'cursosHome', 'articulosHome'));
+        return view('welcome', compact('courses', 'profiles', 'publicities', 'topSubscribedCourses', 'usuariosHome', 'cursosHome', 'articulosHome', 'visitasHome'));
     }
+
 }
