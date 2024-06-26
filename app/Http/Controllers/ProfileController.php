@@ -139,7 +139,7 @@ class ProfileController extends Controller
         // $qrcode = QrCode::size(200)->format('png')->generate(env('APP_URL') . '/' . $profile->slug);
 
         // Storage::put($imagePath, QrCode::format('png')->size(100)->generate(env('APP_URL') . '/' . $profile->slug));
-       
+
 
         // Obtener la URL pública de la imagen del QR
         $imageUrl = Storage::url($imagePath);
@@ -216,5 +216,16 @@ class ProfileController extends Controller
     public function cv()
     {
         return view('profiles.cv');
+    }
+    public function downloadpsd()
+    {
+   
+            
+            return response()->download(storage_path("app/public/modelo_banner.psd"));
+          
+       
+        // dd(Storage::disk($this->disk)->exists('modelo_banner.psd'));
+        // return response('',404);
+
     }
 }

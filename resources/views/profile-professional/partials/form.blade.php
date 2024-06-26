@@ -137,7 +137,10 @@
         @endisset
     </figure>
     <div>
-        <p class="mb-2">Debe subir una imagen de su Perfil de lo contrario cargara una por defecto</p>
+        <p class="mb-2">Debe subir una imagen de tamaño 1640 x 624 para su Perfil de lo contrario cargara una por
+            defecto, puedes descargar el archivo editable para el banner -> Click -> <a
+                href="{{ route('profile.downloadpsd') }}" class="text-sky-800 hover:text-red-700">modelo_banner</a>
+        </p>
         {!! Form::file('file', [
             'class' => 'form-input w-full ' . ($errors->has('file') ? ' border-red-600' : ''),
             'id' => 'file',

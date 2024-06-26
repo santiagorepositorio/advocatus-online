@@ -70,6 +70,7 @@ Route::get('profile/{profile}/experiences', [ProfileController::class, 'experien
 Route::get('profile/{profile}/socials', [ProfileController::class, 'social_profile'])->name('profile.socials')->middleware('auth');
 Route::get('profile/cv', [ProfileController::class, 'cv'])->name('profile.cv')->middleware('auth');
 Route::get('profile/{profile}/qr-generation', QRGeneration::class)->name('profile.qr-generation')->middleware('auth');
+Route::get('profile/downloadpsd', [ProfileController::class, 'downloadpsd'])->name('profile.downloadpsd');
 
 Route::middleware([
     'auth:sanctum',
