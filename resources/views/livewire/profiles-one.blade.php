@@ -1,5 +1,5 @@
 <div>
-    <div class="mt-8">
+    <div class="mt-4">
         <h1 class="text-center text-3xl text-gray-600">Profesionales Destacados</h1>
         <p class="text-center text-gray-500 text-sm mt-2 "></p>  
         <div class="swiper mySwiper">
