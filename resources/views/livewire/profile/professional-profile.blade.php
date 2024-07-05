@@ -1,22 +1,22 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Perfil Profesional') }}
+        {{ __('Perfil Profesional') }} <i class="fas fa-id-card"></i>
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Administre su perfil para cualquier Edicion o Eliminacion') }}
+        {{ __('Configura tu Tarjeta Digital como parte de tu Perfil Profesional para compartirlo por QR.') }}
     </x-slot>
 
     <x-slot name="content">
         <div class="max-w-xl text-sm text-gray-600">
-            {{ __('Gestione su Cuenta Profesional') }}
+            {{ __('Gestiona tu Tarjeta Digital') }}
         </div>
 
 
 
         <div class="mt-5">
             <x-button-primary wire:click="confirmUserProfessional" wire:loading.attr="disabled" color="blue">
-                Gestionar Perfil Profesional
+                Gestionar Tarjeta Digital 
             </x-button-primary>
 
             
