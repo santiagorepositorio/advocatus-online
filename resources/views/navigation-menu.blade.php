@@ -175,8 +175,8 @@
                                 </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    Perfil
-                                </x-jet-dropdown-link>
+                                    Perfil - Tarjeta Digital
+                                </x-jet-dropdown-link>                               
                                 <x-jet-dropdown-link href="{{ route('courses.my-courses') }}">
                                     Mis Cursos
                                 </x-jet-dropdown-link>
@@ -293,7 +293,7 @@
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                        Perfil
+                        Perfil - Tarjeta Digital
                     </x-jet-responsive-nav-link>
                     <x-jet-responsive-nav-link href="{{ route('courses.my-courses') }}" :active="request()->routeIs('courses.my-courses')">
                         Mis Cursos
